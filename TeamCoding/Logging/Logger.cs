@@ -18,7 +18,7 @@ namespace TeamCoding.Logging
         public Logger()
         {
             var dte = (EnvDTE.DTE)Package.GetGlobalService(typeof(EnvDTE.DTE));
-            OutputWindow = (EnvDTE.OutputWindow)dte.Windows.Item(EnvDTE.Constants.vsWindowKindOutput).Object;
+//OutputWindow = (EnvDTE.OutputWindow)dte.Windows.Item(EnvDTE.Constants.vsWindowKindOutput).Object;
         }
         private void EnsureOutputPane()
         {
@@ -68,5 +68,10 @@ namespace TeamCoding.Logging
             TeamCodingPane.Activate();
         }
         public void WriteError(Exception ex, [CallerFilePath] string filePath = null, [CallerMemberName] string memberName = null) => WriteError(ex.ToString(), null, filePath, memberName);
+
+        public void OurTest(string message)
+        {
+            System.Diagnostics.Debug.WriteLine(message);
+        }
     }
 }
