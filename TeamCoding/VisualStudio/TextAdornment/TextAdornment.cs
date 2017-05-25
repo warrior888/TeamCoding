@@ -20,7 +20,7 @@ using TeamCoding.Documents.SourceControlRepositories;
 
 namespace TeamCoding.VisualStudio.TextAdornment
 {
-    internal sealed class TextAdornment : IDisposable
+    internal class TextAdornment : IDisposable
     {
         private readonly IAdornmentLayer Layer;
         private readonly IWpfTextView View;
@@ -34,10 +34,7 @@ namespace TeamCoding.VisualStudio.TextAdornment
         public TextAdornment(IWpfTextView view)
         {
             SourceControlRepo = TeamCodingPackage.Current.SourceControlRepo;
-            OpenFilesFilter = of => of.Repository.Equals(RepoDocument.RepoUrl, StringComparison.OrdinalIgnoreCase) &&
-                                    of.RelativePath.Equals(RepoDocument.RelativePath, StringComparison.OrdinalIgnoreCase) &&
-                                    (TeamCodingPackage.Current.Settings.UserSettings.ShowAllBranches || of.RepositoryBranch == RepoDocument.RepoBranch) &&
-                                    of.CaretPositionInfo != null;
+            OpenFilesFilter = FilterOpenFiles;
 
             View = view ?? throw new ArgumentNullException(nameof(view));
 
@@ -64,9 +61,9 @@ namespace TeamCoding.VisualStudio.TextAdornment
 
         private async void RefreshAdornmentsAsync(object sender, EventArgs e)
         {
-            var CaretPositions = TeamCodingPackage.Current.RemoteModelChangeManager.GetOpenFiles()
-                                                          .Where(OpenFilesFilter)
-                                                          .Select(of => new
+            IEnumerable<IRemotelyAccessedDocumentData> openFiles = TeamCodingPackage.Current.RemoteModelChangeManager.GetOpenFiles();
+            IEnumerable<IRemotelyAccessedDocumentData> openFilesFiltered = openFiles.Where(OpenFilesFilter);
+            var CaretPositions = openFilesFiltered.Select(of => new
                                                           {
                                                               CaretMemberHashCodes = of.CaretPositionInfo.SyntaxNodeIds,
                                                               of.CaretPositionInfo.LeafMemberCaretOffset,
@@ -214,6 +211,16 @@ namespace TeamCoding.VisualStudio.TextAdornment
         {
             TeamCodingPackage.Current.RemoteModelChangeManager.RemoteModelReceived -= RefreshAdornmentsAsync;
             TeamCodingPackage.Current.Settings.UserSettings.UserCodeDisplayChanged -= UserSettings_UserCodeDisplayChangedAsync;
+        }
+
+        protected virtual bool FilterOpenFiles(IRemotelyAccessedDocumentData openFiles)
+        {
+            bool result = openFiles.RelativePath.Equals(RepoDocument.RelativePath, StringComparison.OrdinalIgnoreCase);
+            result = result && (TeamCodingPackage.Current.Settings.UserSettings.ShowAllBranches || openFiles.RepositoryBranch == RepoDocument.RepoBranch);
+
+            result = result && openFiles.CaretPositionInfo != null;
+
+            return result;
         }
     }
 }

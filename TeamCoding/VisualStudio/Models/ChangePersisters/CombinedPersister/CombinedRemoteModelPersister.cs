@@ -41,13 +41,15 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.CombinedPersister
                     scdd.Repository,
                     scdd.RepositoryBranch,
                     scdd.RelativePath,
-                    scdd.IdeUserIdentity.Id
+                    scdd.IdeUserIdentity.Id,
+                    scdd.IdeUserIdentity
+
                 }).Select(g => new RemotelyAccessedDocumentData()
                 {
                     Repository = g.Key.Repository,
                     RepositoryBranch = g.Key.RepositoryBranch,
                     RelativePath = g.Key.RelativePath,
-                    IdeUserIdentity = g.First().IdeUserIdentity,
+                    IdeUserIdentity = g.Key.IdeUserIdentity,
                     HasFocus = g.Any(scdd => scdd.HasFocus),
                     BeingEdited = g.Any(scdd => scdd.BeingEdited),
                     CaretPositionInfo = g.FirstOrDefault(scdd => scdd.CaretPositionInfo != null)?.CaretPositionInfo
@@ -77,5 +79,10 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.CombinedPersister
                 remoteModelPersister.Dispose();
             }
         }
-    }
+
+        protected virtual IRemotelyAccessedDocumentData SelectRemotelyAccessedDocumentData(IRemotelyAccessedDocumentData input)
+        {
+            return null;
+        }
+    } 
 }
