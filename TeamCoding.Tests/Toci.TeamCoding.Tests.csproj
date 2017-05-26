@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamCodingProj\Loggers\BasicLoggerTest.cs" />
+    <Compile Include="TeamCodingProj\ReflectionTest\ReflectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

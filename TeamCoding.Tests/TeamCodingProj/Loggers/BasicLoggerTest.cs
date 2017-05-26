@@ -6,6 +6,8 @@ namespace Toci.TeamCoding.Tests.TeamCodingProj.Loggers
     [TestClass]
     public class BasicLoggerTest
     {
+        private int IAmPrivate { get; set; };
+
         [TestMethod]
         public void BasicLoggerBasicTest()
         {

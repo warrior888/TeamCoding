@@ -20,7 +20,7 @@ using TeamCoding.Documents.SourceControlRepositories;
 
 namespace TeamCoding.VisualStudio.TextAdornment
 {
-    internal class TextAdornment : IDisposable
+    public class TextAdornment : IDisposable
     {
         private readonly IAdornmentLayer Layer;
         private readonly IWpfTextView View;
