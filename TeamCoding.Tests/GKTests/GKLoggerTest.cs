@@ -18,7 +18,7 @@ namespace Toci.TeamCoding.Tests.GKTests
             GK_Logger logger = new GK_Logger();
 
             logger.WriteToFile();
-            //Lazy(); //jak wyciągnąć uuid z Lazy ?
+            
         }
     }
 }
