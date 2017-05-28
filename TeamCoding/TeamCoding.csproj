@@ -89,6 +89,7 @@
     <Compile Include="Guids.cs" />
     <Compile Include="IdentityManagement\CachedFailoverIdentityProvider.cs" />
     <Compile Include="IdentityManagement\VSOptionsIdentityProvider.cs" />
+    <Compile Include="Logging\GK_Logger.cs" />
     <Compile Include="Logging\Logger.cs" />
     <Compile Include="Options\OptionPageGrid.cs">
       <SubType>Component</SubType>
