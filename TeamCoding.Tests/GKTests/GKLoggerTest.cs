@@ -18,11 +18,7 @@ namespace Toci.TeamCoding.Tests.GKTests
             GK_Logger logger = new GK_Logger();
 
             logger.WriteToFile();
-
-          //  LocalIDEModel modell = new LocalIDEModel();
-            //modell();
-
-
+            //Lazy(); //jak wyciągnąć uuid z Lazy ?
         }
     }
 }
