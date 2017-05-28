@@ -157,9 +157,11 @@ namespace TeamCoding.VisualStudio.Models
         }
         internal void OnTextBufferChanged(ITextBuffer textBuffer, TextContentChangedEventArgs e)
         {
-            //e.Changes.data
+            //e.Changes.dataRM
             var filePath = textBuffer.GetTextDocumentFilePath();
             var sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath);
+
+            //textBuffer.Insert(e.Changes[0].NewPosition, e.Changes[0].NewText);
 
             lock (OpenFilesLock)
             {
