@@ -65,7 +65,7 @@ namespace TeamCoding.Logging
                 WriteError(ex, filePath, memberName);
             }
             LogText(error, filePath, memberName);
-            TeamCodingPane.Activate();
+            //TeamCodingPane.Activate();
         }
         public void WriteError(Exception ex, [CallerFilePath] string filePath = null, [CallerMemberName] string memberName = null) => WriteError(ex.ToString(), null, filePath, memberName);
 
