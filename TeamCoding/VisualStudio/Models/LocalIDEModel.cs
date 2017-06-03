@@ -157,8 +157,11 @@ namespace TeamCoding.VisualStudio.Models
         }
         internal void OnTextBufferChanged(ITextBuffer textBuffer, TextContentChangedEventArgs e)
         {
+            //e.Changes.dataRM
             var filePath = textBuffer.GetTextDocumentFilePath();
             var sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath);
+
+            //textBuffer.Insert(e.Changes[0].NewPosition, e.Changes[0].NewText);
 
             lock (OpenFilesLock)
             {
@@ -169,6 +172,7 @@ namespace TeamCoding.VisualStudio.Models
                 }
                 else
                 {
+                    //
                     OpenFiles.AddOrUpdate(filePath, sourceControlInfo, (v, r) => { sourceControlInfo.CaretPositionInfo = r.CaretPositionInfo; return sourceControlInfo; });
                 }
             }
