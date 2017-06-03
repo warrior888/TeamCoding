@@ -1,4 +1,5 @@
-﻿using TeamCoding.IdentityManagement;
+﻿using System.Collections.Generic;
+using TeamCoding.IdentityManagement;
 
 namespace TeamCoding.Documents
 {
@@ -6,6 +7,7 @@ namespace TeamCoding.Documents
     {
         bool BeingEdited { get; set; }
         DocumentRepoMetaData.CaretInfo CaretPositionInfo { get; set; }
+        List<DocumentRepoMetaData.DocumentChangesInfo> DocumentChangesInfo { get; set; }
         bool HasFocus { get; set; }
         IUserIdentity IdeUserIdentity { get; set; }
         string RelativePath { get; set; }

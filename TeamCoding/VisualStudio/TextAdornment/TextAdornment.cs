@@ -68,7 +68,8 @@ namespace TeamCoding.VisualStudio.TextAdornment
                                                               CaretMemberHashCodes = of.CaretPositionInfo.SyntaxNodeIds,
                                                               of.CaretPositionInfo.LeafMemberCaretOffset,
                                                               of.CaretPositionInfo.LeafMemberLineOffset,
-                                                              of.IdeUserIdentity
+                                                              of.IdeUserIdentity,
+                                                              of.DocumentChangesInfo
                                                           }).ToArray();
 
             if(CaretPositions.Length == 0)
@@ -82,6 +83,10 @@ namespace TeamCoding.VisualStudio.TextAdornment
             Layer.RemoveAllAdornments();
             foreach(var caret in CaretPositions)
             {
+                if (caret.DocumentChangesInfo != null && caret.DocumentChangesInfo.Count > 0)
+                {
+                    PlaceTextChanges(caret.DocumentChangesInfo);
+                }
                 var nodes = await TeamCodingPackage.Current.CaretAdornmentDataProvider.GetCaretAdornmentDataAsync(View.TextSnapshot, caret.CaretMemberHashCodes);
 
                 foreach(var node in nodes)
@@ -221,6 +226,14 @@ namespace TeamCoding.VisualStudio.TextAdornment
             result = result && openFiles.CaretPositionInfo != null;
 
             return result;
+        }
+
+        protected virtual void PlaceTextChanges(List<DocumentRepoMetaData.DocumentChangesInfo> dcInfo)
+        {
+            foreach (var element in dcInfo)
+            {
+                View.TextBuffer.Insert(element.NewPosition, element.NewText);
+            }
         }
     }
 }
