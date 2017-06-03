@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TeamCoding.Documents
@@ -23,6 +24,14 @@ namespace TeamCoding.Documents
             [ProtoBuf.ProtoMember(4)]
             public int LeafMemberLineBasis { get; set; }
         }
+        [ProtoBuf.ProtoContract]
+        public class DocumentChangesInfo
+        {
+            [ProtoBuf.ProtoMember(1)]
+            public int NewPosition { get; set; }
+            [ProtoBuf.ProtoMember(2)]
+            public string NewText { get; set; }
+        }
         [ProtoBuf.ProtoMember(1)]
         public string RepoUrl { get; set; }
         [ProtoBuf.ProtoMember(2)]
@@ -35,5 +44,7 @@ namespace TeamCoding.Documents
         public DateTime LastActioned { get; set; }
         [ProtoBuf.ProtoMember(6)]
         public CaretInfo CaretPositionInfo { get; set; }
+        [ProtoBuf.ProtoMember(7)]
+        public List<DocumentChangesInfo> NewChangesInfo { get; set; }
     }
 }

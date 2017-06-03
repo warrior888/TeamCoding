@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TeamCoding.IdentityManagement;
 
 namespace TeamCoding.Documents
@@ -13,6 +14,7 @@ namespace TeamCoding.Documents
         public string RelativePath { get; set; }
         public IUserIdentity IdeUserIdentity { get; set; }
         public bool BeingEdited { get; set; }
+        public List<DocumentRepoMetaData.DocumentChangesInfo> DocumentChangesInfo { get; set; }
         public bool HasFocus { get; set; }
         public DocumentRepoMetaData.CaretInfo CaretPositionInfo { get; set; }
         public override int GetHashCode()

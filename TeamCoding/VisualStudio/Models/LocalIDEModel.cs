@@ -159,7 +159,9 @@ namespace TeamCoding.VisualStudio.Models
         {
             //e.Changes.dataRM
             var filePath = textBuffer.GetTextDocumentFilePath();
-            var sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath);
+            DocumentRepoMetaData sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath);
+
+            sourceControlInfo = SaveNewCharactersChanges(sourceControlInfo, e.Changes);
 
             //textBuffer.Insert(e.Changes[0].NewPosition, e.Changes[0].NewText);
 
@@ -173,7 +175,7 @@ namespace TeamCoding.VisualStudio.Models
                 else
                 {
                     //
-                    OpenFiles.AddOrUpdate(filePath, sourceControlInfo, (v, r) => { sourceControlInfo.CaretPositionInfo = r.CaretPositionInfo; return sourceControlInfo; });
+                    OpenFiles.AddOrUpdate(filePath, sourceControlInfo, (v, r) => { sourceControlInfo.CaretPositionInfo = r.CaretPositionInfo; sourceControlInfo.NewChangesInfo = r.NewChangesInfo; return sourceControlInfo; });
                 }
             }
         }
@@ -193,6 +195,21 @@ namespace TeamCoding.VisualStudio.Models
         internal void OnFileLostFocus(string filePath)
         {
 
+        }
+
+        protected virtual DocumentRepoMetaData SaveNewCharactersChanges(DocumentRepoMetaData documentRepoMetaData, INormalizedTextChangeCollection textChangeCollection)
+        {
+            documentRepoMetaData.NewChangesInfo = new List<DocumentRepoMetaData.DocumentChangesInfo>();
+
+            foreach (var textChange in textChangeCollection)
+            {
+                DocumentRepoMetaData.DocumentChangesInfo dcInfo = new DocumentRepoMetaData.DocumentChangesInfo();
+                dcInfo.NewText = textChange.NewText;
+                dcInfo.NewPosition = textChange.NewPosition;
+                documentRepoMetaData.NewChangesInfo.Add(dcInfo);
+            }
+
+            return documentRepoMetaData;
         }
     }
 }
