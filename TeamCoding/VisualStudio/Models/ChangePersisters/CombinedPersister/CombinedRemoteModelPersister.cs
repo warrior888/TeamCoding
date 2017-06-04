@@ -42,7 +42,8 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.CombinedPersister
                     scdd.RepositoryBranch,
                     scdd.RelativePath,
                     scdd.IdeUserIdentity.Id,
-                    scdd.IdeUserIdentity
+                    scdd.IdeUserIdentity,
+                    scdd.DocumentChangesInfo
 
                 }).Select(g => new RemotelyAccessedDocumentData()
                 {
@@ -52,7 +53,8 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.CombinedPersister
                     IdeUserIdentity = g.Key.IdeUserIdentity,
                     HasFocus = g.Any(scdd => scdd.HasFocus),
                     BeingEdited = g.Any(scdd => scdd.BeingEdited),
-                    CaretPositionInfo = g.FirstOrDefault(scdd => scdd.CaretPositionInfo != null)?.CaretPositionInfo
+                    CaretPositionInfo = g.FirstOrDefault(scdd => scdd.CaretPositionInfo != null)?.CaretPositionInfo,
+                    DocumentChangesInfo = g.Key.DocumentChangesInfo
                 }).ToArray();
             }
         }
