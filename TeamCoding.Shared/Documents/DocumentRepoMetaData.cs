@@ -31,6 +31,8 @@ namespace TeamCoding.Documents
             public int NewPosition { get; set; }
             [ProtoBuf.ProtoMember(2)]
             public string NewText { get; set; }
+            [ProtoBuf.ProtoMember(3)]
+            public bool IsShown { get; set; }
         }
         [ProtoBuf.ProtoMember(1)]
         public string RepoUrl { get; set; }

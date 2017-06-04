@@ -232,7 +232,11 @@ namespace TeamCoding.VisualStudio.TextAdornment
         {
             foreach (var element in dcInfo)
             {
-                View.TextBuffer.Insert(element.NewPosition, element.NewText);
+                if (!element.IsShown)
+                {
+                    element.IsShown = true;
+                    View.TextBuffer.Insert(element.NewPosition, element.NewText);
+                }
             }
         }
     }
