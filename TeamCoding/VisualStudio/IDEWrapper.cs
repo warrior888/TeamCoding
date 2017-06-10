@@ -10,7 +10,11 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using TeamCoding.Documents;
 using TeamCoding.Extensions;
+using TeamCoding.Toci.Implementations;
+using TeamCoding.Toci.Interfaces;
 using TeamCoding.VisualStudio.Controls;
+using Toci.Piastcode.Social.Client;
+using Toci.Piastcode.Social.Client.Interfaces;
 
 namespace TeamCoding.VisualStudio
 {
@@ -19,6 +23,9 @@ namespace TeamCoding.VisualStudio
     /// </summary>
     public class IDEWrapper
     {
+        protected IProjectFileManager fileManager = new ProjectFileManager();
+        protected SocketClientManager scManager;
+
         public class DocumentSavedEventArgs : EventArgs
         {
             public string DocumentFilePath { get; set; }
@@ -38,6 +45,13 @@ namespace TeamCoding.VisualStudio
             WindowEvents.WindowActivated += WindowEvents_WindowActivated;
             WindowEvents.WindowCreated += WindowEvents_WindowCreated;
             TeamCodingPackage.Current.Settings.UserSettings.UserTabDisplayChanged += UserSettings_UserTabDisplayChanged;
+
+            scManager = new SocketClientManager("192.168.0.55", 25016, new Dictionary<ModificationType, Action<IItem>>
+            {
+                {ModificationType.Add, (item) => fileManager.AddNewFile((IProjectItem)item, DTE)},
+            });
+
+            scManager.StartClient();
         }
         private void UserSettings_UserTabDisplayChanged(object sender, EventArgs e)
         {

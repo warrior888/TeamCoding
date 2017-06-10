@@ -109,6 +109,8 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
+    <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
+    <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
       <DependentUpon>UserAvatar.xaml</DependentUpon>
@@ -259,6 +261,7 @@
       <HintPath>..\packages\LibGit2Sharp.0.22.0\lib\net40\LibGit2Sharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Build" />
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Experimental.Collections, Version=1.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -524,6 +527,54 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piascode.Instructions.Interfacces\Toci.Piascode.Instructions.Interfaces.csproj">
+      <Project>{86782432-7656-499a-aa3f-d1bc8a90a81d}</Project>
+      <Name>Toci.Piascode.Instructions.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Instructions\Toci.Piastcode.Instructions.csproj">
+      <Project>{db9da045-8767-442c-901d-f77d4f0c69e1}</Project>
+      <Name>Toci.Piastcode.Instructions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Client.Interfaces\Toci.Piastcode.Social.Client.Interfaces.csproj">
+      <Project>{bbb037d1-7779-4df9-b7e6-318ef128e933}</Project>
+      <Name>Toci.Piastcode.Social.Client.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Client\Toci.Piastcode.Social.Client.csproj">
+      <Project>{cdc32fe2-61bf-4d51-b8e7-569d06a22fd7}</Project>
+      <Name>Toci.Piastcode.Social.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
+      <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
+      <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities\Toci.Piastcode.Social.Entities.csproj">
+      <Project>{77e05e9f-d76d-4af0-997c-e1a98455243b}</Project>
+      <Name>Toci.Piastcode.Social.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
+      <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>
+      <Name>Toci.Piastcode.Social.Sockets.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj">
+      <Project>{e18e9834-6f28-48b6-81c8-a7aa4cc365c1}</Project>
+      <Name>Toci.Piastcode.Social.Sockets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Tools.Interfaces\Toci.Piastcode.Social.Tools.Interfaces.csproj">
+      <Project>{c1115ffe-6885-4fb9-9f9e-4ee88178a864}</Project>
+      <Name>Toci.Piastcode.Social.Tools.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Tools\Toci.Piastcode.Social.Tools.csproj">
+      <Project>{5c40fdbc-fd89-4080-bfbc-fee81ac53a01}</Project>
+      <Name>Toci.Piastcode.Social.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.SpeechRecognition.Interfaces\Toci.Piastcode.SpeechRecognition.Interfaces.csproj">
+      <Project>{7247629d-acee-4164-93a4-68f8a8b2ed85}</Project>
+      <Name>Toci.Piastcode.SpeechRecognition.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.SpeechRecognition\Toci.Piastcode.SpeechRecognition.csproj">
+      <Project>{480b3504-6497-43d8-9f9f-ccbbc5f230c0}</Project>
+      <Name>Toci.Piastcode.SpeechRecognition</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
