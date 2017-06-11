@@ -31,7 +31,7 @@ namespace TeamCoding.VisualStudio
     {
         protected IProjectFileManager fileManager = new ProjectFileManager();
         protected SocketClientManager scManager;
-        private IResult result;
+        
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -60,31 +60,12 @@ namespace TeamCoding.VisualStudio
 
             scManager.StartClient();*/
 
-            SpeechRecognitionManager manager = new SpeechRecognitionManager();
+            //SpeechRecognitionManager manager = new SpeechRecognitionManager();
 
-            manager.ManageVoiceInstructions(Parse);
+            //manager.ManageVoiceInstructions(Parse);
         }
 
-        protected virtual void Parse(string input)
-        {
-            Parser<ITarget, ISource, IResult> parser = new Parser<ITarget, ISource, IResult>();
-            result = parser.Parse(null, new Source { StringSource = input });
-
-            IDeveloperCommandDriver dcDriver = new DeveloperCommandDriver();
-            IDevHandledInstruction instruction = dcDriver.CreateDevHandledInstruction(dcDriver.CommandDriver(result));
-
-            IProjectItem projItem = new ProjectItem
-            {
-                Content = instruction.FileContent,
-                FilePath = instruction.FileName + ".cs",
-                ProjectPath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\TeamCoding.Tests\Toci.TeamCoding.Tests.csproj",
-            };
-            projItem.ItemModificationType = ModificationType.Add;
-
-            fileManager.AddNewFile(projItem, DTE);
-
-            scManager.BroadCastFile(projItem);
-        }
+        
 
         private void UserSettings_UserTabDisplayChanged(object sender, EventArgs e)
         {
