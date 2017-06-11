@@ -20,6 +20,7 @@ using Toci.Piastcode.Instructions.Tools;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Implementations;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 using Toci.Piastcode.SpeechRecognition.Tools;
 
 namespace TeamCoding.VisualStudio
@@ -53,12 +54,12 @@ namespace TeamCoding.VisualStudio
             WindowEvents.WindowCreated += WindowEvents_WindowCreated;
             TeamCodingPackage.Current.Settings.UserSettings.UserTabDisplayChanged += UserSettings_UserTabDisplayChanged;
 
-            /*scManager = new SocketClientManager("127.0.0.1", 25016, new Dictionary<ModificationType, Action<IItem>>
+            scManager = new SocketClientManager("127.0.0.1", 25016, new Dictionary<ModificationType, Action<IItem>>
             {
                 {ModificationType.Add, (item) => fileManager.AddNewFile((IProjectItem)item, DTE)},
             });
 
-            scManager.StartClient();*/
+            scManager.StartClient();
 
             //SpeechRecognitionManager manager = new SpeechRecognitionManager();
 

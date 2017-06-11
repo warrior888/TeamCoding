@@ -1,4 +1,4 @@
-﻿namespace Toci.Piastcode.Social.Client.Interfaces
+﻿namespace Toci.Piastcode.Social.Sockets.Interfaces
 {
     public enum ModificationType
     {

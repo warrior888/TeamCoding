@@ -11,6 +11,7 @@ using Toci.Piastcode.Social.Entities;
 using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets;
 using Toci.Piastcode.Social.Client.Implementations;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace Toci.Piastcode.Social.Client
 {

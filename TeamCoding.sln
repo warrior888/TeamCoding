@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamCoding", "TeamCoding\TeamCoding.csproj", "{F9EE549E-E774-4C67-AB5F-FA5212D8B501}"
 EndProject
@@ -80,7 +80,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.SpeechRecogn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.SpeechRecognition.Interfaces", "Toci\Toci.Piastcode.SpeechRecognition.Interfaces\Toci.Piastcode.SpeechRecognition.Interfaces.csproj", "{7247629D-ACEE-4164-93A4-68F8A8B2ED85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.VoiceRecognition.Poc", "Toci.VoiceRecognition.Poc\Toci.VoiceRecognition.Poc.csproj", "{CC43867E-3ECC-48DB-A548-35CC45E75404}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Console.Server", "Toci.VoiceRecognition.Poc\Toci.Console.Server.csproj", "{CC43867E-3ECC-48DB-A548-35CC45E75404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

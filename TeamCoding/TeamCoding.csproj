@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
+    <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
