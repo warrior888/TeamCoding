@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamCoding", "TeamCoding\TeamCoding.csproj", "{F9EE549E-E774-4C67-AB5F-FA5212D8B501}"
 EndProject
@@ -79,6 +79,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.SpeechRecognition", "Toci\Toci.Piastcode.SpeechRecognition\Toci.Piastcode.SpeechRecognition.csproj", "{480B3504-6497-43D8-9F9F-CCBBC5F230C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.SpeechRecognition.Interfaces", "Toci\Toci.Piastcode.SpeechRecognition.Interfaces\Toci.Piastcode.SpeechRecognition.Interfaces.csproj", "{7247629D-ACEE-4164-93A4-68F8A8B2ED85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.VoiceRecognition.Poc", "Toci.VoiceRecognition.Poc\Toci.VoiceRecognition.Poc.csproj", "{CC43867E-3ECC-48DB-A548-35CC45E75404}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -248,6 +250,14 @@ Global
 		{7247629D-ACEE-4164-93A4-68F8A8B2ED85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7247629D-ACEE-4164-93A4-68F8A8B2ED85}.Release|x64.ActiveCfg = Release|Any CPU
 		{7247629D-ACEE-4164-93A4-68F8A8B2ED85}.Release|x64.Build.0 = Release|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC43867E-3ECC-48DB-A548-35CC45E75404}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -270,5 +280,6 @@ Global
 		{C1115FFE-6885-4FB9-9F9E-4EE88178A864} = {B4E60EB0-EDBC-4CF2-BD17-486F9019B9F5}
 		{480B3504-6497-43D8-9F9F-CCBBC5F230C0} = {B4E60EB0-EDBC-4CF2-BD17-486F9019B9F5}
 		{7247629D-ACEE-4164-93A4-68F8A8B2ED85} = {B4E60EB0-EDBC-4CF2-BD17-486F9019B9F5}
+		{CC43867E-3ECC-48DB-A548-35CC45E75404} = {B4E60EB0-EDBC-4CF2-BD17-486F9019B9F5}
 	EndGlobalSection
 EndGlobal

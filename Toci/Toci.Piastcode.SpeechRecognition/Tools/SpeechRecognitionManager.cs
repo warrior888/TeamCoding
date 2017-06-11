@@ -10,7 +10,7 @@ namespace Toci.Piastcode.SpeechRecognition.Tools
         {
             SpeechRecognition spR = new SpeechRecognition();
 
-            spR.GrammarSource = new GrammarSource { FilePath = @"..\..\..\..\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.VoiceRecognition.Poc\data\grammar.xml" };
+            spR.GrammarSource = new GrammarSource { FilePath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\Toci\Toci.Piastcode.SpeechRecognition\Tools\grammar.xml" };
 
             spR.Listen();
             spR.RecognizeSpeech += callback;

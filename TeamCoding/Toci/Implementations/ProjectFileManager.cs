@@ -19,7 +19,7 @@ namespace TeamCoding.Toci.Implementations
 
         private void AddFileToProjest(string projectPath, string filePath, EnvDTE.DTE dte)
         {
-            /*Project pr;
+            Project pr;
             if (OpenProjectsMap.ContainsKey(projectPath))
             {
                 pr = OpenProjectsMap[projectPath];
@@ -35,8 +35,8 @@ namespace TeamCoding.Toci.Implementations
 
             pr.AddItem("Compile", filePath);
             pr.Save();
-            */
-            dte.ItemOperations.AddExistingItem(filePath);
+            
+            //dte.ItemOperations.AddExistingItem(filePath);
         }
 
         private void CreateAndFillWithContentFile(string filePath, string fileContent)

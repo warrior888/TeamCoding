@@ -13,8 +13,14 @@ using TeamCoding.Extensions;
 using TeamCoding.Toci.Implementations;
 using TeamCoding.Toci.Interfaces;
 using TeamCoding.VisualStudio.Controls;
+using Toci.Piascode.Instructions.Interfacces.Entities;
+using Toci.Piascode.Instructions.Interfacces.Tools;
+using Toci.Piastcode.Instructions.Entities;
+using Toci.Piastcode.Instructions.Tools;
 using Toci.Piastcode.Social.Client;
+using Toci.Piastcode.Social.Client.Implementations;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.SpeechRecognition.Tools;
 
 namespace TeamCoding.VisualStudio
 {
@@ -25,6 +31,7 @@ namespace TeamCoding.VisualStudio
     {
         protected IProjectFileManager fileManager = new ProjectFileManager();
         protected SocketClientManager scManager;
+        private IResult result;
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -46,13 +53,39 @@ namespace TeamCoding.VisualStudio
             WindowEvents.WindowCreated += WindowEvents_WindowCreated;
             TeamCodingPackage.Current.Settings.UserSettings.UserTabDisplayChanged += UserSettings_UserTabDisplayChanged;
 
-            scManager = new SocketClientManager("192.168.0.55", 25016, new Dictionary<ModificationType, Action<IItem>>
+            /*scManager = new SocketClientManager("127.0.0.1", 25016, new Dictionary<ModificationType, Action<IItem>>
             {
                 {ModificationType.Add, (item) => fileManager.AddNewFile((IProjectItem)item, DTE)},
             });
 
-            scManager.StartClient();
+            scManager.StartClient();*/
+
+            SpeechRecognitionManager manager = new SpeechRecognitionManager();
+
+            manager.ManageVoiceInstructions(Parse);
         }
+
+        protected virtual void Parse(string input)
+        {
+            Parser<ITarget, ISource, IResult> parser = new Parser<ITarget, ISource, IResult>();
+            result = parser.Parse(null, new Source { StringSource = input });
+
+            IDeveloperCommandDriver dcDriver = new DeveloperCommandDriver();
+            IDevHandledInstruction instruction = dcDriver.CreateDevHandledInstruction(dcDriver.CommandDriver(result));
+
+            IProjectItem projItem = new ProjectItem
+            {
+                Content = instruction.FileContent,
+                FilePath = instruction.FileName + ".cs",
+                ProjectPath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\TeamCoding.Tests\Toci.TeamCoding.Tests.csproj",
+            };
+            projItem.ItemModificationType = ModificationType.Add;
+
+            fileManager.AddNewFile(projItem, DTE);
+
+            scManager.BroadCastFile(projItem);
+        }
+
         private void UserSettings_UserTabDisplayChanged(object sender, EventArgs e)
         {
             UpdateIDE(true);

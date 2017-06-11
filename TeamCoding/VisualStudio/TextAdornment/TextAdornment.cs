@@ -25,7 +25,7 @@ namespace TeamCoding.VisualStudio.TextAdornment
         private readonly IAdornmentLayer Layer;
         private readonly IWpfTextView View;
         private readonly Pen CaretPen;
-
+        
         private readonly DocumentRepoMetaData RepoDocument;
 
         private Func<IRemotelyAccessedDocumentData, bool> OpenFilesFilter;

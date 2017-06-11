@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CDC32FE2-61BF-4D51-B8E7-569D06A22FD7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Toci.Piastcode.Social.Client</RootNamespace>
-    <AssemblyName>Toci.Piastcode.Social.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <ProjectGuid>{CC43867E-3ECC-48DB-A548-35CC45E75404}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Toci.VoiceRecognition.Poc</RootNamespace>
+    <AssemblyName>Toci.VoiceRecognition.Poc</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,49 +31,48 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\protobuf-net.2.2.1\lib\net40\protobuf-net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SocketClientManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
-      <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
-      <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Server.Interfaces\Toci.Piastcode.Social.Server.Interfaces.csproj">
+      <Project>{dfd722d9-1500-422d-b95f-cc301ab35fe8}</Project>
+      <Name>Toci.Piastcode.Social.Server.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Toci.Piastcode.Social.Entities\Toci.Piastcode.Social.Entities.csproj">
-      <Project>{77e05e9f-d76d-4af0-997c-e1a98455243b}</Project>
-      <Name>Toci.Piastcode.Social.Entities</Name>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Server\Toci.Piastcode.Social.Server.csproj">
+      <Project>{13bb3173-2bff-41e1-8b06-f73c4457b155}</Project>
+      <Name>Toci.Piastcode.Social.Server</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
       <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>
       <Name>Toci.Piastcode.Social.Sockets.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj">
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj">
       <Project>{e18e9834-6f28-48b6-81c8-a7aa4cc365c1}</Project>
       <Name>Toci.Piastcode.Social.Sockets</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Key.snk" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Toci\Toci.Piastcode.SpeechRecognition.Interfaces\Toci.Piastcode.SpeechRecognition.Interfaces.csproj">
+      <Project>{7247629d-acee-4164-93a4-68f8a8b2ed85}</Project>
+      <Name>Toci.Piastcode.SpeechRecognition.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.SpeechRecognition\Toci.Piastcode.SpeechRecognition.csproj">
+      <Project>{480b3504-6497-43d8-9f9f-ccbbc5f230c0}</Project>
+      <Name>Toci.Piastcode.SpeechRecognition</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
