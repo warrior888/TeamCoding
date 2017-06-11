@@ -43,6 +43,14 @@ namespace TeamCoding.Options
         public event EventHandler WinServiceIPAddressChanging { add { WinServiceIPAddressProperty.Changing += value; } remove { WinServiceIPAddressProperty.Changing -= value; } }
         public readonly SettingProperty<string> WinServiceIPAddressProperty; // TODO: Use IPAddress rather than string
         public const string DefaultWinServiceIPAddress = null;
+        public string VRServerIPAddress { get { return VRServerIPAddressProperty.Value; } set { VRServerIPAddressProperty.Value = value; } }
+        public event EventHandler VRServerIPAddressChanged { add { VRServerIPAddressProperty.Changed += value; } remove { VRServerIPAddressProperty.Changed -= value; } }
+        public event EventHandler VRServerIPAddressChanging { add { VRServerIPAddressProperty.Changing += value; } remove { VRServerIPAddressProperty.Changing -= value; } }
+        public readonly SettingProperty<string> VRServerIPAddressProperty; // TODO: Use IPAddress rather than string
+        public const string DefaultVRServerIPAddress = null;
+
+
+
         public SharedSettings()
         {
             FileBasedPersisterPathProperty = new SettingProperty<string>(this, SharedFolderLocalModelPersister.FolderPathIsValid);
@@ -62,6 +70,9 @@ namespace TeamCoding.Options
 
             WinServiceIPAddressProperty = new SettingProperty<string>(this, WinServiceClient.GetIPSettingErrorText);
             WinServiceIPAddressProperty.Changed += (s, e) => TeamCodingPackage.Current.Logger.WriteInformation($"Changing setting {nameof(WinServiceIPAddress)}: {WinServiceIPAddress}");
+
+            VRServerIPAddressProperty = new SettingProperty<string>(this, WinServiceClient.GetIPSettingErrorText); // TODO: replace WinServiceClient.GetIPSettingErrorText with proper ErrorText method 
+            VRServerIPAddressProperty.Changed += (s, e) => TeamCodingPackage.Current.Logger.WriteInformation($"Changing setting {nameof(VRServerIPAddress)}: {VRServerIPAddress}");
         }
     }
 }
