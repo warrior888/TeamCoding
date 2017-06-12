@@ -48,6 +48,7 @@ namespace TeamCoding.VisualStudio
         public IDEWrapper(EnvDTE.DTE dte)
         {
             DTE = dte;
+            ProjectManager.SetDte(DTE);
             UserImages = TeamCodingPackage.Current.UserImages;
             WindowEvents = dte.Events.WindowEvents;
             WindowEvents.WindowActivated += WindowEvents_WindowActivated;

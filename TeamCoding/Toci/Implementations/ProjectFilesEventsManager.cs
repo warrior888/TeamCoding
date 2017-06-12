@@ -13,9 +13,11 @@ namespace TeamCoding.Toci.Implementations
     {
         protected ProjectItemsEvents Events;
         protected BroadcastManager BCastManager;
+        protected DTE Dte;
 
         public void Register(EnvDTE.DTE dte)
         {
+            Dte = dte;
             Events = dte.Events.GetObject("CSharpProjectItemsEvents") as ProjectItemsEvents;
 
             BCastManager = new BroadcastManager();
@@ -33,12 +35,14 @@ namespace TeamCoding.Toci.Implementations
 
         protected virtual TcProjectItemsCollection GetItems(ProjectItem projectItem, ModificationType mdType)
         {
-            string fileName = projectItem.FileNames[0];
+            string fullPath = projectItem.FileNames[0];
+            string fileName = projectItem.FileNames[0].Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
+
             TcProjectItemsCollection collection = new TcProjectItemsCollection();
 
-            using (StreamReader sr = new StreamReader(fileName))
+            using (StreamReader sr = new StreamReader(fullPath))
             {
-                TcProjectItem item = new TcProjectItem {FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType, ProjectPath = projectItem.ContainingProject.FileName };
+                TcProjectItem item = new TcProjectItem {FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType, ProjectPath = projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty) };
                 collection.Add(item);
             }
 

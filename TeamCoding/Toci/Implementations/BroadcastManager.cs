@@ -16,7 +16,7 @@ namespace TeamCoding.Toci.Implementations
 
         public BroadcastManager()
         {
-            ScManager = new SocketClientManager("127.0.0.1", 25016, new Dictionary<ModificationType, Action<IItem>>
+            ScManager = new SocketClientManager("192.168.1.83", 25016, new Dictionary<ModificationType, Action<IItem>>
             {
                 { ModificationType.Add, AddItem }
             });
