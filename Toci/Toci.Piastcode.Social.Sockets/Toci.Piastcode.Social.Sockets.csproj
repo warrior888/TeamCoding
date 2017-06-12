@@ -53,9 +53,11 @@
     <Compile Include="Connection\SocketFrameConnection.cs" />
     <Compile Include="Connection\SocketProjectConnection.cs" />
     <Compile Include="Connection\SocketUserConnection.cs" />
-    <Compile Include="Implementations\ProjectItem.cs" />
+    <Compile Include="Implementations\TcProjectItem.cs" />
+    <Compile Include="Implementations\TcProjectItemsCollection.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IProjectItem.cs" />
+    <Compile Include="Interfaces\IProjectItemsCollection.cs" />
     <Compile Include="Interfaces\ModificationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocketBase.cs" />

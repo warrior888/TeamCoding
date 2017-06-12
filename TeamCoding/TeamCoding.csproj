@@ -109,6 +109,7 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
+    <Compile Include="Toci\Implementations\BroadcastManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />

@@ -11,7 +11,6 @@ using Toci.Piastcode.Social.Entities;
 using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets;
 using Toci.Piastcode.Social.Sockets.Implementations;
-using Toci.Piastcode.Social.Client.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace Toci.Piastcode.Social.Client
@@ -48,7 +47,7 @@ namespace Toci.Piastcode.Social.Client
                 IItem item;
                 using (MemoryStream ms = new MemoryStream(formatted))
                 {
-                    item = Serializer.Deserialize<ProjectItem>(ms);
+                    item = Serializer.Deserialize<TcProjectItem>(ms);
 
 
                     if (item.ItemModificationType == ModificationType.Add)

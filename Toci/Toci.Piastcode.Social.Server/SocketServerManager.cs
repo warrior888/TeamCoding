@@ -88,7 +88,7 @@ namespace Toci.Piastcode.Social.Server
 
                     using (MemoryStream ms = new MemoryStream(formatted))
                     {
-                        item = Serializer.Deserialize<ProjectItem>(ms);
+                        item = Serializer.Deserialize<TcProjectItem>(ms);
 
                         // Pseudo Logger 
                         Console.WriteLine($"[{DateTime.Now}] Received data from {client.Name} , modificationType: {item.ItemModificationType}");

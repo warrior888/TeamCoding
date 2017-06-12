@@ -5,7 +5,7 @@ using Toci.Piastcode.Social.Sockets.Interfaces;
 namespace Toci.Piastcode.Social.Sockets.Implementations
 {
     [ProtoContract]
-    public class ProjectItem : IProjectItem
+    public class TcProjectItem : IProjectItem
     {
         private string _projectPath; //sln
         private string _filePath;

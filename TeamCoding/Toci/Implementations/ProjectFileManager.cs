@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.VisualStudio.Shell;
 using TeamCoding.Toci.Interfaces;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 using Project = Microsoft.Build.Evaluation.Project;
 
 namespace TeamCoding.Toci.Implementations

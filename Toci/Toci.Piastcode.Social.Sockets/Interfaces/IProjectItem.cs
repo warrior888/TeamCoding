@@ -1,6 +1,7 @@
 ﻿using ProtoBuf;
+using Toci.Piastcode.Social.Client.Interfaces;
 
-namespace Toci.Piastcode.Social.Client.Interfaces
+namespace Toci.Piastcode.Social.Sockets.Interfaces
 {
     [ProtoContract]
     public interface IProjectItem : IItem

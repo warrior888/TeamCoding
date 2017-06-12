@@ -30,8 +30,9 @@ namespace TeamCoding.VisualStudio
     public class IDEWrapper
     {
         protected IProjectFileManager fileManager = new ProjectFileManager();
-        protected SocketClientManager scManager;
+        protected BroadcastManager bcManager;
         protected ProjectFilesEventsManager PfeManager;
+
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -53,19 +54,11 @@ namespace TeamCoding.VisualStudio
             WindowEvents.WindowCreated += WindowEvents_WindowCreated;
             TeamCodingPackage.Current.Settings.UserSettings.UserTabDisplayChanged += UserSettings_UserTabDisplayChanged;
 
-            /*scManager = new SocketClientManager("127.0.0.1", 25016, new Dictionary<ModificationType, Action<IItem>>
-            {
-                {ModificationType.Add, (item) => fileManager.AddNewFile((IProjectItem)item, DTE)},
-            });
-
-            scManager.StartClient();*/
+            bcManager = new BroadcastManager();
+            bcManager.SetDte(DTE);
 
             PfeManager = new ProjectFilesEventsManager();
             PfeManager.Register(DTE);
-
-            //SpeechRecognitionManager manager = new SpeechRecognitionManager();
-
-            //manager.ManageVoiceInstructions(Parse);
         }
 
         

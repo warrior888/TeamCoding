@@ -12,11 +12,11 @@ namespace Toci.VoiceRecognition.Poc
     {
         static void Main(string[] args)
         {
-            SpeechRecognitionManager srManagewr = new SpeechRecognitionManager();
-            srManagewr.ManageVoiceInstructions(test);
+            //SpeechRecognitionManager srManagewr = new SpeechRecognitionManager();
+            //srManagewr.ManageVoiceInstructions(test);
 
-            //SocketServerManager server = new SocketServerManager("127.0.0.1", 25016);
-            //server.StartServer();
+            SocketServerManager server = new SocketServerManager("127.0.0.1", 25016);
+            server.StartServer();
 
             Console.ReadLine();
         }
