@@ -19,6 +19,7 @@ using Toci.Piastcode.Instructions.Entities;
 using Toci.Piastcode.Instructions.Tools;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 using Toci.Piastcode.SpeechRecognition.Tools;
 
 namespace TeamCoding.VisualStudio
@@ -30,7 +31,7 @@ namespace TeamCoding.VisualStudio
     {
         protected IProjectFileManager fileManager = new ProjectFileManager();
         protected SocketClientManager scManager;
-        
+        protected ProjectFilesEventsManager PfeManager;
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -58,6 +59,9 @@ namespace TeamCoding.VisualStudio
             });
 
             scManager.StartClient();*/
+
+            PfeManager = new ProjectFilesEventsManager();
+            PfeManager.Register(DTE);
 
             //SpeechRecognitionManager manager = new SpeechRecognitionManager();
 

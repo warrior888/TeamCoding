@@ -13,6 +13,7 @@ using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets;
 using Toci.Piastcode.Social.Sockets.Connection;
 using Toci.Piastcode.Social.Sockets.Implementations;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace Toci.Piastcode.Social.Server
 {

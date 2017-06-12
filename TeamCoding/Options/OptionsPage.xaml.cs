@@ -23,6 +23,7 @@ using Toci.Piascode.Instructions.Interfacces.Tools;
 using Toci.Piastcode.Instructions.Entities;
 using Toci.Piastcode.Instructions.Tools;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 using Toci.Piastcode.SpeechRecognition.Tools;
 using ProjectItem = Toci.Piastcode.Social.Sockets.Implementations.ProjectItem;
 

@@ -4,10 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TeamCoding.Options"
-             mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="400">
+             mc:Ignorable="d" d:DesignWidth="400" Height="525.615">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-        <Grid Height="475">
+        <Grid Height="498">
             <GroupBox Header="User Settings" Height="192" VerticalAlignment="Top">
                 <Grid>
                     <TextBox x:Name="txtUsername" Margin="111,10,109,0" Height="26" VerticalAlignment="Top" Text="{Binding Username, Mode=TwoWay}" ToolTip="Set a custom username. Blank to auto-calculate" AutomationProperties.LabeledBy="{Binding ElementName=lblUsername, Mode=OneWay}"/>
@@ -23,7 +22,7 @@
                     <CheckBox x:Name="chkShowAllBranches" Margin="110,138,0,0" ToolTip="Show edits being made on other branches in the project" IsChecked="{Binding ShowAllBranches}" Height="15" VerticalAlignment="Top" HorizontalAlignment="Left"  />
                 </Grid>
             </GroupBox>
-            <GroupBox x:Name="grpPersistence" Header="IDE Sharing" Margin="0,197,0,0" Height="231" VerticalAlignment="Top">
+            <GroupBox x:Name="grpPersistence" Header="IDE Sharing" Margin="0,197,0,0" Height="265" VerticalAlignment="Top">
                 <Grid>
                     <CheckBox x:Name="chkUsingJsonSettings" Content="{x:Static local:OptionsPage.chkUsingJsonSettingsCaption}" HorizontalAlignment="Left" Margin="5,12,0,0" ToolTip="If a TeamCoding.json file is found anywhere in an open solution those settings are used" IsEnabled="False" Height="15" VerticalAlignment="Top"/>
                     <Button x:Name="cmdShowJsonExample" Content="{x:Static local:OptionsPage.cmdShowJsonExampleCaption}" VerticalAlignment="Top" HorizontalAlignment="Right" Width="180" Click="CmdShowJsonExample_Click" ToolTip="Show the contents of an example teamcoding.json file" Margin="0,7,10,0"/>
@@ -56,6 +55,11 @@
                     <TextBox x:Name="txtWinServiceIPAddress" Margin="98,180,28,0" Height="23" VerticalAlignment="Top" Text="{Binding WinServiceIPAddress}" ToolTip="Specify the IP address and port (123.456.789.123:23023) of the PC running the companion windows service. The default port is 23023" AutomationProperties.LabeledBy="{Binding ElementName=lblWinServiceIPAddress, Mode=OneWay}"/>
                     <Viewbox Stretch="Uniform" Margin="0,180,0,0" HorizontalAlignment="Right" Width="23" Height="23" VerticalAlignment="Top" >
                         <TextBlock x:Name="tbWinServiceIPAddress" />
+                    </Viewbox>
+                    <Label x:Name="lblVRServerIPAddress" Content="VR Service IP" HorizontalAlignment="Left" Target="{Binding ElementName=txtVRServerIPAddress, Mode=OneWay}" Margin="0,207,0,0" Height="26" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtVRServerIPAddress" Margin="98,209,28,0" Height="23" VerticalAlignment="Top" Text="{Binding VRServerIPAddress}" ToolTip="Specify the IP address and port (123.456.789.123:23023) of the PC running the VoiceRecognition service." AutomationProperties.LabeledBy="{Binding ElementName=lblVRServerIPAddress, Mode=OneWay}"/>
+                    <Viewbox Stretch="Uniform" Margin="0,209,0,0" HorizontalAlignment="Right" Width="23" Height="23" VerticalAlignment="Top" >
+                        <TextBlock x:Name="tbVRServerIPAddress" />
                     </Viewbox>
                 </Grid>
             </GroupBox>
