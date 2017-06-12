@@ -20,6 +20,8 @@ namespace TeamCoding.Toci.Implementations
 
         private void AddFileToProjest(string projectPath, string filePath, EnvDTE.DTE dte)
         {
+            projectPath = ProjectManager.SolutionDirectoryPath + projectPath;
+
             Project pr;
             if (OpenProjectsMap.ContainsKey(projectPath))
             {
@@ -42,7 +44,7 @@ namespace TeamCoding.Toci.Implementations
 
         private void CreateAndFillWithContentFile(string filePath, string fileContent)
         {
-            using (StreamWriter swr = new StreamWriter(filePath))
+            using (StreamWriter swr = new StreamWriter(ProjectManager.SolutionDirectoryPath + filePath))
             {
                 swr.Write(fileContent);
                 swr.Close();
