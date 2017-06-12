@@ -18,7 +18,6 @@ using Toci.Piascode.Instructions.Interfacces.Tools;
 using Toci.Piastcode.Instructions.Entities;
 using Toci.Piastcode.Instructions.Tools;
 using Toci.Piastcode.Social.Client;
-using Toci.Piastcode.Social.Client.Implementations;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.SpeechRecognition.Tools;
 

@@ -7,12 +7,12 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using ProtoBuf;
-using Toci.Piastcode.Social.Client.Implementations;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Entities;
 using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets;
 using Toci.Piastcode.Social.Sockets.Connection;
+using Toci.Piastcode.Social.Sockets.Implementations;
 
 namespace Toci.Piastcode.Social.Server
 {
