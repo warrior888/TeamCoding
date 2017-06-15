@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ProtoBuf;
+using Toci.Piastcode.Social.Sockets.Implementations;
 
 namespace Toci.Piastcode.Social.Sockets.Interfaces
 {
@@ -7,6 +8,6 @@ namespace Toci.Piastcode.Social.Sockets.Interfaces
     public interface IEditedProjectItem : IProjectItem
     {
         [ProtoMember(1)]
-        List<IEditChanges> EditChanges { get; set; }
+        List<TcEditChanges> EditChanges { get; set; }
     }
 }
