@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
     <Compile Include="Toci\Implementations\BroadcastManager.cs" />
+    <Compile Include="Toci\Implementations\EnvOpenedFilesManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />
     <Compile Include="Toci\Implementations\ProjectManager.cs" />

@@ -47,8 +47,11 @@ namespace TeamCoding.VisualStudio
 
                     if (TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath) == null) return;
 
+                    TeamCodingPackage.Current.EnvironmentOpenedFilesManager.AddOpenedFile(filePath, textView.TextBuffer);
+
                     await TeamCodingPackage.Current.LocalIdeModel.OnOpenedTextViewAsync(textView);
                     textView.TextBuffer.Changed += TextBuffer_Changed;
+
                     TextDocFactory.TryGetTextDocument(textView.TextBuffer, out var textDoc);
                     if (textDoc != null)
                     {
@@ -123,6 +126,7 @@ namespace TeamCoding.VisualStudio
             {
                 if (reason == ConnectionReason.TextViewLifetime)
                 { // TextView closed
+                    TeamCodingPackage.Current.EnvironmentOpenedFilesManager.RemoveEnvOpenedFile(textView.GetTextDocumentFilePath());
                     textView.TextBuffer.Changed -= TextBuffer_Changed;
                     TextDocFactory.TryGetTextDocument(textView.TextBuffer, out var textDoc);
                     if (textDoc != null)

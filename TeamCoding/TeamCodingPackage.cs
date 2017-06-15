@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Diagnostics.CodeAnalysis;
@@ -15,6 +16,7 @@ using TeamCoding.Interfaces;
 using TeamCoding.Interfaces.Documents;
 using TeamCoding.Logging;
 using TeamCoding.Options;
+using TeamCoding.Toci.Implementations;
 using TeamCoding.VisualStudio;
 using TeamCoding.VisualStudio.Models;
 using TeamCoding.VisualStudio.Models.ChangePersisters;
@@ -36,7 +38,7 @@ namespace TeamCoding
     [ProvideOptionPage(typeof(OptionPageGrid), OptionPageGrid.OptionsName, "General", 0, 0, true)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideToolWindow(typeof(TeamCoding.VisualStudio.ToolWindows.OverviewWindow.Overview))]
-    public sealed class TeamCodingPackage : Package
+    public class TeamCodingPackage : Package
     {
         public static TeamCodingPackage Current { get; private set; }
         [Export]
@@ -58,6 +60,7 @@ namespace TeamCoding
         public SlackWrapper Slack { get; private set; }
         public ICaretInfoProvider CaretInfoProvider { get; private set; }
         public ICaretAdornmentDataProvider CaretAdornmentDataProvider { get; private set; }
+        public EnvOpenedFilesManager EnvironmentOpenedFilesManager = new EnvOpenedFilesManager();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamCodingPackage"/> class.

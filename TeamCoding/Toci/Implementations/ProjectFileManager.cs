@@ -13,6 +13,7 @@ namespace TeamCoding.Toci.Implementations
     public class ProjectFileManager : Package, IProjectFileManager
     {
         static Dictionary<string, Project> OpenProjectsMap = new Dictionary<string, Project>();
+        protected EnvOpenedFilesManager EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
 
         public virtual void AddNewFile(IProjectItem projectItem, EnvDTE.DTE dte)
         {
@@ -51,6 +52,39 @@ namespace TeamCoding.Toci.Implementations
                 swr.Write(fileContent);
                 swr.Close();
             }
+        }
+
+        public virtual void EditItem(string filePath, IEditedProjectItem editedFile)
+        {
+            if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
+            {
+                foreach (var editChange in editedFile.EditChanges)
+                {
+                    EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text);
+                }
+
+            }
+            else
+            {
+                string fileContent;
+                using (StreamReader stR = new StreamReader(filePath))
+                {
+                    fileContent = stR.ReadToEnd();
+                }
+
+                foreach (var editChange in editedFile.EditChanges)
+                {
+                    fileContent = fileContent.Insert(editChange.Position, editChange.Text);
+                }
+
+                using (StreamWriter swR = new StreamWriter(filePath))
+                {
+                    swR.WriteLine(fileContent);
+                }
+            }
+            //IWpfTextView 
+            //ITextBuffer 
+            //ITextView
         }
 
         protected virtual string CalculateCsprojFileNameEntry(string filePath)

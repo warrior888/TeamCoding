@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using EnvDTE;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
@@ -13,6 +14,7 @@ namespace TeamCoding.Toci.Implementations
         protected SocketClientManager ScManager;
         protected ProjectFileManager PfManager;
         protected DTE Dte;
+        
 
         public BroadcastManager()
         {
@@ -25,7 +27,8 @@ namespace TeamCoding.Toci.Implementations
             ScManager = new SocketClientManager(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP, 
                 TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort, new Dictionary<ModificationType, Action<IItem>>
             {
-                { ModificationType.Add, AddItem }
+                { ModificationType.Add, AddItem },
+                { ModificationType.Edit, EditItem },
             });
             ScManager.StartClient();
             PfManager = new ProjectFileManager();
@@ -36,6 +39,7 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
         }
 
+        
         public virtual void Broadcast(TcProjectItemsCollection collection)
         {
             foreach (var item in collection)
@@ -49,6 +53,14 @@ namespace TeamCoding.Toci.Implementations
             TcProjectItem prItem = item as TcProjectItem;
 
             PfManager.AddNewFile(prItem, Dte);
+
+            //Dte.ActiveDocument.Name
+        }
+
+        protected virtual void EditItem(IItem item)
+        {
+            TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
+            PfManager.EditItem(editedProjectItem.FilePath, editedProjectItem);
         }
     }
 }
