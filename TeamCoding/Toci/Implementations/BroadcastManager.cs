@@ -42,6 +42,8 @@ namespace TeamCoding.Toci.Implementations
             TcProjectItem prItem = item as TcProjectItem;
 
             PfManager.AddNewFile(prItem, Dte);
+
+            //Dte.ActiveDocument.Name
         }
     }
 }
