@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using EnvDTE;
+using Microsoft.VisualStudio.Text;
+using Microsoft.VisualStudio.Text.Editor;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
@@ -15,7 +17,7 @@ namespace TeamCoding.Toci.Implementations
         protected BroadcastManager BCastManager;
         protected DTE Dte;
 
-        public void Register(EnvDTE.DTE dte)
+        public virtual void Register(EnvDTE.DTE dte)
         {
             Dte = dte;
             Events = dte.Events.GetObject("CSharpProjectItemsEvents") as ProjectItemsEvents;
@@ -25,6 +27,12 @@ namespace TeamCoding.Toci.Implementations
             Events.ItemAdded += Events_ItemAdded;
         }
 
+        public virtual void EditItem(string filePath, IEditedProjectItem editedFile)
+        {
+            //IWpfTextView 
+            //ITextBuffer 
+            //ITextView
+        }
 
         protected virtual void Events_ItemAdded(ProjectItem projectItem)
         {
@@ -48,5 +56,6 @@ namespace TeamCoding.Toci.Implementations
 
             return collection;
         }
+
     }
 }
