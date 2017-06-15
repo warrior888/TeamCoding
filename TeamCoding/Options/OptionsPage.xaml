@@ -56,10 +56,10 @@
                     <Viewbox Stretch="Uniform" Margin="0,180,0,0" HorizontalAlignment="Right" Width="23" Height="23" VerticalAlignment="Top" >
                         <TextBlock x:Name="tbWinServiceIPAddress" />
                     </Viewbox>
-                    <Label x:Name="lblVRServerIPAddress" Content="VR Service IP" HorizontalAlignment="Left" Target="{Binding ElementName=txtVRServerIPAddress, Mode=OneWay}" Margin="0,207,0,0" Height="26" VerticalAlignment="Top"/>
-                    <TextBox x:Name="txtVRServerIPAddress" Margin="98,209,28,0" Height="23" VerticalAlignment="Top" Text="{Binding VRServerIPAddress}" ToolTip="Specify the IP address and port (123.456.789.123:23023) of the PC running the VoiceRecognition service." AutomationProperties.LabeledBy="{Binding ElementName=lblVRServerIPAddress, Mode=OneWay}"/>
+                    <Label x:Name="lblChangePropagationServerIPAddress" Content="Chng Prop. Service IP" HorizontalAlignment="Left" Target="{Binding ElementName=txtChangePropagationServerIPAddress, Mode=OneWay}" Margin="0,207,0,0" Height="26" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtChangePropagationServerIPAddress" Margin="98,209,28,0" Height="23" VerticalAlignment="Top" Text="{Binding ChangePropagationServerIPAddress}" ToolTip="Specify the IP address and port (ex.123.456.789.123:25064) of the PC running the Change Propagation service." AutomationProperties.LabeledBy="{Binding ElementName=lblChangePropagationServerIPAddress, Mode=OneWay}"/>
                     <Viewbox Stretch="Uniform" Margin="0,209,0,0" HorizontalAlignment="Right" Width="23" Height="23" VerticalAlignment="Top" >
-                        <TextBlock x:Name="tbVRServerIPAddress" />
+                        <TextBlock x:Name="tbChangePropagationServerIPAddress" />
                     </Viewbox>
                 </Grid>
             </GroupBox>

@@ -16,6 +16,7 @@ namespace TeamCoding.Toci.Implementations
         protected ProjectItemsEvents Events;
         protected BroadcastManager BCastManager;
         protected DTE Dte;
+        
 
         public virtual void Register(EnvDTE.DTE dte)
         {
@@ -27,12 +28,7 @@ namespace TeamCoding.Toci.Implementations
             Events.ItemAdded += Events_ItemAdded;
         }
 
-        public virtual void EditItem(string filePath, IEditedProjectItem editedFile)
-        {
-            //IWpfTextView 
-            //ITextBuffer 
-            //ITextView
-        }
+        
 
         protected virtual void Events_ItemAdded(ProjectItem projectItem)
         {

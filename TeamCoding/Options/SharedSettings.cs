@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using TeamCoding.VisualStudio.Models.ChangePersisters.ChangePropagationServerPersister;
 using TeamCoding.VisualStudio.Models.ChangePersisters.FileBasedPersister;
 using TeamCoding.VisualStudio.Models.ChangePersisters.RedisPersister;
 using TeamCoding.VisualStudio.Models.ChangePersisters.SlackPersister;
@@ -43,12 +46,24 @@ namespace TeamCoding.Options
         public event EventHandler WinServiceIPAddressChanging { add { WinServiceIPAddressProperty.Changing += value; } remove { WinServiceIPAddressProperty.Changing -= value; } }
         public readonly SettingProperty<string> WinServiceIPAddressProperty; // TODO: Use IPAddress rather than string
         public const string DefaultWinServiceIPAddress = null;
-        public string VRServerIPAddress { get { return VRServerIPAddressProperty.Value; } set { VRServerIPAddressProperty.Value = value; } }
-        public event EventHandler VRServerIPAddressChanged { add { VRServerIPAddressProperty.Changed += value; } remove { VRServerIPAddressProperty.Changed -= value; } }
-        public event EventHandler VRServerIPAddressChanging { add { VRServerIPAddressProperty.Changing += value; } remove { VRServerIPAddressProperty.Changing -= value; } }
-        public readonly SettingProperty<string> VRServerIPAddressProperty; // TODO: Use IPAddress rather than string
-        public const string DefaultVRServerIPAddress = null;
+        public string ChangePropagationServerIPAddress { get { return ChangePropagationServerIPAddressProperty.Value; } set { ChangePropagationServerIPAddressProperty.Value = value; } }
+        public event EventHandler ChangePropagationServerIPAddressChanged { add { ChangePropagationServerIPAddressProperty.Changed += value; } remove { ChangePropagationServerIPAddressProperty.Changed -= value; } }
+        public event EventHandler ChangePropagationServerIPAddressChanging { add { ChangePropagationServerIPAddressProperty.Changing += value; } remove { ChangePropagationServerIPAddressProperty.Changing -= value; } }
+        public readonly SettingProperty<string> ChangePropagationServerIPAddressProperty; // TODO: Use IPAddress rather than string
+        public const string DefaultChangePropagationServerIPAddress = null;
 
+
+        //TODO: check if  it can cause any exception
+        public string ChangePropagationServerIP => ChangePropagationServerIPAddress?.Split(':')[0] ?? null;
+
+        public int ChangePropagationServerPort
+        {
+            get
+            {
+                int.TryParse(ChangePropagationServerIPAddress.Split(':')[1], out int port);
+                return port;
+            }
+        }
 
 
         public SharedSettings()
@@ -71,8 +86,11 @@ namespace TeamCoding.Options
             WinServiceIPAddressProperty = new SettingProperty<string>(this, WinServiceClient.GetIPSettingErrorText);
             WinServiceIPAddressProperty.Changed += (s, e) => TeamCodingPackage.Current.Logger.WriteInformation($"Changing setting {nameof(WinServiceIPAddress)}: {WinServiceIPAddress}");
 
-            VRServerIPAddressProperty = new SettingProperty<string>(this, WinServiceClient.GetIPSettingErrorText); // TODO: replace WinServiceClient.GetIPSettingErrorText with proper ErrorText method 
-            VRServerIPAddressProperty.Changed += (s, e) => TeamCodingPackage.Current.Logger.WriteInformation($"Changing setting {nameof(VRServerIPAddress)}: {VRServerIPAddress}");
+            ChangePropagationServerIPAddressProperty = new SettingProperty<string>(this, ChangePropagationServerClient.GetIPSettingErrorText); // 
+            ChangePropagationServerIPAddressProperty.Changed += (s, e) => TeamCodingPackage.Current.Logger.WriteInformation($"Changing setting {nameof(ChangePropagationServerIPAddress)}: {ChangePropagationServerIPAddress}");
         }
+
+
+
     }
 }

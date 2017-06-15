@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TeamCoding\TeamCoding.csproj">
+      <Project>{f9ee549e-e774-4c67-ab5f-fa5212d8b501}</Project>
+      <Name>TeamCoding</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Server.Interfaces\Toci.Piastcode.Social.Server.Interfaces.csproj">
       <Project>{dfd722d9-1500-422d-b95f-cc301ab35fe8}</Project>
       <Name>Toci.Piastcode.Social.Server.Interfaces</Name>
@@ -73,6 +79,9 @@
       <Project>{480b3504-6497-43d8-9f9f-ccbbc5f230c0}</Project>
       <Name>Toci.Piastcode.SpeechRecognition</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -53,6 +53,8 @@
     <Compile Include="Connection\SocketFrameConnection.cs" />
     <Compile Include="Connection\SocketProjectConnection.cs" />
     <Compile Include="Connection\SocketUserConnection.cs" />
+    <Compile Include="Implementations\TcEditChanges.cs" />
+    <Compile Include="Implementations\TcEditedProjectItem.cs" />
     <Compile Include="Implementations\TcProjectItem.cs" />
     <Compile Include="Implementations\TcProjectItemsCollection.cs" />
     <Compile Include="Interfaces\IEditChanges.cs" />
