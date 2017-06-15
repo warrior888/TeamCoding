@@ -30,7 +30,8 @@ namespace Toci.Piastcode.Social.Server
             Clients = new List<IClient>();
             Map = new Dictionary<ModificationType, Action<IItem, IClient>>
             {
-                {ModificationType.Add, BroadcastFiles }
+                {ModificationType.Add, BroadcastFiles },
+                {ModificationType.Edit, BroadcastFiles },
             };
         }
 
@@ -88,7 +89,7 @@ namespace Toci.Piastcode.Social.Server
 
                     using (MemoryStream ms = new MemoryStream(formatted))
                     {
-                        item = Serializer.Deserialize<TcProjectItem>(ms);
+                        item = Serializer.Deserialize<TcEditedProjectItem>(ms);
 
                         // Pseudo Logger 
                         Console.WriteLine($"[{DateTime.Now}] Received data from {client.Name} , modificationType: {item.ItemModificationType}");
