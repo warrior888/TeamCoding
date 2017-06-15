@@ -85,7 +85,7 @@ namespace TeamCoding.VisualStudio.TextAdornment
             {
                 if (caret.DocumentChangesInfo != null && caret.DocumentChangesInfo.Count > 0)
                 {
-                    PlaceTextChanges(caret.DocumentChangesInfo);
+                    //PlaceTextChanges(caret.DocumentChangesInfo);
                 }
                 var nodes = await TeamCodingPackage.Current.CaretAdornmentDataProvider.GetCaretAdornmentDataAsync(View.TextSnapshot, caret.CaretMemberHashCodes);
 
@@ -226,18 +226,6 @@ namespace TeamCoding.VisualStudio.TextAdornment
             result = result && openFiles.CaretPositionInfo != null;
 
             return result;
-        }
-
-        protected virtual void PlaceTextChanges(List<DocumentRepoMetaData.DocumentChangesInfo> dcInfo)
-        {
-            foreach (var element in dcInfo)
-            {
-                if (!element.IsShown)
-                {
-                    element.IsShown = true;
-                    View.TextBuffer.Insert(element.NewPosition, element.NewText);
-                }
-            }
         }
     }
 }

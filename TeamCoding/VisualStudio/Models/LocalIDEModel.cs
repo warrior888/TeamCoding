@@ -11,6 +11,9 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Shell;
 using System.Collections.Generic;
 using TeamCoding.Events;
+using TeamCoding.Toci.Implementations;
+using Toci.Piastcode.Social.Sockets.Implementations;
+using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace TeamCoding.VisualStudio.Models
 {
@@ -19,6 +22,7 @@ namespace TeamCoding.VisualStudio.Models
     /// </summary>
     public partial class LocalIDEModel
     {
+        protected BroadcastManager BCastManager = new BroadcastManager();
         /// <summary>
         /// A unique id for this IDE instance
         /// </summary>
@@ -161,7 +165,7 @@ namespace TeamCoding.VisualStudio.Models
             var filePath = textBuffer.GetTextDocumentFilePath();
             DocumentRepoMetaData sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath);
 
-            sourceControlInfo = SaveNewCharactersChanges(sourceControlInfo, e.Changes);
+            SaveNewCharactersChanges(filePath, e.Changes);
 
             //textBuffer.Insert(e.Changes[0].NewPosition, e.Changes[0].NewText);
 
@@ -197,19 +201,30 @@ namespace TeamCoding.VisualStudio.Models
 
         }
 
-        protected virtual DocumentRepoMetaData SaveNewCharactersChanges(DocumentRepoMetaData documentRepoMetaData, INormalizedTextChangeCollection textChangeCollection)
+        protected virtual void SaveNewCharactersChanges(string filePath, INormalizedTextChangeCollection textChangeCollection)
         {
-            documentRepoMetaData.NewChangesInfo = new List<DocumentRepoMetaData.DocumentChangesInfo>();
+            // TODO create IEditedProjectItem and broadcast
+            TcEditedProjectItem item = new TcEditedProjectItem();
+            item.ItemModificationType = ModificationType.Edit;
+            List<IEditChanges> editChanges = new List<IEditChanges>();
 
-            foreach (var textChange in textChangeCollection)
+            foreach (var textChangeItem in textChangeCollection)
             {
-                DocumentRepoMetaData.DocumentChangesInfo dcInfo = new DocumentRepoMetaData.DocumentChangesInfo();
-                dcInfo.NewText = textChange.NewText;
-                dcInfo.NewPosition = textChange.NewPosition;
-                documentRepoMetaData.NewChangesInfo.Add(dcInfo);
+                IEditChanges change = new TcEditChanges();
+
+                change.Text = textChangeItem.NewText;
+                change.Position = textChangeItem.NewPosition;
+
+                editChanges.Add(change);
             }
 
-            return documentRepoMetaData;
+            item.FilePath = filePath;
+            item.EditChanges = editChanges;
+
+            TcProjectItemsCollection coll = new TcProjectItemsCollection();
+            coll.Add(item);
+
+            BCastManager.Broadcast(coll);
         }
     }
 }
