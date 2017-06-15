@@ -16,6 +16,6 @@ namespace Toci.Piastcode.Social.Sockets.Implementations
         [ProtoMember(4)]
         public string Content { get; set; }
         [ProtoMember(5)]
-        public List<IEditChanges> EditChanges { get; set; }
+        public List<TcEditChanges> EditChanges { get; set; }
     }
 }

@@ -24,14 +24,19 @@ namespace TeamCoding.Toci.Implementations
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
 
             //"92.222.71.194" 25016
-            ScManager = new SocketClientManager(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP, 
-                TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort, new Dictionary<ModificationType, Action<IItem>>
+            if (TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP != null)
             {
-                { ModificationType.Add, AddItem },
-                { ModificationType.Edit, EditItem },
-            });
-            ScManager.StartClient();
-            PfManager = new ProjectFileManager();
+                ScManager = new SocketClientManager(
+                    TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP,
+                    TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort,
+                    new Dictionary<ModificationType, Action<IItem>>
+                    {
+                        {ModificationType.Add, AddItem},
+                        {ModificationType.Edit, EditItem},
+                    });
+                ScManager.StartClient();
+                PfManager = new ProjectFileManager();
+            }
         }
 
         public virtual void SetDte(DTE dte)

@@ -13,7 +13,12 @@ namespace TeamCoding.Toci.Implementations
     public class ProjectFileManager : Package, IProjectFileManager
     {
         static Dictionary<string, Project> OpenProjectsMap = new Dictionary<string, Project>();
-        protected EnvOpenedFilesManager EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
+        protected EnvOpenedFilesManager EnvironmentOpenedFilesManager;
+
+        public ProjectFileManager()
+        {
+            EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
+        }
 
         public virtual void AddNewFile(IProjectItem projectItem, EnvDTE.DTE dte)
         {

@@ -22,7 +22,7 @@ namespace TeamCoding.VisualStudio.Models
     /// </summary>
     public partial class LocalIDEModel
     {
-        protected BroadcastManager BCastManager = new BroadcastManager();
+        protected BroadcastManager BCastManager;
         /// <summary>
         /// A unique id for this IDE instance
         /// </summary>
@@ -97,6 +97,8 @@ namespace TeamCoding.VisualStudio.Models
             OpenViewsChangedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
             CaretPositionChangedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
             TextDocumentSavedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
+
+            BCastManager   = new BroadcastManager();
         }
         public async System.Threading.Tasks.Task OnCaretPositionChangedAsync(CaretPositionChangedEventArgs e)
         {
@@ -206,11 +208,11 @@ namespace TeamCoding.VisualStudio.Models
             // TODO create IEditedProjectItem and broadcast
             TcEditedProjectItem item = new TcEditedProjectItem();
             item.ItemModificationType = ModificationType.Edit;
-            List<IEditChanges> editChanges = new List<IEditChanges>();
+            List<TcEditChanges> editChanges = new List<TcEditChanges>();
 
             foreach (var textChangeItem in textChangeCollection)
             {
-                IEditChanges change = new TcEditChanges();
+                TcEditChanges change = new TcEditChanges();
 
                 change.Text = textChangeItem.NewText;
                 change.Position = textChangeItem.NewPosition;
