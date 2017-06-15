@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Windows;
 using EnvDTE;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
@@ -14,22 +17,29 @@ namespace TeamCoding.Toci.Implementations
         protected SocketClientManager ScManager;
         protected ProjectFileManager PfManager;
         protected DTE Dte;
-        
+
 
         public BroadcastManager()
         {
+            Ping pingSender = new Ping();
+            PingReply reply = pingSender.Send(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP);
 
-            //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress
-            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
-            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
-
-            //"92.222.71.194" 25016
-            ScManager = new SocketClientManager(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP, 
-                TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort, new Dictionary<ModificationType, Action<IItem>>
+            if (reply?.Status != IPStatus.Success)
             {
-                { ModificationType.Add, AddItem },
-                { ModificationType.Edit, EditItem },
-            });
+                return;
+            }
+
+            //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress (contains ip address and port)
+            //            "92.222.71.194" 25016
+            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
+            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort 
+
+            ScManager = new SocketClientManager("92.222.71.194", 25016,
+                new Dictionary<ModificationType, Action<IItem>>
+                {
+                        {ModificationType.Add, AddItem},
+                        {ModificationType.Edit, EditItem},
+                });
             ScManager.StartClient();
             PfManager = new ProjectFileManager();
         }
@@ -39,7 +49,7 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
         }
 
-        
+
         public virtual void Broadcast(TcProjectItemsCollection collection)
         {
             foreach (var item in collection)
