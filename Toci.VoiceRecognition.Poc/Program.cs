@@ -14,7 +14,7 @@ namespace Toci.VoiceRecognition.Poc
         {
             //SpeechRecognitionManager srManagewr = new SpeechRecognitionManager();
             //srManagewr.ManageVoiceInstructions(test);
-
+ 
             SocketServerManager server = new SocketServerManager("92.222.71.194", 25016);
             server.StartServer();
 

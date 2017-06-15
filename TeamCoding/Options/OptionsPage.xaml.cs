@@ -134,9 +134,9 @@ namespace TeamCoding.Options
         }
         private void OptionsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            SpeechRecognitionManager manager = new SpeechRecognitionManager();
+            //SpeechRecognitionManager manager = new SpeechRecognitionManager();
 
-            manager.ManageVoiceInstructions(Parse);
+            //manager.ManageVoiceInstructions(Parse);
 
             var loadedFromFile = TeamCodingPackage.Current?.Settings?.LoadFromJsonFile() ?? false;
 

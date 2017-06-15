@@ -16,7 +16,14 @@ namespace TeamCoding.Toci.Implementations
 
         public BroadcastManager()
         {
-            ScManager = new SocketClientManager("92.222.71.194", 25016, new Dictionary<ModificationType, Action<IItem>>
+
+            //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress
+            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
+            //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
+
+            //"92.222.71.194" 25016
+            ScManager = new SocketClientManager(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP, 
+                TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort, new Dictionary<ModificationType, Action<IItem>>
             {
                 { ModificationType.Add, AddItem }
             });

@@ -119,6 +119,7 @@
       <DependentUpon>UserAvatar.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisualStudio\Controls\UserAvatarModel.cs" />
+    <Compile Include="VisualStudio\Models\ChangePersisters\ChangePropagationServerPersister\ChangePropagationServerClient.cs" />
     <Compile Include="VisualStudio\Models\ChangePersisters\CombinedPersister\CombinedLocalModelPersister.cs" />
     <Compile Include="VisualStudio\Models\ChangePersisters\CombinedPersister\CombinedRemoteModelPersister.cs" />
     <Compile Include="VisualStudio\Models\ChangePersisters\DebugPersister\DebugLocalModelPersister.cs" />

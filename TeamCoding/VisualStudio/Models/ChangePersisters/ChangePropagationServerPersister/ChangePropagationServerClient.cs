@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 using TeamCoding.Options;
 using ASBuffer = AwesomeSockets.Buffers.Buffer;
 
-namespace TeamCoding.VisualStudio.Models.ChangePersisters.WindowsServicePersister
+namespace TeamCoding.VisualStudio.Models.ChangePersisters.ChangePropagationServerPersister
 {
-    public class WinServiceClient : IDisposable
+    public class ChangePropagationServerClient : IDisposable
     {
         public class MessageReceivedEventArgs : EventArgs { public byte[] Message; }
 
@@ -22,7 +22,7 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.WindowsServicePersiste
         private CancellationTokenSource CancelTokenSource;
         private CancellationToken CancelToken;
         private Task ListenTask;
-        public WinServiceClient(SettingProperty<string> ipAddressSetting)
+        public ChangePropagationServerClient(SettingProperty<string> ipAddressSetting)
         {
             IPAddressSetting = ipAddressSetting;
             IPAddressSetting.Changed += IpAddressSetting_Changed;
@@ -48,11 +48,11 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.WindowsServicePersiste
                 if (await IPAddressSetting.IsValidAsync())
                 {
                     Socket = AweSock.TcpConnect(IPAddressSetting.Value.Split(':')[0], int.Parse(IPAddressSetting.Value.Split(':')[1]));
-                    
+
                     ListenForMessages(Socket);
                 }
             }
-            catch(SocketException)
+            catch (SocketException)
             {
                 await Task.Delay(1000);
                 if (!CancelToken.IsCancellationRequested)
@@ -138,23 +138,22 @@ namespace TeamCoding.VisualStudio.Models.ChangePersisters.WindowsServicePersiste
             {
                 return Task.FromResult("Port missing, use the format IPAddress:Port");
             }
-            else if (!IPAddress.TryParse(split[0], out var tmpIP))
+            if (!IPAddress.TryParse(split[0], out var tmpIP))
             {
                 return Task.FromResult("IP address could not be parsed");
             }
-            else if (!int.TryParse(split[1], out int port))
+            if (!int.TryParse(split[1], out int port))
             {
                 return Task.FromResult("Port could not be parsed");
             }
-            else if (port < IPEndPoint.MinPort || port > IPEndPoint.MaxPort)
+            if (port < IPEndPoint.MinPort || port > IPEndPoint.MaxPort)
             {
                 return Task.FromResult($"Port out of expected range ({IPEndPoint.MinPort} - {IPEndPoint.MaxPort})");
             }
-            else
-            {
-                // TODO: Actually do a test send/receive for testing the win service setting
-                return Task.FromResult<string>(null);
-            }
+
+            // TODO: Actually do a test send/receive for testing the win service setting
+            return Task.FromResult<string>(null);
+
         }
         private void Disconnect()
         {
