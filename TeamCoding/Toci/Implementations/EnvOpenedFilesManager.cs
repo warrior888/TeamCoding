@@ -1,14 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using Microsoft.VisualStudio.Text;
 
 namespace TeamCoding.Toci.Implementations
 {
     public class EnvOpenedFilesManager
     {
+        public static SynchronizationContext SynContext;
         protected Dictionary<string, ITextBuffer> EnvOpenedFiles = new Dictionary<string, ITextBuffer>();
 
         public virtual void AddOpenedFile(string filePath, ITextBuffer file)
         {
+            if (SynContext == null && SynchronizationContext.Current != null)
+            {
+                SynContext = SynchronizationContext.Current;
+            }
+
             filePath = ProjectManager.MakeRelativeFilePath(filePath);
             if (IsFileOpenedInEnv(filePath))
             {

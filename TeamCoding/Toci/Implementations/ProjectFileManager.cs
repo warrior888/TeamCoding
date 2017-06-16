@@ -74,7 +74,7 @@ namespace TeamCoding.Toci.Implementations
         {
             if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
             {
-                SynchronizationContext.Current.Post(new SendOrPostCallback(o => UpdateFile(filePath, editedFile)), null);
+                EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => UpdateFile(filePath, editedFile)), null);
 
             }
             else
@@ -82,7 +82,7 @@ namespace TeamCoding.Toci.Implementations
                 string fileContent;
                 try
                 {
-                    using (FileStream fs = File.Open(ProjectManager.MakeAbsoluteFilePath(filePath), FileMode.Append))
+                    using (FileStream fs = File.Open(ProjectManager.MakeAbsoluteFilePath(filePath), FileMode.Append | FileMode.Open))
                     {
                         StreamReader stR = new StreamReader(fs);
 
