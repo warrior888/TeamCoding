@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Shell;
 using TeamCoding.Toci.Interfaces;
@@ -66,7 +67,8 @@ namespace TeamCoding.Toci.Implementations
             {
                 foreach (var editChange in editedFile.EditChanges)
                 {
-                    Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
+                    SynchronizationContext.Current.Post(m => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text), null);
+                    //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
                 }
 
             }
