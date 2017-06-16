@@ -5,7 +5,7 @@ using Toci.Piastcode.Social.Sockets.Interfaces;
 namespace Toci.Piastcode.Social.Sockets.Implementations
 {
     [ProtoContract]
-    [ProtoInclude(1, typeof(TcEditedProjectItem))]
+    [ProtoInclude(500, typeof(TcEditedProjectItem))]
     public class TcProjectItem : IProjectItem
     {
         private string _projectPath; //sln
