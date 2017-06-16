@@ -61,15 +61,20 @@ namespace TeamCoding.Toci.Implementations
             }
         }
 
+        protected virtual void UpdateFile(string filePath, IEditedProjectItem editedFile)
+        {
+            foreach (var editChange in editedFile.EditChanges)
+            {
+                EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text);
+                //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
+            }
+        }
+
         public virtual void EditItem(string filePath, IEditedProjectItem editedFile)
         {
             if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
             {
-                foreach (var editChange in editedFile.EditChanges)
-                {
-                    SynchronizationContext.Current.Post(m => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text), null);
-                    //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
-                }
+                SynchronizationContext.Current.Post(new SendOrPostCallback(o => UpdateFile(filePath, editedFile)), null);
 
             }
             else
