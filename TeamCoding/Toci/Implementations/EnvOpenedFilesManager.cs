@@ -34,9 +34,9 @@ namespace TeamCoding.Toci.Implementations
 
         public virtual void RemoveEnvOpenedFile(string filePath)
         {
-            filePath = NormalizeFilePath(filePath);
             if (!string.IsNullOrEmpty(filePath))
-            {
+            { 
+                filePath = NormalizeFilePath(filePath);          
                 EnvOpenedFiles.Remove(filePath);
             }
         }

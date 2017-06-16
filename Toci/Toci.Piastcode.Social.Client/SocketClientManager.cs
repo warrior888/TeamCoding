@@ -54,6 +54,11 @@ namespace Toci.Piastcode.Social.Client
                     {
                         AddFile(Map[ModificationType.Add], (IProjectItem)item);
                     }
+
+                    if (item.ItemModificationType == ModificationType.Edit)
+                    {
+                        Map[ModificationType.Edit](item);
+                    }
                 }
             }
         }
@@ -88,6 +93,11 @@ namespace Toci.Piastcode.Social.Client
                 if (item.ItemModificationType == ModificationType.Add)
                 {
                     AddFile(Map[ModificationType.Add], (IProjectItem)item);
+                }
+
+                if (item.ItemModificationType == ModificationType.Edit)
+                {
+                    Map[ModificationType.Edit](item);
                 }
             }
         }
