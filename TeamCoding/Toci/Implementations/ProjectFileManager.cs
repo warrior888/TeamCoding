@@ -89,6 +89,7 @@ namespace TeamCoding.Toci.Implementations
                 using (StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath)))
                 {
                     swR.WriteLine(fileContent);
+                    swR.Close();
                 }
             }
             //IWpfTextView 
