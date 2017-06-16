@@ -11,5 +11,8 @@ namespace Toci.Piastcode.Social.Entities
 
         [ProtoMember(2)]
         public string Name { get; set; }
+
+        [ProtoMember(3)]
+        public int UserID { get; set; }
     }
 }

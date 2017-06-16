@@ -91,6 +91,7 @@ namespace Toci.Piastcode.Social.Client
 
         public override void CreateSocket()
         {
+            Random r = new Random();
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
             socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             try
@@ -100,6 +101,7 @@ namespace Toci.Piastcode.Social.Client
                 IUser user = new User
                 {
                     Name = userName,
+                    UserID = r.Next(100000),
                 };
                 using (MemoryStream ms = new MemoryStream())
                 {

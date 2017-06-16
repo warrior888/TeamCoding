@@ -6,6 +6,7 @@ namespace Toci.Piastcode.Social.Entities
     public class Client : IClient
     {
         public string Name { get; set; }
+        public int ClientID { get; set; }
         public Socket socket { get; set; }
     }
 }

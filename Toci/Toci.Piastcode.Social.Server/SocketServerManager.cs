@@ -134,6 +134,19 @@ namespace Toci.Piastcode.Social.Server
                 SocketUserConnection userConnection = new SocketUserConnection(accepted);
                 var user = userConnection.ReceiveData();
 
+                foreach (var Client in Clients)
+                {
+                    if (Client.Name == user.Name) // If user already connected, drop current connection
+                    {
+                        accepted.Close();
+                        continue;
+                    }
+                    //if (Client.ClientID == user.UserID) // If user already connected, drop current connection
+                    //{
+                    //    accepted.Close();
+                    //    continue;
+                    //}
+                }
                 // Logger
                 Console.WriteLine($"[{DateTime.Now}] User connected. Name: {user.Name}");
                 Console.Write($"[{DateTime.Now}] Connected users: ");
@@ -146,11 +159,11 @@ namespace Toci.Piastcode.Social.Server
                 {
                     Name = user.Name,
                     socket = accepted,
+                    ClientID = user.UserID,
                 };
                 
                 lock (LockObject)
                 {
-                    
                     Clients.Add(client);
                 }
                 Task.Factory.StartNew(() => ListenForChanges(client));
