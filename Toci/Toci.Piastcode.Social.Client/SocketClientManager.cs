@@ -47,7 +47,7 @@ namespace Toci.Piastcode.Social.Client
                 IItem item;
                 using (MemoryStream ms = new MemoryStream(formatted))
                 {
-                    item = Serializer.Deserialize<TcProjectItem>(ms);
+                    item = Serializer.Deserialize<TcEditedProjectItem>(ms);
 
 
                     if (item.ItemModificationType == ModificationType.Add)
