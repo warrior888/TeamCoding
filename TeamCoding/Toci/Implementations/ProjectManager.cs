@@ -24,5 +24,15 @@ namespace TeamCoding.Toci.Implementations
             SolutionFileName = pathChunks[pathChunks.Length - 1];
             SolutionDirectoryPath = SolutionFileName?.Length>0 ? Dte.Solution.FullName?.Replace(SolutionFileName, string.Empty):null;
         }
+
+        public static string MakeRelativeFilePath(string path)
+        {
+            return path.Replace(SolutionDirectoryPath, string.Empty);
+        }
+
+        public static string MakeAbsoluteFilePath(string path)
+        {
+            return SolutionDirectoryPath + path;
+        }
     }
 }

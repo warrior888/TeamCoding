@@ -220,7 +220,7 @@ namespace TeamCoding.VisualStudio.Models
                 editChanges.Add(change);
             }
 
-            item.FilePath = filePath;
+            item.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
             item.EditChanges = editChanges;
 
             TcProjectItemsCollection coll = new TcProjectItemsCollection();

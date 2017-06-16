@@ -9,7 +9,7 @@ namespace TeamCoding.Toci.Implementations
 
         public virtual void AddOpenedFile(string filePath, ITextBuffer file)
         {
-            filePath = NormalizeFilePath(filePath);
+            filePath = ProjectManager.MakeRelativeFilePath(filePath);
             if (IsFileOpenedInEnv(filePath))
             {
                 EnvOpenedFiles[filePath] = file;
@@ -22,13 +22,13 @@ namespace TeamCoding.Toci.Implementations
 
         public virtual bool IsFileOpenedInEnv(string filePath)
         {
-            filePath = NormalizeFilePath(filePath);
+            filePath = ProjectManager.MakeRelativeFilePath(filePath);
             return EnvOpenedFiles.ContainsKey(filePath);
         }
 
         public virtual ITextBuffer GetEnvOpenedFile(string filePath)
         {
-            filePath = NormalizeFilePath(filePath);
+            filePath = ProjectManager.MakeRelativeFilePath(filePath);
             return EnvOpenedFiles[filePath];
         }
 
@@ -36,14 +36,9 @@ namespace TeamCoding.Toci.Implementations
         {
             if (!string.IsNullOrEmpty(filePath))
             { 
-                filePath = NormalizeFilePath(filePath);          
+                filePath = ProjectManager.MakeRelativeFilePath(filePath);          
                 EnvOpenedFiles.Remove(filePath);
             }
-        }
-
-        protected virtual string NormalizeFilePath(string path)
-        {
-            return path.Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
         }
     }
 }

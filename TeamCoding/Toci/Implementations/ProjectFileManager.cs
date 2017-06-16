@@ -72,7 +72,7 @@ namespace TeamCoding.Toci.Implementations
             else
             {
                 string fileContent;
-                using (StreamReader stR = new StreamReader(filePath))
+                using (StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath)))
                 {
                     fileContent = stR.ReadToEnd();
                 }
@@ -82,7 +82,7 @@ namespace TeamCoding.Toci.Implementations
                     fileContent = fileContent.Insert(editChange.Position, editChange.Text);
                 }
 
-                using (StreamWriter swR = new StreamWriter(filePath))
+                using (StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath)))
                 {
                     swR.WriteLine(fileContent);
                 }
