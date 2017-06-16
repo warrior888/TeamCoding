@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows.Threading;
 using Microsoft.VisualStudio.Shell;
 using TeamCoding.Toci.Interfaces;
 using Toci.Piastcode.Social.Client.Interfaces;
@@ -65,7 +66,7 @@ namespace TeamCoding.Toci.Implementations
             {
                 foreach (var editChange in editedFile.EditChanges)
                 {
-                    EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text);
+                    Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
                 }
 
             }
