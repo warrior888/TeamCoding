@@ -72,36 +72,6 @@ namespace Toci.Piastcode.Social.Client
             }
         }
 
-        protected void Listen()
-        {
-            byte[] buffer = new byte[socket.SendBufferSize];
-            int bytesRead = socket.Receive(buffer);
-
-            byte[] formatted = new byte[bytesRead];
-
-            for (int i = 0; i < bytesRead; i++)
-            {
-                formatted[i] = buffer[i];
-            }
-
-            IItem item;
-            using (MemoryStream ms = new MemoryStream(formatted))
-            {
-                item = Serializer.Deserialize<IItem>(ms);
-
-
-                if (item.ItemModificationType == ModificationType.Add)
-                {
-                    AddFile(Map[ModificationType.Add], (IProjectItem)item);
-                }
-
-                if (item.ItemModificationType == ModificationType.Edit)
-                {
-                    Map[ModificationType.Edit](item);
-                }
-            }
-        }
-
         protected IFrame ListenForFrame()
         {
             byte[] buffer = new byte[socket.SendBufferSize];
