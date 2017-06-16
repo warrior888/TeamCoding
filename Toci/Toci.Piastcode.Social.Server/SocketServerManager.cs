@@ -41,12 +41,6 @@ namespace Toci.Piastcode.Social.Server
             Task task = new Task(AcceptConnection);
             task.Start();
 
-            while (true)
-            {
-                BroadcastData(Encoding.ASCII.GetBytes(Console.ReadLine()));
-            }
-            //TODO: while(true) loop with some logic 
-
             task.Wait();
         }
 
@@ -96,8 +90,7 @@ namespace Toci.Piastcode.Social.Server
                         Map[item.ItemModificationType](item, client);
                     }
 
-                    
-                        //BroadcastData(formatted, client);
+                    BroadcastData(formatted, client);
                 }
                 catch (Exception ex)
                 {
@@ -141,17 +134,16 @@ namespace Toci.Piastcode.Social.Server
                 {
                     Console.Write($"{tmpClient.Name}, ");
                 }
-                Console.WriteLine();
 
                 IClient client = new Entities.Client
                 {
                     Name = user.Name,
                     socket = accepted,
-                    ClientID = user.UserID,
                 };
                 
                 lock (LockObject)
                 {
+                    
                     Clients.Add(client);
                 }
                 Task.Factory.StartNew(() => ListenForChanges(client));
