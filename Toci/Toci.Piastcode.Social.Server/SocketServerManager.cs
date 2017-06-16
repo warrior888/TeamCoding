@@ -90,7 +90,7 @@ namespace Toci.Piastcode.Social.Server
                         Map[item.ItemModificationType](item, client);
                     }
 
-                    BroadcastData(formatted, client);
+                    //BroadcastData(formatted, client);
                 }
                 catch (Exception ex)
                 {
