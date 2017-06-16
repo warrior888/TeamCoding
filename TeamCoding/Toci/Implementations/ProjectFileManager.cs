@@ -75,22 +75,32 @@ namespace TeamCoding.Toci.Implementations
             else
             {
                 string fileContent;
-                using (StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath)))
+                try
                 {
-                    fileContent = stR.ReadToEnd();
-                    stR.Close();
-                }
+                    using (FileStream fs = File.Open(ProjectManager.MakeAbsoluteFilePath(filePath), FileMode.Append))
+                    {
+                        StreamReader stR = new StreamReader(fs);
 
-                foreach (var editChange in editedFile.EditChanges)
-                {
-                    fileContent = fileContent.Insert(editChange.Position, editChange.Text);
-                }
+                        fileContent = stR.ReadToEnd();
 
-                using (StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath)))
-                {
-                    swR.WriteLine(fileContent);
-                    swR.Close();
+                        foreach (var editChange in editedFile.EditChanges)
+                        {
+                            fileContent = fileContent.Insert(editChange.Position, editChange.Text);
+                        }
+
+                        StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath));
+                        
+                        swR.WriteLine(fileContent);
+                        swR.Close();
+                        fs.Close();
+                    }
                 }
+                catch (IOException ex)
+                {
+                    
+                }
+                
+                
             }
             //IWpfTextView 
             //ITextBuffer 
