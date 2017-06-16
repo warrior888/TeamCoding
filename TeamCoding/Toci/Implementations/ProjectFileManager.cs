@@ -75,6 +75,7 @@ namespace TeamCoding.Toci.Implementations
                 using (StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath)))
                 {
                     fileContent = stR.ReadToEnd();
+                    stR.Close();
                 }
 
                 foreach (var editChange in editedFile.EditChanges)
