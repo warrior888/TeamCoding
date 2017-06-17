@@ -30,7 +30,7 @@ namespace TeamCoding.Toci.Implementations
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
 
             //"92.222.71.194" 25016
-            if (TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP != null)
+            if (!string.IsNullOrEmpty(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP))
             {
                 if (ScManager == null)
                 {
@@ -54,7 +54,7 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
         }
 
-        
+
         public virtual void Broadcast(TcProjectItemsCollection collection)
         {
             foreach (var item in collection)
