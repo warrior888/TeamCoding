@@ -42,15 +42,27 @@ namespace TeamCoding.Toci.Implementations
             string fullPath = projectItem.FileNames[0];
             string fileName = projectItem.FileNames[0].Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
 
+            string projectPath =
+                projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
+
             TcProjectItemsCollection collection = new TcProjectItemsCollection();
 
             using (StreamReader sr = new StreamReader(fullPath))
             {
-                TcEditedProjectItem item = new TcEditedProjectItem { FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType, ProjectPath = projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty) };
+                TcEditedProjectItem item = new TcEditedProjectItem { FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType };
+
                 collection.Add(item);
             }
 
-            return collection;
+            using (StreamReader sr = new StreamReader(projectPath))
+            {
+                TcEditedProjectItem item = new TcEditedProjectItem { FilePath = projectPath, Content = sr.ReadToEnd(),
+                    ItemModificationType = ModificationType.Add };
+
+                collection.Add(item);
+            }
+
+                return collection;
         }
 
     }

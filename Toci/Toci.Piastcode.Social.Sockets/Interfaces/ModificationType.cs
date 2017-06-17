@@ -4,6 +4,7 @@
     {
         Add,
         Edit,
-        Delete
+        Delete,
+        Overwrite
     }
 }
