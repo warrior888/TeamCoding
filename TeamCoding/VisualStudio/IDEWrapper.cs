@@ -65,9 +65,9 @@ namespace TeamCoding.VisualStudio
             vrCommandsManager = new VrCommandsManager();
             vrCommandsManager.Register();
 
-            //speechRecognitionManager = new SpeechRecognitionManager();
+            speechRecognitionManager = new SpeechRecognitionManager();
 
-            //speechRecognitionManager.ManageVoiceInstructions(Parse);
+            speechRecognitionManager.ManageVoiceInstructions(Parse);
         }
 
         protected virtual void Parse(string input)

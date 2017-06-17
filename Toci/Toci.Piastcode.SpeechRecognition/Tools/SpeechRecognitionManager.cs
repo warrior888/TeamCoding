@@ -13,8 +13,8 @@ namespace Toci.Piastcode.SpeechRecognition.Tools
             spR = new SpeechRecognition();
 
             spR.GrammarSource = new GrammarSource { FilePath = @"..\..\..\Toci\Toci.Piastcode.SpeechRecognition\Tools\grammar.xml" };
-
-            spR.Listen();
+            //TODO : uncomment on release ver
+          //  spR.Listen(); 
             spR.RecognizeSpeech += callback;
         }
     }

@@ -109,7 +109,8 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
-    <Compile Include="TeamCodingToolbar.cs" />
+    <Compile Include="TeamCodingToolbarSCMDisconnectButton.cs" />
+    <Compile Include="TeamCodingToolbarSCMConnectButton.cs" />
     <Compile Include="Toci\Implementations\BroadcastManager.cs" />
     <Compile Include="Toci\Implementations\EnvOpenedFilesManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
@@ -237,7 +238,8 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Resource Include="Resources\OverviewCommandIcon.png" />
-    <Content Include="Resources\TeamCodingToolbar.png" />
+    <Content Include="Resources\TeamCodingToolbarSCMDisconnectButton.png" />
+    <Content Include="Resources\TeamCodingToolbarSCMConnectButton.png" />
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
