@@ -156,6 +156,7 @@
     <Compile Include="VisualStudio\Models\ChangePersisters\WindowsServicePersister\WinServiceLocalModelPersister.cs" />
     <Compile Include="VisualStudio\Models\ChangePersisters\WindowsServicePersister\WinServiceRemoteModelPersister.cs" />
     <Compile Include="VisualStudio\Controls\CustomisableBoolToVisibilityCoverter.cs" />
+    <Compile Include="VisualStudio\Models\Class1.cs" />
     <Compile Include="VisualStudio\Models\LocalIDEModel.ShareSessions.cs">
       <DependentUpon>LocalIDEModel.cs</DependentUpon>
     </Compile>
