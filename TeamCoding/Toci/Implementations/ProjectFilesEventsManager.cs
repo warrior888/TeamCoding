@@ -46,7 +46,7 @@ namespace TeamCoding.Toci.Implementations
 
             using (StreamReader sr = new StreamReader(fullPath))
             {
-                TcProjectItem item = new TcProjectItem {FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType, ProjectPath = projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty) };
+                TcEditedProjectItem item = new TcEditedProjectItem { FilePath = fileName, Content = sr.ReadToEnd(), ItemModificationType = mdType, ProjectPath = projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty) };
                 collection.Add(item);
             }
 
