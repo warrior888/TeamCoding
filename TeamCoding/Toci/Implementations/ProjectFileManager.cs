@@ -28,7 +28,7 @@ namespace TeamCoding.Toci.Implementations
         public virtual void AddNewFile(IProjectItem projectItem, EnvDTE.DTE dte)
         {
             CreateAndFillWithContentFile(projectItem.FilePath, projectItem.Content);
-            AddFileToProjest(projectItem.ProjectPath, projectItem.FilePath, dte);
+            //AddFileToProjest(projectItem.ProjectPath, projectItem.FilePath, dte);
         }
 
         protected virtual void AddFileToProjest(string projectPath, string filePath, EnvDTE.DTE dte)
