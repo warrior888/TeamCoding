@@ -11,14 +11,20 @@ namespace TeamCoding.Toci.Implementations
 {
     public class BroadcastManager
     {
-        protected SocketClientManager ScManager;
+        private static SocketClientManager ScManager;
         protected ProjectFileManager PfManager;
         protected DTE Dte;
-        
+
+        public static void StartSCMClient()
+        {
+            if (ScManager != null)
+            {
+                ScManager.StartClient();
+            }
+        }
 
         public BroadcastManager()
         {
-
             //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
@@ -26,15 +32,19 @@ namespace TeamCoding.Toci.Implementations
             //"92.222.71.194" 25016
             if (TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP != null)
             {
-                ScManager = new SocketClientManager(
-                    TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP,
-                    TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort,
-                    new Dictionary<ModificationType, Action<IItem>>
-                    {
-                        {ModificationType.Add, AddItem},
-                        {ModificationType.Edit, EditItem},
-                    });
-                ScManager.StartClient();
+                if (ScManager == null)
+                {
+                    ScManager = new SocketClientManager(
+                        TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP,
+                        TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort,
+                        new Dictionary<ModificationType, Action<IItem>>
+                        {
+                            {ModificationType.Add, AddItem},
+                            {ModificationType.Edit, EditItem},
+                        });
+                    ScManager.StartClient();
+                }
+
                 PfManager = new ProjectFileManager();
             }
         }
