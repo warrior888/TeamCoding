@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using EnvDTE;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
@@ -44,6 +45,8 @@ namespace TeamCoding.Toci.Implementations
 
             string projectPath =
                 projectItem.ContainingProject.FileName.Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
+            projectItem.ContainingProject.Save();
+
 
             TcProjectItemsCollection collection = new TcProjectItemsCollection();
 
@@ -56,11 +59,34 @@ namespace TeamCoding.Toci.Implementations
 
             using (StreamReader sr = new StreamReader(projectItem.ContainingProject.FileName))
             {
-                TcEditedProjectItem item = new TcEditedProjectItem { FilePath = projectPath, Content = sr.ReadToEnd(),
-                    ItemModificationType = ModificationType.Add };
+                string relativeFileName = string.Join("\\", fileName.Split(new[] {"\\"}, StringSplitOptions.None).Skip(1));
+                string template = $"<Compile Include=\"{relativeFileName}\" />";
+                int templatePosition = sr.ReadToEnd().IndexOf(template);
+                TcEditChanges edit = new TcEditChanges
+                {
+                    Text = template,
+                    PositionStart = templatePosition,
+                    OldPositionEnd = templatePosition ,//for adding
+                };
+                
+                TcEditedProjectItem item = new TcEditedProjectItem
+                {
+                    FilePath = projectPath,
+                    Content = sr.ReadToEnd(),
+                    ItemModificationType = ModificationType.Edit,
+                    EditChanges = new List<TcEditChanges> { edit },
+                };
 
                 collection.Add(item);
             }
+            // Stare ale jare
+            //using (StreamReader sr = new StreamReader(projectItem.ContainingProject.FileName))
+            //{
+            //    TcEditedProjectItem item = new TcEditedProjectItem { FilePath = projectPath, Content = sr.ReadToEnd(),
+            //        ItemModificationType = ModificationType.Add };
+
+            //    collection.Add(item);
+            //}
 
             return collection;
         }
