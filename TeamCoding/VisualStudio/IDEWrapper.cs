@@ -33,6 +33,7 @@ namespace TeamCoding.VisualStudio
         protected BroadcastManager bcManager;
         protected ProjectFilesEventsManager PfeManager;
         private SpeechRecognitionManager speechRecognitionManager;
+        private VrCommandsManager vrCommandsManager;
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -61,9 +62,12 @@ namespace TeamCoding.VisualStudio
             PfeManager = new ProjectFilesEventsManager();
             PfeManager.Register(DTE);
 
-            speechRecognitionManager = new SpeechRecognitionManager();
+            vrCommandsManager = new VrCommandsManager();
+            vrCommandsManager.Register();
 
-            speechRecognitionManager.ManageVoiceInstructions(Parse);
+            //speechRecognitionManager = new SpeechRecognitionManager();
+
+            //speechRecognitionManager.ManageVoiceInstructions(Parse);
         }
 
         protected virtual void Parse(string input)
