@@ -209,6 +209,8 @@ namespace TeamCoding.VisualStudio.Models
 
             //ProjectManager.Dte.ExecuteCommand("Project.AddNewItem", @"Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\TeamCoding.Tests\test.txt");
             //ProjectManager.Dte.ExecuteCommand("File.NewFile");
+            //ProjectManager.Dte.ItemOperations.AddNewItem("Code\\class","klasa.cs");
+
 
             //    Process process = new Process();
             
