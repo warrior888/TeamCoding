@@ -6,9 +6,10 @@ namespace Toci.Piastcode.Social.Sockets.Interfaces
     public interface IEditChanges
     {
         [ProtoMember(1)]
-        int Position { get; set; }
-
+        int PositionStart { get; set; }
         [ProtoMember(2)]
+        int OldPositionEnd { get; set; }
+        [ProtoMember(3)]
         string Text { get; set; }
     }
 }

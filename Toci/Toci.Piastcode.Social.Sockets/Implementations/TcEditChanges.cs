@@ -7,8 +7,10 @@ namespace Toci.Piastcode.Social.Sockets.Implementations
     public class TcEditChanges : IEditChanges
     {
         [ProtoMember(1)]
-        public int Position { get; set; }
+        public int PositionStart { get; set; }
         [ProtoMember(2)]
+        public int OldPositionEnd { get; set; }
+        [ProtoMember(3)]
         public string Text { get; set; }
     }
 }

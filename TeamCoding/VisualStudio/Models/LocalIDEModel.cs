@@ -213,7 +213,8 @@ namespace TeamCoding.VisualStudio.Models
                 TcEditChanges change = new TcEditChanges();
 
                 change.Text = textChangeItem.NewText;
-                change.Position = textChangeItem.NewPosition;
+                change.PositionStart = textChangeItem.NewPosition;
+                change.OldPositionEnd = textChangeItem.NewPosition + textChangeItem.OldSpan.Length;
 
                 editChanges.Add(change);
             }
