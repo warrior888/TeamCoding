@@ -10,10 +10,13 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using Microsoft.VisualStudio.Shell;
 using System.Collections.Generic;
+using EnvDTE;
 using TeamCoding.Events;
 using TeamCoding.Toci.Implementations;
 using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
+using System.Diagnostics;
+using Process = System.Diagnostics.Process;
 
 namespace TeamCoding.VisualStudio.Models
 {
@@ -203,7 +206,15 @@ namespace TeamCoding.VisualStudio.Models
 
         protected virtual void SaveNewCharactersChanges(string filePath, INormalizedTextChangeCollection textChangeCollection)
         {
-            // TODO create IEditedProjectItem and broadcast
+
+            //ProjectManager.Dte.ExecuteCommand("Project.AddNewItem", @"Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\TeamCoding.Tests\test.txt");
+            //ProjectManager.Dte.ExecuteCommand("File.NewFile");
+
+            //    Process process = new Process();
+            
+            //ProcessStartInfo startInfo = new ProcessStartInfo("devenv.exe", @"/Diff Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile1.txt Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile2.txt");
+            //process.StartInfo = startInfo;
+            //process.Start();
             TcEditedProjectItem item = new TcEditedProjectItem();
             item.ItemModificationType = ModificationType.Edit;
             List<TcEditChanges> editChanges = new List<TcEditChanges>();
@@ -213,7 +224,8 @@ namespace TeamCoding.VisualStudio.Models
                 TcEditChanges change = new TcEditChanges();
 
                 change.Text = textChangeItem.NewText;
-                change.Position = textChangeItem.NewPosition;
+                change.PositionStart = textChangeItem.NewPosition;
+                change.OldPositionEnd = textChangeItem.NewPosition + textChangeItem.OldSpan.Length;
 
                 editChanges.Add(change);
             }

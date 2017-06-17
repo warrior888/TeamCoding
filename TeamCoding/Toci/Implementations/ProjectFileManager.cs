@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Text;
 using TeamCoding.Toci.Interfaces;
 using TeamCoding.VisualStudio;
 using Toci.Piastcode.Social.Client.Interfaces;
@@ -26,7 +28,7 @@ namespace TeamCoding.Toci.Implementations
         public virtual void AddNewFile(IProjectItem projectItem, EnvDTE.DTE dte)
         {
             CreateAndFillWithContentFile(projectItem.FilePath, projectItem.Content);
-            AddFileToProjest(projectItem.ProjectPath, projectItem.FilePath, dte);
+            //AddFileToProjest(projectItem.ProjectPath, projectItem.FilePath, dte);
         }
 
         protected virtual void AddFileToProjest(string projectPath, string filePath, EnvDTE.DTE dte)
@@ -49,7 +51,7 @@ namespace TeamCoding.Toci.Implementations
 
             pr.AddItem("Compile", CalculateCsprojFileNameEntry(filePath));
             pr.Save();
-            
+
             //dte.ItemOperations.AddExistingItem(filePath);
         }
 
@@ -67,7 +69,9 @@ namespace TeamCoding.Toci.Implementations
             foreach (var editChange in editedFile.EditChanges)
             {
                 TeamCodingTextViewConnectionListener.IsEditPending = true;
-                EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text);
+                //EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.PositionStart, editChange.Text);
+                EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath)
+                    .Replace(new Span(editChange.PositionStart, editChange.OldPositionEnd - editChange.PositionStart), editChange.Text);
                 TeamCodingTextViewConnectionListener.IsEditPending = false;
                 //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
             }
@@ -82,30 +86,33 @@ namespace TeamCoding.Toci.Implementations
             }
             else
             {
-                string fileContent;
+                //string fileContent;
                 try
                 {
                     StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath));
 
-                    fileContent = stR.ReadToEnd();
+                    StringBuilder sb = new StringBuilder(stR.ReadToEnd());
                     stR.Close();
 
                     foreach (var editChange in editedFile.EditChanges)
                     {
-                        fileContent = fileContent.Insert(editChange.Position, editChange.Text);
+                        if (editChange.Text.Length < editChange.OldPositionEnd - editChange.PositionStart) //deletion
+                            sb.Remove(editChange.PositionStart, editChange.OldPositionEnd - editChange.PositionStart);
+                        sb.Insert(editChange.PositionStart, editChange.Text);
+
                     }
 
                     StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath));
-                        
-                    swR.WriteLine(fileContent);
+
+                    swR.WriteLine(sb.ToString());
                     swR.Close();
                 }
                 catch (IOException ex)
                 {
-                    
+
                 }
-                
-                
+
+
             }
             //IWpfTextView 
             //ITextBuffer 
@@ -114,7 +121,7 @@ namespace TeamCoding.Toci.Implementations
 
         protected virtual string CalculateCsprojFileNameEntry(string filePath)
         {
-            string[] chunks = filePath.Split(new[] {ProjectManager.PathDelimiter}, StringSplitOptions.None);
+            string[] chunks = filePath.Split(new[] { ProjectManager.PathDelimiter }, StringSplitOptions.None);
             return string.Join(ProjectManager.PathDelimiter, chunks.Skip(1).Take(chunks.Length - 1));
         }
     }
