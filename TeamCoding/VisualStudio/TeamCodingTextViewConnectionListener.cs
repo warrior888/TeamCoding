@@ -16,8 +16,10 @@ namespace TeamCoding.VisualStudio
     [Export(typeof(IWpfTextViewConnectionListener))]
     [TextViewRole(PredefinedTextViewRoles.Document)]
     [ContentType("any")]
-    internal sealed class TeamCodingTextViewConnectionListener : IWpfTextViewConnectionListener
+    public class TeamCodingTextViewConnectionListener : IWpfTextViewConnectionListener
     {
+        public static bool IsEditPending = false;
+
         private readonly ITextDocumentFactoryService TextDocFactory;
         private readonly IClassifierAggregatorService TextClassifierService;
         [ImportingConstructor]
@@ -113,7 +115,10 @@ namespace TeamCoding.VisualStudio
         {
             try
             {
-                TeamCodingPackage.Current.LocalIdeModel.OnTextBufferChanged(sender as ITextBuffer, e);
+                if (!IsEditPending)
+                {
+                    TeamCodingPackage.Current.LocalIdeModel.OnTextBufferChanged(sender as ITextBuffer, e);
+                }
             }
             catch (Exception ex) when (!System.Diagnostics.Debugger.IsAttached)
             {

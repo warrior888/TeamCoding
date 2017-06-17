@@ -169,8 +169,6 @@ namespace TeamCoding.VisualStudio.Models
 
             SaveNewCharactersChanges(filePath, e.Changes);
 
-            //textBuffer.Insert(e.Changes[0].NewPosition, e.Changes[0].NewText);
-
             lock (OpenFilesLock)
             {
                 if (sourceControlInfo == null)

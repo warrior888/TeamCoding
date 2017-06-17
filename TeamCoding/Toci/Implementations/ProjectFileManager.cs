@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Threading;
 using Microsoft.VisualStudio.Shell;
 using TeamCoding.Toci.Interfaces;
+using TeamCoding.VisualStudio;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using Project = Microsoft.Build.Evaluation.Project;
@@ -65,7 +66,9 @@ namespace TeamCoding.Toci.Implementations
         {
             foreach (var editChange in editedFile.EditChanges)
             {
+                TeamCodingTextViewConnectionListener.IsEditPending = true;
                 EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text);
+                TeamCodingTextViewConnectionListener.IsEditPending = false;
                 //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
             }
         }
