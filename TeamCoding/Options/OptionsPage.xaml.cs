@@ -134,9 +134,9 @@ namespace TeamCoding.Options
         }
         private void OptionsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //SpeechRecognitionManager manager = new SpeechRecognitionManager();
+            SpeechRecognitionManager manager = new SpeechRecognitionManager();
 
-            //manager.ManageVoiceInstructions(Parse);
+            manager.ManageVoiceInstructions(Parse);
 
             var loadedFromFile = TeamCodingPackage.Current?.Settings?.LoadFromJsonFile() ?? false;
 
@@ -173,15 +173,17 @@ namespace TeamCoding.Options
             IDeveloperCommandDriver dcDriver = new DeveloperCommandDriver();
             IDevHandledInstruction instruction = dcDriver.CreateDevHandledInstruction(dcDriver.CommandDriver(result));
 
-            IProjectItem projItem = new TcProjectItem
+            /*IProjectItem projItem = new TcProjectItem
             {
                 Content = instruction.FileContent,
                 FilePath = instruction.FileName + ".cs",
                 ProjectPath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\TeamCoding.Tests\Toci.TeamCoding.Tests.csproj",
-            };
-            projItem.ItemModificationType = ModificationType.Add;
-            IProjectFileManager fileManager = new ProjectFileManager();
-            fileManager.AddNewFile(projItem, null);
+            };*/
+            //projItem.ItemModificationType = ModificationType.Add;
+            //IProjectFileManager fileManager = new ProjectFileManager();
+            //fileManager.AddNewFile(projItem, null);
+
+            ProjectManager.Dte.ItemOperations.AddNewItem("Code\\class", instruction.FileName + ".cs");
 
             //scManager.BroadCastFile(projItem);
         }
