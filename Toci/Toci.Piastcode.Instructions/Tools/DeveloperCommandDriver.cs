@@ -24,10 +24,13 @@ namespace Toci.Piastcode.Instructions.Tools
 
         public IDevHandledInstruction CreateDevHandledInstruction(IDevInstructions<IDevHandledInstruction> devInstruction)
         {
-            DevHandledInstruction = new DevHandledInstruction();
-
-            DevHandledInstruction.FileContent += (devInstruction.AccessModifier + " " + devInstruction.EntityType + " " + devInstruction.Name + "{}");
-            DevHandledInstruction.FileName = devInstruction.Name;
+            DevHandledInstruction = new DevHandledInstruction
+            {
+                FileContent = (devInstruction.AccessModifier + " " + devInstruction.EntityType + " " + devInstruction.Name + "{}"),
+                FileName = devInstruction.Name,
+                FileType = devInstruction.EntityType
+            };
+            
 
             return DevHandledInstruction;
         }
