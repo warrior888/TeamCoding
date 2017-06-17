@@ -85,23 +85,20 @@ namespace TeamCoding.Toci.Implementations
                 string fileContent;
                 try
                 {
-                    using (FileStream fs = File.Open(ProjectManager.MakeAbsoluteFilePath(filePath), FileMode.Append | FileMode.Open))
+                    StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath));
+
+                    fileContent = stR.ReadToEnd();
+                    stR.Close();
+
+                    foreach (var editChange in editedFile.EditChanges)
                     {
-                        StreamReader stR = new StreamReader(fs);
-
-                        fileContent = stR.ReadToEnd();
-
-                        foreach (var editChange in editedFile.EditChanges)
-                        {
-                            fileContent = fileContent.Insert(editChange.Position, editChange.Text);
-                        }
-
-                        StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath));
-                        
-                        swR.WriteLine(fileContent);
-                        swR.Close();
-                        fs.Close();
+                        fileContent = fileContent.Insert(editChange.Position, editChange.Text);
                     }
+
+                    StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath));
+                        
+                    swR.WriteLine(fileContent);
+                    swR.Close();
                 }
                 catch (IOException ex)
                 {
