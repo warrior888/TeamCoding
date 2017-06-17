@@ -54,7 +54,7 @@ namespace TeamCoding.Toci.Implementations
                 collection.Add(item);
             }
 
-            using (StreamReader sr = new StreamReader(projectPath))
+            using (StreamReader sr = new StreamReader(projectItem.ContainingProject.FileName))
             {
                 TcEditedProjectItem item = new TcEditedProjectItem { FilePath = projectPath, Content = sr.ReadToEnd(),
                     ItemModificationType = ModificationType.Add };
@@ -62,7 +62,7 @@ namespace TeamCoding.Toci.Implementations
                 collection.Add(item);
             }
 
-                return collection;
+            return collection;
         }
 
     }
