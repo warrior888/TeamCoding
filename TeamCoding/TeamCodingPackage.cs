@@ -147,6 +147,7 @@ namespace TeamCoding
             {
                 Logger.WriteError(ex);
             }
+            TeamCodingToolbar.Initialize(this);
         }
         private T GetVersionedType<T>(Assembly versionedAssembly, string typeName)
         {
