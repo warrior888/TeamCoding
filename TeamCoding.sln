@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamCoding", "TeamCoding\TeamCoding.csproj", "{F9EE549E-E774-4C67-AB5F-FA5212D8B501}"
 EndProject
@@ -69,10 +69,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.Social.Server.Interfaces", "Toci\Toci.Piastcode.Social.Server.Interfaces\Toci.Piastcode.Social.Server.Interfaces.csproj", "{DFD722D9-1500-422D-B95F-CC301AB35FE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.Social.Sockets", "Toci\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj", "{E18E9834-6F28-48B6-81C8-A7AA4CC365C1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{92306387-89E7-47E5-8253-E6F3B4F3E428} = {92306387-89E7-47E5-8253-E6F3B4F3E428}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.Social.Sockets.Interfaces", "Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj", "{92306387-89E7-47E5-8253-E6F3B4F3E428}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.Social.Tools", "Toci\Toci.Piastcode.Social.Tools\Toci.Piastcode.Social.Tools.csproj", "{5C40FDBC-FD89-4080-BFBC-FEE81AC53A01}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1115FFE-6885-4FB9-9F9E-4EE88178A864} = {C1115FFE-6885-4FB9-9F9E-4EE88178A864}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Piastcode.Social.Tools.Interfaces", "Toci\Toci.Piastcode.Social.Tools.Interfaces\Toci.Piastcode.Social.Tools.Interfaces.csproj", "{C1115FFE-6885-4FB9-9F9E-4EE88178A864}"
 EndProject
