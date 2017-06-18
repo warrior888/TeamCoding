@@ -104,7 +104,7 @@ namespace TeamCoding
                 return;
             }
             var response = VsShellUtilities.ShowMessageBox(this.ServiceProvider, "Do you really want to stop Broadcast Manager?", "", OLEMSGICON.OLEMSGICON_QUERY,
-                OLEMSGBUTTON.OLEMSGBUTTON_YESNOCANCEL, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
+                OLEMSGBUTTON.OLEMSGBUTTON_YESNO, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
             // 6 = yes
             // 7 = no
             // 2 = cancel
