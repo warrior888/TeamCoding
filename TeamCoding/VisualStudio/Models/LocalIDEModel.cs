@@ -101,7 +101,7 @@ namespace TeamCoding.VisualStudio.Models
             CaretPositionChangedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
             TextDocumentSavedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
 
-            BCastManager   = new BroadcastManager();
+            BCastManager = new BroadcastManager();
         }
         public async System.Threading.Tasks.Task OnCaretPositionChangedAsync(CaretPositionChangedEventArgs e)
         {
@@ -150,8 +150,11 @@ namespace TeamCoding.VisualStudio.Models
             }
             OpenViewsChangedInternal?.Invoke(this, EventArgs.Empty);
         }
+
         internal void OnTextDocumentSaved(ITextDocument textDocument, TextDocumentFileActionEventArgs e)
         {
+
+            BroadcastOverwrite(textDocument.FilePath);
             TeamCodingPackage.Current.SourceControlRepo.RemoveCachedRepoData(textDocument.FilePath);
             var sourceControlInfo = TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(textDocument.FilePath);
             if (sourceControlInfo != null)
@@ -164,6 +167,9 @@ namespace TeamCoding.VisualStudio.Models
                 TextDocumentSavedInternal?.Invoke(textDocument, e);
             }
         }
+
+
+
         internal void OnTextBufferChanged(ITextBuffer textBuffer, TextContentChangedEventArgs e)
         {
             //e.Changes.dataRM
@@ -213,7 +219,7 @@ namespace TeamCoding.VisualStudio.Models
 
 
             //    Process process = new Process();
-            
+
             //ProcessStartInfo startInfo = new ProcessStartInfo("devenv.exe", @"/Diff Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile1.txt Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile2.txt");
             //process.StartInfo = startInfo;
             //process.Start();
@@ -240,5 +246,30 @@ namespace TeamCoding.VisualStudio.Models
 
             BCastManager.Broadcast(coll);
         }
+
+        private void BroadcastOverwrite(string filePath)
+        {
+            TcEditedProjectItem item = new TcEditedProjectItem();
+            item.ItemModificationType = ModificationType.Overwrite;
+            List<TcEditChanges> editChanges = new List<TcEditChanges>();
+
+            string fileContent = System.IO.File.ReadAllText(filePath);
+
+            TcEditChanges change = new TcEditChanges();
+
+            change.Text = fileContent;
+            change.PositionStart = 0;
+            change.OldPositionEnd = fileContent.Length;
+            editChanges.Add(change);
+
+            item.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
+            item.EditChanges = editChanges;
+
+            TcProjectItemsCollection coll = new TcProjectItemsCollection();
+            coll.Add(item);
+
+            BCastManager.Broadcast(coll);
+        }
+
     }
 }

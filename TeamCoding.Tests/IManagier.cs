@@ -8,5 +8,7 @@ namespace Toci.TeamCoding.Tests
 {
     interface IManagier
     {
+
+
     }
 }
