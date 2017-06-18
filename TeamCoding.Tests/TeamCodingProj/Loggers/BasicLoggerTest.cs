@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TeamCoding.Logging;
 
 namespace Toci.TeamCoding.Tests.TeamCodingProj.Loggers
@@ -16,6 +16,27 @@ namespace Toci.TeamCoding.Tests.TeamCodingProj.Loggers
             //Logger log = new Logger();
 
             logger.OurTest("Hello toci");
+
+            if (true) 
+            {
+
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
