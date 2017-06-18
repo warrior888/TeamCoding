@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<grammar version="1.0" xml:lang="en-US" mode="voice" root="toplevel"
+         xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+	<rule id="toplevel" scope="public">
+		<one-of>
+			<item>
+				<ruleref uri="#Action"/>
+				<tag> out.Card = rules.Action; </tag>
+			</item>
+			<!--<item> <ruleref uri="#MoveCard"/> <tag> out.MoveCard = rules.MoveCard; </tag> </item>-->
+		</one-of>
+	</rule>
+
+	<rule id="Action" scope="public">
+
+		<one-of>
+		<item> create </item>
+			<item> open </item>
+			<item> build </item>	
+	  </one-of>
+
+		<ruleref uri="#Accessor"/>
+	</rule>
+
+	<rule id="Accessor">
+		<one-of>
+			<item>
+				public <tag> out = "public"; </tag>
+			</item>
+			<item>
+				static <tag> out = "static"; </tag>
+			</item>
+			<item>
+				public static <tag> out = "public static"; </tag>
+			</item>
+			<item>
+				abstract <tag> out = "abstract"; </tag>
+			</item>
+			
+		</one-of>
+
+		<ruleref uri="#Rank"/>
+	</rule>
+
+	<rule id="Rank">
+
+		<one-of>
+			<item>
+				interface <tag> out = "interface"; </tag>
+			</item>
+			<item>
+				class <tag> out = "class"; </tag>
+			</item>
+		</one-of>
+	</rule>
+</grammar>

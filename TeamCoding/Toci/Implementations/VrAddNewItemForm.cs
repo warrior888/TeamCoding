@@ -16,7 +16,7 @@ namespace TeamCoding.Toci.Implementations
 
             InputName.Location = new Point(20,12);
             ConfirmButton.Location = new Point(20,120);
-            InputName.Size = new Size(50, 20);
+            InputName.Size = new Size(300, 20);
             ConfirmButton.Size = new Size(50, 20);
 
             this.Controls.Add(InputName);

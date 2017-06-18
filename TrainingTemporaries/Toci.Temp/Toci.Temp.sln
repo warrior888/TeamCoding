@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Temp", "Toci.Temp\Toci.Temp.csproj", "{43C2DEEA-1713-4E1E-8D42-A83A8F60D2E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Temp.Test", "Toci.Temp.Test\Toci.Temp.Test.csproj", "{A6EC5091-1B1A-435B-B3B0-7651F3A72251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Vr", "Toci.Vr\Toci.Vr.csproj", "{61B43CA0-5610-42D4-89C5-5DACC9E99C82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A6EC5091-1B1A-435B-B3B0-7651F3A72251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6EC5091-1B1A-435B-B3B0-7651F3A72251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6EC5091-1B1A-435B-B3B0-7651F3A72251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B43CA0-5610-42D4-89C5-5DACC9E99C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B43CA0-5610-42D4-89C5-5DACC9E99C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B43CA0-5610-42D4-89C5-5DACC9E99C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B43CA0-5610-42D4-89C5-5DACC9E99C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
