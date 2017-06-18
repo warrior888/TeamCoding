@@ -36,19 +36,19 @@ namespace TeamCoding.Toci.Implementations
             TextLabel.Text = "Enter " + instruction.FileType + " name:";
             TextLabel.Show();
 
-            InputName.Location = new Point(5,20);
-            InputName.Size = new Size(335, 20);
+            InputName.Location = new Point(5,25);
+            InputName.Size = new Size(335, 25);
 
-            CancelButton.Location = new Point(260, 45);
-            CancelButton.Size = new Size(80, 20);
+            CancelButton.Location = new Point(260, 50);
+            CancelButton.Size = new Size(80, 25);
 
-            ConfirmButton.Location = new Point(175, 45);
-            ConfirmButton.Size = new Size(80, 20);
+            ConfirmButton.Location = new Point(175, 50);
+            ConfirmButton.Size = new Size(80, 25);
 
             ConfirmButton.Text = "Create";
             CancelButton.Text = "Cancel";
             
-            this.Size = new Size(360,113);
+            this.Size = new Size(362,128);
             this.Text = FormName;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Controls.Add(InputName);

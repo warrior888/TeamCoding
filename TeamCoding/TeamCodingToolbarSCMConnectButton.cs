@@ -113,28 +113,28 @@ namespace TeamCoding
             CancelButton.Click += CancelButton_Click;
             DisconnectButton.Click += DisconnectButton_Click;  
 
-            ConnectButton.Size = new Size(80,20);
+            ConnectButton.Size = new Size(80,25);
             ConnectButton.ClientSize = ConnectButton.Size;
             ConnectButton.Location = new Point(10,10);
             ConnectButton.Text = "Connect";
 
-            ListeningButton.Size = new Size(80,20);
+            ListeningButton.Size = new Size(80,25);
             ListeningButton.ClientSize = ListeningButton.Size;
             ListeningButton.Location = new Point(100,10);
             ListeningButton.Text = "Listening";
             
-            DisconnectButton.Size = new Size(80,20);
+            DisconnectButton.Size = new Size(80,25);
             DisconnectButton.ClientSize = DisconnectButton.Size;
             DisconnectButton.Location = new Point(190,10);
             DisconnectButton.Text = "Disconnect";
 
-            CancelButton.Size = new Size(80,20);
+            CancelButton.Size = new Size(80,25);
             CancelButton.ClientSize = CancelButton.Size;
             CancelButton.Location = new Point(100,40);
             CancelButton.Text = "Cancel";
             
             this.Text = FormName;
-            this.Size = new Size(285,110);
+            this.Size = new Size(282,72);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.ClientSize = this.Size;
             this.Controls.Add(ConnectButton);
