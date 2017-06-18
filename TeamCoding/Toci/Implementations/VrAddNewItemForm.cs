@@ -1,5 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Net.Mime;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Toci.Piascode.Instructions.Interfacces.Entities;
 
 namespace TeamCoding.Toci.Implementations
@@ -8,18 +12,40 @@ namespace TeamCoding.Toci.Implementations
     {
         public TextBox InputName = new TextBox();
         public Button ConfirmButton = new Button();
+        public Button CancelButton = new Button();
+        public Label TextLabel = new Label();
+        private const string FormName = "TOCI TeamCoding";
         protected IDevHandledInstruction Instruction;
+        protected Tuple<string, string> ItemOperation;
+        
+        protected  Dictionary<string, Tuple<string, string>> ItemOperationsMap = new Dictionary<string, Tuple<string, string>>()
+        {
+            { "Class", new Tuple<string, string>("Code\\Class", ".cs")},
+            { "Interface", new Tuple<string, string>("Code\\Interface", ".cs")},
+            { "XML File", new Tuple<string, string>("Data\\XML File", ".xml")},
+            { "Text File", new Tuple<string, string>("General\\Text File", ".txt")}
+        };
 
         public VrAddNewItemForm(IDevHandledInstruction instruction)
         {
             ConfirmButton.Click += ConfirmButton_Click;
 
-            InputName.Location = new Point(20,12);
-            ConfirmButton.Location = new Point(20,120);
-            InputName.Size = new Size(300, 20);
-            ConfirmButton.Size = new Size(50, 20);
+            TextLabel.Location = new Point(5, 5);
+            TextLabel.Text = "Enter " + instruction.FileType + " name:";
 
-            this.Controls.Add(InputName);
+            InputName.Location = new Point(5,20);
+            InputName.Size = new Size(335, 20);
+
+            CancelButton.Location = new Point(260, 45);
+            CancelButton.Size = new Size(80, 20);
+
+            ConfirmButton.Location = new Point(175, 45);
+            ConfirmButton.Size = new Size(80, 20);
+
+            Size = new Size(360,113);
+            Text = FormName;
+
+            Controls.Add(InputName);
             Controls.Add(ConfirmButton);
 
             Instruction = instruction;
@@ -28,13 +54,10 @@ namespace TeamCoding.Toci.Implementations
 
         private void ConfirmButton_Click(object sender, System.EventArgs e)
         {
-            string type = "Code\\class";
-            if (Instruction.FileType == "interface")
-            {
-                type = "Code\\class";
-            }
+            ItemOperation = ItemOperationsMap[Instruction.FileType];
+            
 
-            ProjectManager.Dte.ItemOperations.AddNewItem(type, InputName.Text + ".cs");
+            ProjectManager.Dte.ItemOperations.AddNewItem(ItemOperation.Item1, Instruction.FileName+ItemOperation.Item2);
             Close();
         }
     }
