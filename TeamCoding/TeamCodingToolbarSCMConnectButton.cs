@@ -6,6 +6,7 @@
 
 using System;
 using System.ComponentModel.Design;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using Microsoft.VisualStudio.Shell;
@@ -18,8 +19,15 @@ namespace TeamCoding
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class TeamCodingToolbarSCMConnectButton
+    internal sealed class TeamCodingToolbarSCMConnectButton : Form
     {
+        public Button ListeningButton = new Button();
+        public Button ConnectButton = new Button();
+        public Button DisconnectButton = new Button();
+        public new Button CancelButton = new Button();
+        private VrCommandsManager vrCommandsManager;
+        private const string FormName = "TOCI TeamCoding";
+
         /// <summary>
         /// Command ID.
         /// </summary>
@@ -96,20 +104,69 @@ namespace TeamCoding
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            VrAddNewItemForm form = new VrAddNewItemForm(new DevHandledInstruction());
+            var instruction = new DevHandledInstruction(){FileType = "interface",FileName = "oleoleole", FileContent = ""};
+            var form = new VrAddNewItemForm(instruction);
+            form.Show();
 
-            if (BroadcastManager.IsRunning)
-            {
-                VsShellUtilities.ShowMessageBox(this.ServiceProvider, "Broadcast Manager is already running", "", OLEMSGICON.OLEMSGICON_INFO,
-                    OLEMSGBUTTON.OLEMSGBUTTON_OK, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-                return;
-            }
+            ConnectButton.Click += ConnectButton_Click;
+            ListeningButton.Click += ListeningButton_Click;
+            CancelButton.Click += CancelButton_Click;
+            DisconnectButton.Click += DisconnectButton_Click;  
 
-            var response = VsShellUtilities.ShowMessageBox(this.ServiceProvider, "Do you want to start Broadcast Manager?", "", OLEMSGICON.OLEMSGICON_QUERY,
-                  OLEMSGBUTTON.OLEMSGBUTTON_YESNO, OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-            // response values  =>  6 = yes,  7 = no, 
-            if (!response.Equals(6)) return;
+            ConnectButton.Size = new Size(80,20);
+            ConnectButton.ClientSize = ConnectButton.Size;
+            ConnectButton.Location = new Point(10,10);
+            ConnectButton.Text = "Connect";
+
+            ListeningButton.Size = new Size(80,20);
+            ListeningButton.ClientSize = ListeningButton.Size;
+            ListeningButton.Location = new Point(100,10);
+            ListeningButton.Text = "Listening";
+            
+            DisconnectButton.Size = new Size(80,20);
+            DisconnectButton.ClientSize = DisconnectButton.Size;
+            DisconnectButton.Location = new Point(190,10);
+            DisconnectButton.Text = "Disconnect";
+
+            CancelButton.Size = new Size(80,20);
+            CancelButton.ClientSize = CancelButton.Size;
+            CancelButton.Location = new Point(100,40);
+            CancelButton.Text = "Cancel";
+            
+            this.Text = FormName;
+            this.Size = new Size(285,110);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.ClientSize = this.Size;
+            this.Controls.Add(ConnectButton);
+            this.Controls.Add(ListeningButton);
+            this.Controls.Add(CancelButton);
+            this.Controls.Add(DisconnectButton);
+            
+            this.Show();
+        }
+
+        private void DisconnectButton_Click(object sender, EventArgs e)
+        {
+            BroadcastManager.StopSCMClient();
+            Close();
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ListeningButton_Click(object sender, EventArgs e)
+        {
+            vrCommandsManager = new VrCommandsManager();
+            vrCommandsManager.Register();
+            Close();
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
             BroadcastManager.StartSCMClient();
+            Close();
         }
     }
 }

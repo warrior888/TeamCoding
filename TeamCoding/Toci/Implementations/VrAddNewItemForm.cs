@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Net.Mime;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -12,7 +13,7 @@ namespace TeamCoding.Toci.Implementations
     {
         public TextBox InputName = new TextBox();
         public Button ConfirmButton = new Button();
-        public Button CancelButton = new Button();
+        public new Button CancelButton = new Button();
         public Label TextLabel = new Label();
         private const string FormName = "TOCI TeamCoding";
         protected IDevHandledInstruction Instruction;
@@ -33,6 +34,7 @@ namespace TeamCoding.Toci.Implementations
 
             TextLabel.Location = new Point(5, 5);
             TextLabel.Text = "Enter " + instruction.FileType + " name:";
+            TextLabel.Show();
 
             InputName.Location = new Point(5,20);
             InputName.Size = new Size(335, 20);
@@ -45,16 +47,17 @@ namespace TeamCoding.Toci.Implementations
 
             ConfirmButton.Text = "Create";
             CancelButton.Text = "Cancel";
-
-            Size = new Size(360,113);
-            Text = FormName;
-
-            Controls.Add(InputName);
-            Controls.Add(ConfirmButton);
-            Controls.Add(CancelButton);
+            
+            this.Size = new Size(360,113);
+            this.Text = FormName;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Controls.Add(InputName);
+            this.Controls.Add(ConfirmButton);
+            this.Controls.Add(CancelButton);
+            this.Controls.Add(TextLabel);
 
             Instruction = instruction;
-            InputName.Text = instruction.FileName;
+            //InputName.Text = instruction.FileName;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -65,9 +68,20 @@ namespace TeamCoding.Toci.Implementations
         private void ConfirmButton_Click(object sender, System.EventArgs e)
         {
             ItemOperation = ItemOperationsMap[Instruction.FileType];
-
-            ProjectManager.Dte.ItemOperations.AddNewItem(ItemOperation.Item1, Instruction.FileName+ItemOperation.Item2);
-            Close();
+            try
+            {
+                ProjectManager.Dte.ItemOperations.AddNewItem(ItemOperation.Item1,
+                    Instruction.FileName + ItemOperation.Item2);
+            }
+            catch (System.Runtime.InteropServices.COMException)
+            {
+                MessageBox.Show("File exist", "Error", MessageBoxButtons.OK);
+                Close();
+            }
+            finally
+            {
+                Close();
+            }
         }
     }
 }

@@ -147,7 +147,7 @@ namespace TeamCoding
             {
                 Logger.WriteError(ex);
             }
-            TeamCodingToolbarSCMDisconnectButton.Initialize(this);
+            //TeamCodingToolbarSCMDisconnectButton.Initialize(this);
             TeamCodingToolbarSCMConnectButton.Initialize(this);
         }
         private T GetVersionedType<T>(Assembly versionedAssembly, string typeName)
