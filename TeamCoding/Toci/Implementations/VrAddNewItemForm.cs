@@ -20,8 +20,8 @@ namespace TeamCoding.Toci.Implementations
         
         protected  Dictionary<string, Tuple<string, string>> ItemOperationsMap = new Dictionary<string, Tuple<string, string>>()
         {
-            { "Class", new Tuple<string, string>("Code\\Class", ".cs")},
-            { "Interface", new Tuple<string, string>("Code\\Interface", ".cs")},
+            { "class", new Tuple<string, string>("Code\\Class", ".cs")},
+            { "interface", new Tuple<string, string>("Code\\Interface", ".cs")},
             { "XML File", new Tuple<string, string>("Data\\XML File", ".xml")},
             { "Text File", new Tuple<string, string>("General\\Text File", ".txt")}
         };
@@ -29,6 +29,7 @@ namespace TeamCoding.Toci.Implementations
         public VrAddNewItemForm(IDevHandledInstruction instruction)
         {
             ConfirmButton.Click += ConfirmButton_Click;
+            CancelButton.Click += CancelButton_Click;
 
             TextLabel.Location = new Point(5, 5);
             TextLabel.Text = "Enter " + instruction.FileType + " name:";
@@ -42,20 +43,28 @@ namespace TeamCoding.Toci.Implementations
             ConfirmButton.Location = new Point(175, 45);
             ConfirmButton.Size = new Size(80, 20);
 
+            ConfirmButton.Text = "Create";
+            CancelButton.Text = "Cancel";
+
             Size = new Size(360,113);
             Text = FormName;
 
             Controls.Add(InputName);
             Controls.Add(ConfirmButton);
+            Controls.Add(CancelButton);
 
             Instruction = instruction;
             InputName.Text = instruction.FileName;
         }
 
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void ConfirmButton_Click(object sender, System.EventArgs e)
         {
             ItemOperation = ItemOperationsMap[Instruction.FileType];
-            
 
             ProjectManager.Dte.ItemOperations.AddNewItem(ItemOperation.Item1, Instruction.FileName+ItemOperation.Item2);
             Close();

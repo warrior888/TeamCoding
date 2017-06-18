@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using TeamCoding.Toci.Implementations;
+using Toci.Piastcode.Instructions.Entities;
 
 namespace TeamCoding
 {
@@ -95,6 +96,8 @@ namespace TeamCoding
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
+            VrAddNewItemForm form = new VrAddNewItemForm(new DevHandledInstruction());
+
             if (BroadcastManager.IsRunning)
             {
                 VsShellUtilities.ShowMessageBox(this.ServiceProvider, "Broadcast Manager is already running", "", OLEMSGICON.OLEMSGICON_INFO,

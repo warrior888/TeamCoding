@@ -24,12 +24,12 @@ namespace Toci.Vr
 
             //sre.LoadGrammar(new DictationGrammar());
 
-            //sre.LoadGrammar(new Grammar(@"C:\Users\Warrior\Documents\TeamCodingGhostRider\TrainingTemporaries\Toci.Temp\Toci.Vr\data\grammar.xml"));
+            sre.LoadGrammar(new Grammar(@"C:\Users\Warrior\Documents\TeamCodingGhostRider\TrainingTemporaries\Toci.Temp\Toci.Vr\data\grammar.xml"));
 
             //Grammar gr123 = new Grammar(@"C:\Users\Warrior\Documents\TeamCodingGhostRider\TrainingTemporaries\Toci.Temp\Toci.Vr\data\grammar.xml");
             
 
-            sre.LoadGrammar(new Grammar(grB));
+            //sre.LoadGrammar(new Grammar(grB));
 
 
 
