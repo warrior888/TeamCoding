@@ -19,14 +19,15 @@ namespace TeamCoding
     /// <summary>
     /// Command handler
     /// </summary>
-    internal sealed class TeamCodingToolbarSCMConnectButton : Form
+    internal sealed class TeamCodingToolbarSCMConnectButton
     {
         public Button ListeningButton = new Button();
         public Button ConnectButton = new Button();
         public Button DisconnectButton = new Button();
-        public new Button CancelButton = new Button();
+	    public new Button CancelButton = new Button();
         private VrCommandsManager vrCommandsManager;
         private const string FormName = "TOCI TeamCoding";
+	    public Form _form;
 
         /// <summary>
         /// Command ID.
@@ -104,7 +105,8 @@ namespace TeamCoding
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            var instruction = new DevHandledInstruction(){FileType = "interface",FileName = "oleoleole", FileContent = ""};
+	        _form = new Form();
+			var instruction = new DevHandledInstruction(){FileType = "interface",FileName = "oleoleole", FileContent = ""};
             var form = new VrAddNewItemForm(instruction);
             form.Show();
 
@@ -133,40 +135,40 @@ namespace TeamCoding
             CancelButton.Location = new Point(100,40);
             CancelButton.Text = "Cancel";
             
-            this.Text = FormName;
-            this.Size = new Size(282,72);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.ClientSize = this.Size;
-            this.Controls.Add(ConnectButton);
-            this.Controls.Add(ListeningButton);
-            this.Controls.Add(CancelButton);
-            this.Controls.Add(DisconnectButton);
-            
-            this.Show();
+            _form.Text = FormName;
+			_form.Size = new Size(282,72);
+			_form.StartPosition = FormStartPosition.CenterScreen;
+			_form.ClientSize = _form.Size;
+			_form.Controls.Add(ConnectButton);
+			_form.Controls.Add(ListeningButton);
+			_form.Controls.Add(CancelButton);
+			_form.Controls.Add(DisconnectButton);
+
+			_form.Show();
         }
 
         private void DisconnectButton_Click(object sender, EventArgs e)
         {
             BroadcastManager.StopSCMClient();
-            Close();
+			_form.Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            Close();
+			_form.Close();
         }
 
         private void ListeningButton_Click(object sender, EventArgs e)
         {
             vrCommandsManager = new VrCommandsManager();
             vrCommandsManager.Register();
-            Close();
+			_form.Close();
         }
 
         private void ConnectButton_Click(object sender, EventArgs e)
         {
             BroadcastManager.StartSCMClient();
-            Close();
+			_form.Close();
         }
     }
 }
