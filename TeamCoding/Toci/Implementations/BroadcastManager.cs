@@ -14,12 +14,24 @@ namespace TeamCoding.Toci.Implementations
         private static SocketClientManager ScManager;
         protected ProjectFileManager PfManager;
         protected DTE Dte;
+        public static bool IsRunning;
 
         public static void StartSCMClient()
         {
-            if (ScManager != null)
+            if (!IsRunning && ScManager != null)
             {
                 ScManager.StartClient();
+                IsRunning = true;
+            }
+        }
+
+        //TODO: need method to Stop ScManager
+
+        public static void StopSCMClient()
+        {
+            if (IsRunning && ScManager != null)
+            {
+                IsRunning = false;
             }
         }
 
@@ -30,7 +42,7 @@ namespace TeamCoding.Toci.Implementations
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
 
             //"92.222.71.194" 25016
-            if (TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP != null)
+            if (!string.IsNullOrEmpty(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP))
             {
                 if (ScManager == null)
                 {
@@ -42,7 +54,7 @@ namespace TeamCoding.Toci.Implementations
                             {ModificationType.Add, AddItem},
                             {ModificationType.Edit, EditItem},
                         });
-                    ScManager.StartClient();
+                    //   ScManager.StartClient();
                 }
 
                 PfManager = new ProjectFileManager();
@@ -54,7 +66,7 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
         }
 
-        
+
         public virtual void Broadcast(TcProjectItemsCollection collection)
         {
             foreach (var item in collection)

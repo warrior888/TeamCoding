@@ -32,7 +32,8 @@ namespace TeamCoding.VisualStudio
         protected IProjectFileManager fileManager = new ProjectFileManager();
         protected BroadcastManager bcManager;
         protected ProjectFilesEventsManager PfeManager;
-
+        private SpeechRecognitionManager speechRecognitionManager;
+        private VrCommandsManager vrCommandsManager;
 
         public class DocumentSavedEventArgs : EventArgs
         {
@@ -60,9 +61,26 @@ namespace TeamCoding.VisualStudio
 
             PfeManager = new ProjectFilesEventsManager();
             PfeManager.Register(DTE);
+
+            vrCommandsManager = new VrCommandsManager();
+            vrCommandsManager.Register();
+
+            speechRecognitionManager = new SpeechRecognitionManager();
+
+            speechRecognitionManager.ManageVoiceInstructions(Parse);
         }
 
-        
+        protected virtual void Parse(string input)
+        {
+            Parser<ITarget, ISource, IResult> parser = new Parser<ITarget, ISource, IResult>();
+            IResult result = parser.Parse(null, new Source { StringSource = input });
+
+            IDeveloperCommandDriver dcDriver = new DeveloperCommandDriver();
+            IDevHandledInstruction instruction = dcDriver.CreateDevHandledInstruction(dcDriver.CommandDriver(result));
+
+            ProjectManager.Dte.ItemOperations.AddNewItem("Code\\class", instruction.FileName + ".cs");
+        }
+
 
         private void UserSettings_UserTabDisplayChanged(object sender, EventArgs e)
         {

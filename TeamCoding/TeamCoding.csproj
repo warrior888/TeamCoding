@@ -109,11 +109,17 @@
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
     <Compile Include="TeamCodingPackageProvider.cs" />
+    <Compile Include="TeamCodingToolbarSCMDisconnectButton.cs" />
+    <Compile Include="TeamCodingToolbarSCMConnectButton.cs" />
     <Compile Include="Toci\Implementations\BroadcastManager.cs" />
     <Compile Include="Toci\Implementations\EnvOpenedFilesManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />
     <Compile Include="Toci\Implementations\ProjectManager.cs" />
+    <Compile Include="Toci\Implementations\VrAddNewItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Toci\Implementations\VrCommandsManager.cs" />
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
@@ -232,6 +238,8 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Resource Include="Resources\OverviewCommandIcon.png" />
+    <Content Include="Resources\TeamCodingToolbarSCMDisconnectButton.png" />
+    <Content Include="Resources\TeamCodingToolbarSCMConnectButton.png" />
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
@@ -326,6 +334,10 @@
       <HintPath>..\packages\Microsoft.VisualStudio.Shell.14.0.14.3.25407\lib\Microsoft.VisualStudio.Shell.14.0.dll</HintPath>
       <Private>True</Private>
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Framework, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Framework.15.0.26201\lib\net45\Microsoft.VisualStudio.Shell.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.VisualStudio.Shell.Immutable.10.0.10.0.30319\lib\net40\Microsoft.VisualStudio.Shell.Immutable.10.0.dll</HintPath>

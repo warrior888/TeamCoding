@@ -12,9 +12,9 @@ namespace Toci.Piastcode.SpeechRecognition.Tools
         {
             spR = new SpeechRecognition();
 
-            spR.GrammarSource = new GrammarSource { FilePath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\Toci\Toci.Piastcode.SpeechRecognition\Tools\grammar.xml" };
-
-            spR.Listen();
+            spR.GrammarSource = new GrammarSource { FilePath = @"..\..\..\Toci\Toci.Piastcode.SpeechRecognition\Tools\grammar.xml" };
+            //TODO : uncomment on release ver
+          //  spR.Listen(); 
             spR.RecognizeSpeech += callback;
         }
     }

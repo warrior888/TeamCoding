@@ -38,6 +38,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +55,7 @@
     <Compile Include="Entities\HandledInstruction.cs" />
     <Compile Include="Entities\Result.cs" />
     <Compile Include="Entities\Source.cs" />
+    <Compile Include="Form\GetName.cs" />
     <Compile Include="Handlers\AddFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\DeveloperCommandDriver.cs" />

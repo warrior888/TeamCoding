@@ -60,7 +60,7 @@ namespace TeamCoding.Options
         {
             get
             {
-                int.TryParse(ChangePropagationServerIPAddress.Split(':')[1], out int port);
+                int.TryParse(ChangePropagationServerIPAddress?.Split(':')[1], out int port);
                 return port;
             }
         }

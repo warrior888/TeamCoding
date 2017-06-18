@@ -2,6 +2,7 @@
 {
     public interface IDevHandledInstruction : IHandledInstruction
     {
+        string FileType{ get; set; }
         string FileContent { get; set; }
         string FileName { get; set; }
     }

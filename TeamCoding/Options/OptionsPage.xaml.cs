@@ -40,6 +40,7 @@ namespace TeamCoding.Options
         public const string cmdShowJsonExampleCaption = "Show example " + Settings.TeamCodingConfigFileName;
 
         private IResult result;
+        
         private readonly Dictionary<TextBox, CancellationTokenSource> TextBoxIsValidTaskCancelSources = new Dictionary<TextBox, CancellationTokenSource>();
 
         public OptionsPage(OptionPageGrid optionPageGrid)
@@ -134,10 +135,7 @@ namespace TeamCoding.Options
         }
         private void OptionsPage_Loaded(object sender, RoutedEventArgs e)
         {
-            //SpeechRecognitionManager manager = new SpeechRecognitionManager();
-
-            //manager.ManageVoiceInstructions(Parse);
-
+            
             var loadedFromFile = TeamCodingPackage.Current?.Settings?.LoadFromJsonFile() ?? false;
 
             // After we've loaded the users settings override any Json settings
@@ -165,27 +163,7 @@ namespace TeamCoding.Options
             }
         }
 
-        protected virtual void Parse(string input)
-        {
-            Parser<ITarget, ISource, IResult> parser = new Parser<ITarget, ISource, IResult>();
-            result = parser.Parse(null, new Source { StringSource = input });
-
-            IDeveloperCommandDriver dcDriver = new DeveloperCommandDriver();
-            IDevHandledInstruction instruction = dcDriver.CreateDevHandledInstruction(dcDriver.CommandDriver(result));
-
-            IProjectItem projItem = new TcProjectItem
-            {
-                Content = instruction.FileContent,
-                FilePath = instruction.FileName + ".cs",
-                ProjectPath = @"C:\Users\Warrior\Documents\TeamCodingGhostRider\TeamCoding.Tests\Toci.TeamCoding.Tests.csproj",
-            };
-            projItem.ItemModificationType = ModificationType.Add;
-            IProjectFileManager fileManager = new ProjectFileManager();
-            fileManager.AddNewFile(projItem, null);
-
-            //scManager.BroadCastFile(projItem);
-        }
-
+        
         private void Control_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var senderTooltip = ((Control)sender).ToolTip;

@@ -15,10 +15,10 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
+  <Extern href="vsshlids.h" />
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
       This section uses a Guid to identify the package that provides the command defined inside it. -->
@@ -43,12 +43,27 @@
               <CommandFlag>DynamicVisibility</CommandFlag>
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidTeamCodingPackageCmdSet" id="OverviewCommandId" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="OverviewCommandIcon" />
         <Strings>
           <ButtonText>TeamCoding Overview</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidTeamCodingPackageCmdSet2" id="cmdidTeamCodingToolbarSCMDisconnectButton" priority="0x0100" type="Button">
+        <Parent guid="guidTeamCodingPackageCmdSet2" id="TeamCodingToolbarSCMConnectButtonGroup" />
+        <Icon guid="guidImages2" id="bmpPicArrows" />
+        <Strings>
+          <ButtonText>Start BroadcastManager</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidTeamCodingPackageCmdSet1" id="cmdidTeamCodingToolbarSCMConnectButton" priority="0x0100" type="Button">
+        <Parent guid="guidTeamCodingPackageCmdSet1" id="TeamCodingToolbarSCMConnectButtonGroup" />
+        <Icon guid="guidImages1" id="bmpPicX" />
+        <Strings>
+          <ButtonText>Stop BroadcastManager</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
@@ -58,8 +73,19 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\OverviewCommandIcon.png" usedList="OverviewCommandIcon"/>
+      <Bitmap guid="guidImages" href="Resources\OverviewCommandIcon.png" usedList="OverviewCommandIcon" />
+      <Bitmap guid="guidImages1" href="Resources\TeamCodingToolbarSCMConnectButton.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages2" href="Resources\TeamCodingToolbarSCMDisconnectButton.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
     </Bitmaps>
+    <Groups>
+      <Group guid="guidTeamCodingPackageCmdSet2" id="TeamCodingToolbarSCMConnectButtonGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_PROJWIN" />
+      </Group>
+      <Group guid="guidTeamCodingPackageCmdSet1" id="TeamCodingToolbarSCMConnectButtonGroup" priority="0xF000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_TOOL_PROJWIN" />
+      </Group>
+
+    </Groups>
   </Commands>
 
   <Symbols>
@@ -71,8 +97,38 @@
       <IDSymbol name="OverviewCommandId" value="0x0100" />
     </GuidSymbol>
 
-    <GuidSymbol name="guidImages" value="{b21c9ef2-22f0-4c24-9f7f-a1f2a10f4727}" >
+    <GuidSymbol name="guidImages" value="{b21c9ef2-22f0-4c24-9f7f-a1f2a10f4727}">
       <IDSymbol name="OverviewCommandIcon" value="1" />
     </GuidSymbol>
+
+    <GuidSymbol value="{62aae97c-b7dd-41ba-bc5d-6d2901aa3852}" name="guidTeamCodingPackageCmdSet2">
+      <IDSymbol value="4128" name="TeamCodingToolbarSCMConnectButtonGroup" />
+      <IDSymbol value="256" name="cmdidTeamCodingToolbarSCMDisconnectButton" />
+    </GuidSymbol>
+
+    <GuidSymbol value="{6f399df5-aa4d-4519-b635-48e7a1f1a85e}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+    
+    <GuidSymbol value="{81248ced-f401-4e1b-8766-a43aa2c0a33c}" name="guidTeamCodingPackageCmdSet1">
+      <IDSymbol value="4128" name="TeamCodingToolbarSCMConnectButtonGroup" />
+      <IDSymbol value="256" name="cmdidTeamCodingToolbarSCMConnectButton" />
+    </GuidSymbol>
+
+    <GuidSymbol value="{60c7b936-9750-484a-bd2e-a9a7099d5b2f}" name="guidImages1">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+
+
   </Symbols>
 </CommandTable>
