@@ -22,11 +22,12 @@ namespace TeamCoding.Toci.Implementations
             string[] pathChunks = Dte.Solution.FullName.Split(new[] { PathDelimiter }, StringSplitOptions.None);
 
             SolutionFileName = pathChunks[pathChunks.Length - 1];
-            SolutionDirectoryPath = SolutionFileName?.Length>0 ? Dte.Solution.FullName?.Replace(SolutionFileName, string.Empty):null;
+            SolutionDirectoryPath = SolutionFileName?.Length > 0 ? Dte.Solution.FullName?.Replace(SolutionFileName, string.Empty) : null;
         }
 
         public static string MakeRelativeFilePath(string path)
         {
+            if (string.IsNullOrEmpty(SolutionDirectoryPath)) CalculatePaths();
             return path.Replace(SolutionDirectoryPath, string.Empty);
         }
 
