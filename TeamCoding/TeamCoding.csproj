@@ -120,6 +120,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Toci\Implementations\VrCommandsManager.cs" />
+    <Compile Include="Toci\Implementations\VrPluginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
