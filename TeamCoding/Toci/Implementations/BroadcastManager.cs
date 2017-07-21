@@ -53,6 +53,7 @@ namespace TeamCoding.Toci.Implementations
                         {
                             {ModificationType.Add, AddItem},
                             {ModificationType.Edit, EditItem},
+							{ModificationType.Overwrite, OverwriteItem}
                         });
                     //   ScManager.StartClient();
                 }
@@ -61,7 +62,8 @@ namespace TeamCoding.Toci.Implementations
             }
         }
 
-        public virtual void SetDte(DTE dte)
+
+	    public virtual void SetDte(DTE dte)
         {
             Dte = dte;
         }
@@ -89,5 +91,11 @@ namespace TeamCoding.Toci.Implementations
             TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
             PfManager.EditItem(editedProjectItem.FilePath, editedProjectItem);
         }
-    }
+
+		private void OverwriteItem(IItem item)
+		{
+			TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
+			PfManager.OverwriteItem(editedProjectItem.FilePath, editedProjectItem);
+		}
+	}
 }

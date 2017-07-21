@@ -32,10 +32,11 @@ namespace Toci.Piastcode.Social.Server
             {
                 {ModificationType.Add, BroadcastFiles },
                 {ModificationType.Edit, BroadcastFiles },
+				{ModificationType.Overwrite, BroadcastFiles}
             };
         }
 
-        public void StartServer()
+	    public void StartServer()
         {
             Console.WriteLine($"[{DateTime.Now}] Server started.");
             Task task = new Task(AcceptConnection);

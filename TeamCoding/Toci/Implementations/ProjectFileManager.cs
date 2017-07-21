@@ -119,6 +119,45 @@ namespace TeamCoding.Toci.Implementations
             //ITextView
         }
 
+	    public virtual void OverwriteItem(string filePath, IEditedProjectItem editedFile)
+	    {
+			if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
+			{
+				EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => UpdateFile(filePath, editedFile)), null);
+
+			}
+			else
+			{
+				//string fileContent;
+				try
+				{
+					StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath));
+
+					StringBuilder sb = new StringBuilder(stR.ReadToEnd());
+					stR.Close();
+
+					//foreach (var editChange in editedFile.EditChanges)
+					//{
+					//	if (editChange.Text.Length < editChange.OldPositionEnd - editChange.PositionStart) //deletion
+					//		sb.Remove(editChange.PositionStart, editChange.OldPositionEnd - editChange.PositionStart);
+					//	sb.Insert(editChange.PositionStart, editChange.Text);
+
+					//}
+
+					StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(filePath));
+
+					swR.WriteLine(sb.ToString());
+					swR.Close();
+				}
+				catch (IOException ex)
+				{
+
+				}
+
+
+			}
+		}
+
         protected virtual string CalculateCsprojFileNameEntry(string filePath)
         {
             string[] chunks = filePath.Split(new[] { ProjectManager.PathDelimiter }, StringSplitOptions.None);
