@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Windows.Threading;
@@ -77,6 +78,24 @@ namespace TeamCoding.Toci.Implementations
             }
         }
 
+	    protected virtual void OverwriteFile(string filePath, IEditedProjectItem editedFile)
+	    {
+			foreach (var editChange in editedFile.EditChanges)
+			{
+				StringBuilder sb;
+				TeamCodingTextViewConnectionListener.IsEditPending = true;
+				//EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.PositionStart, editChange.Text);
+				using (StreamReader stR = new StreamReader(ProjectManager.MakeAbsoluteFilePath(filePath)))
+				{
+					sb = new StringBuilder(stR.ReadToEnd());
+				}
+				EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Delete(new Span(0, sb.Length));
+				EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(0, editChange.Text);
+				TeamCodingTextViewConnectionListener.IsEditPending = false;
+				//Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
+			}
+		}
+
         public virtual void EditItem(string filePath, IEditedProjectItem editedFile)
         {
             if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
@@ -112,7 +131,6 @@ namespace TeamCoding.Toci.Implementations
 
                 }
 
-
             }
             //IWpfTextView 
             //ITextBuffer 
@@ -121,10 +139,10 @@ namespace TeamCoding.Toci.Implementations
 
 	    public virtual void OverwriteItem(string filePath, IEditedProjectItem editedFile)
 	    {
+
 			if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(filePath))
 			{
-				EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => UpdateFile(filePath, editedFile)), null);
-
+				EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => OverwriteFile(filePath, editedFile)), null);
 			}
 			else
 			{
@@ -153,7 +171,6 @@ namespace TeamCoding.Toci.Implementations
 				{
 
 				}
-
 
 			}
 		}
