@@ -59,6 +59,10 @@ namespace Toci.Piastcode.Social.Client
                     {
                         Map[ModificationType.Edit](item);
                     }
+	                if (item.ItemModificationType == ModificationType.Overwrite)
+	                {
+		                Map[ModificationType.Overwrite](item);
+	                }
                 }
             }
         }
