@@ -9,6 +9,7 @@ using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Plugin.BingSpeech;
 
 namespace VR.Siri
 {
@@ -23,14 +24,19 @@ namespace VR.Siri
 
         private void button1_Click(object sender, EventArgs e)
         {
+           // BingSpeech bs = new BingSpeech();
+           // bs.MicrophoneService = SRE;
+
             SRE.EndSilenceTimeout = TimeSpan.Zero;
 
             DictationGrammar dg = new DictationGrammar();
             dg.Weight = 0.02f;
+            //dg.SetDictationContext();
             //dg.Priority = 2;
 
 
-            Choices c = new Choices("woman", "speaks", "fluent", "english", "and ", "he", "is", "dumb");
+            Choices c = new Choices("woman", "speaks", "fluent", "english", "and ", "he", "is", "understanding");
+            
 
             Grammar g = new Grammar(new GrammarBuilder(c));
             g.Weight = 0.98f;
