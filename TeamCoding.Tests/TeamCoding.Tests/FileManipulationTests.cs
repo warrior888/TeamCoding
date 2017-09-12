@@ -11,11 +11,15 @@ namespace Toci.TeamCoding.Tests.TeamCoding.Tests
         {
             string file = @"C:\Users\bzapart\Documents\TeamCoding\TeamCoding.Tests\Toci.TeamCoding.Tests.csproj";
             using (StreamWriter swr = new StreamWriter(file))
-            {
-             }
+            {                if (true)
+                {
+
+                }  
+            }
         }
 
     }
 
     
 }
+
