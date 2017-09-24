@@ -9,6 +9,7 @@ using System.Speech.Recognition;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AForge.Video;
 using Plugin.BingSpeech;
 
 namespace VR.Siri
@@ -24,6 +25,9 @@ namespace VR.Siri
 
         private void button1_Click(object sender, EventArgs e)
         {
+            TEstBiometric();
+
+
            // BingSpeech bs = new BingSpeech();
            // bs.MicrophoneService = SRE;
 
@@ -67,6 +71,16 @@ namespace VR.Siri
             l.Text = e.Result.Text;
             l.Location = new Point(20, y += 20);
             Controls.Add(l);
+        }
+
+        public virtual void TEstBiometric()
+        {
+            //AForge.Video.ScreenCaptureStream st = new ScreenCaptureStream(new Rectangle(12, 23, 34, 45));
+            //st.Start();
+
+            //AForge.Neuro.
+
+            //st.Stop();
         }
     }
 }

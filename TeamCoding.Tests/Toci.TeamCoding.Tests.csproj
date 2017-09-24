@@ -49,6 +49,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="file\Class1888.cs" />
+    <Compile Include="file\fdfdsfds.cs" />
     <Compile Include="GKTests\GKLoggerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TeamCoding.Tests\FileManipulationTests.cs" />
