@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.Text;
 using TeamCoding.Toci.Interfaces;
 using TeamCoding.VisualStudio;
 using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using Project = Microsoft.Build.Evaluation.Project;
 

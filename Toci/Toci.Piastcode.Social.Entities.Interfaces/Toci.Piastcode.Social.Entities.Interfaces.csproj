@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="IClient.cs" />
     <Compile Include="IData.cs" />
+    <Compile Include="IProjectItem.cs" />
     <Compile Include="IText.cs" />
     <Compile Include="IProject.cs" />
     <Compile Include="IFile.cs" />

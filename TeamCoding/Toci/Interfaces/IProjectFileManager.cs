@@ -1,4 +1,5 @@
 ﻿using Toci.Piastcode.Social.Client.Interfaces;
+using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace TeamCoding.Toci.Interfaces

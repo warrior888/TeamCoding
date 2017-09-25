@@ -44,10 +44,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Toci.Ptc.Broadcast.Interfaces\Toci.Ptc.Broadcast.Interfaces.csproj">
-      <Project>{3415c2dc-8091-4f46-975a-df8079c8128c}</Project>
-      <Name>Toci.Ptc.Broadcast.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
       <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
       <Name>Toci.Ptc.Environment.Interfaces</Name>

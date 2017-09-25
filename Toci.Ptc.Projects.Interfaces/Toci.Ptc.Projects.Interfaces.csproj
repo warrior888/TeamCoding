@@ -30,8 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\EnvDTE.8.0.1\lib\net10\EnvDTE.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.Text.Data, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.Text.Logic, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\packages\stdole.7.0.3301\lib\net10\stdole.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,7 +55,7 @@
     <Compile Include="Changes\ChangeTypes.cs" />
     <Compile Include="Changes\IChange.cs" />
     <Compile Include="Changes\IVsChange.cs" />
-    <Compile Include="Changes\VisualStudio\IVsAddDocument.cs" />
+    <Compile Include="Changes\VisualStudio\IVsChangeDocument.cs" />
     <Compile Include="Documents\DocumentType.cs" />
     <Compile Include="Documents\IDocument.cs" />
     <Compile Include="Documents\IVsDocument.cs" />
@@ -61,6 +71,13 @@
       <Project>{47A08B13-FC37-46F4-9CC2-871207AA9B2C}</Project>
       <Name>Toci.Ptc.Users.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
+      <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
+      <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
