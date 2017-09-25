@@ -4,10 +4,10 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Broadcast.Interfaces
 {
-    public interface IBroadcast<in TEnvironment, in TDocument> 
+    public interface IBroadcast<in TEnvironment, in TDocument, TChange, TUser> 
         where TEnvironment : IEnvironment
-        where TDocument : IDocument<TEnvironment>
-    {
+        where TDocument : IDocument<TEnvironment, TChange, TUser>
+    { 
         bool BroadcastDocument(IUser user, TDocument doc, TEnvironment env);
     }
 }

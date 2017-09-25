@@ -40,9 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documents\Changes\EnvUserChangeDocManagerBase.cs" />
+    <Compile Include="Documents\Changes\Managers\VisualStudioAddDocManager.cs" />
+    <Compile Include="Documents\Changes\Managers\VisualStudioEditDocManager.cs" />
+    <Compile Include="Documents\Changes\VisualStudioChangeDocManager.cs" />
+    <Compile Include="Documents\DocumentBase.cs" />
+    <Compile Include="Documents\VsDocumentBase.cs" />
+    <Compile Include="Documents\VsFileDocument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
+      <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
+      <Name>Toci.Ptc.Environment.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Projects.Interfaces\Toci.Ptc.Projects.Interfaces.csproj">
       <Project>{50bf82e9-8557-4b70-a746-61e45d269bcc}</Project>
       <Name>Toci.Ptc.Projects.Interfaces</Name>
@@ -52,5 +63,6 @@
       <Name>Toci.Ptc.Users.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

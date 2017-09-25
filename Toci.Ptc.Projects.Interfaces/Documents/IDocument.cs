@@ -4,10 +4,12 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Projects.Interfaces.Documents
 {
-    public interface IDocument<TEnvironment>
+    public interface IDocument<in TEnvironment, TChange, TUser>
     {
         DocumentType DocType { get; set; }
 
-        Dictionary<IUser, List<IChange<TEnvironment>>> Changes { get; set; }
+        Dictionary<TUser, List<TChange>> Changes { get; set; }
+
+        bool CreateChange(ChangeTypes chngType, string base64EncodedChange, TEnvironment env);
     }
 }

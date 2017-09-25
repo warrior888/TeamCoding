@@ -82,6 +82,34 @@
       <Project>{f9ee549e-e774-4c67-ab5f-fa5212d8b501}</Project>
       <Name>TeamCoding</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Broadcast.Interfaces\Toci.Ptc.Broadcast.Interfaces.csproj">
+      <Project>{3415c2dc-8091-4f46-975a-df8079c8128c}</Project>
+      <Name>Toci.Ptc.Broadcast.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
+      <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
+      <Name>Toci.Ptc.Environment.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects.Interfaces\Toci.Ptc.Projects.Interfaces.csproj">
+      <Project>{50bf82e9-8557-4b70-a746-61e45d269bcc}</Project>
+      <Name>Toci.Ptc.Projects.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects\Toci.Ptc.Projects.csproj">
+      <Project>{490be03c-bb02-4abd-8adc-efd818835d08}</Project>
+      <Name>Toci.Ptc.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Server.Interfaces\Toci.Ptc.Server.Interfaces.csproj">
+      <Project>{d092d351-b3ea-4f1b-910f-9d8c65a8eea2}</Project>
+      <Name>Toci.Ptc.Server.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
+      <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
+      <Name>Toci.Ptc.Users.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Users\Toci.Ptc.Users.csproj">
+      <Project>{be667369-9af6-4d0f-bd59-f58e0d5ec6da}</Project>
+      <Name>Toci.Ptc.Users</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="file\TextFile2.txt" />

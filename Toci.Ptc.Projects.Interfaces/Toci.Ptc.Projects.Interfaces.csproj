@@ -44,11 +44,19 @@
   <ItemGroup>
     <Compile Include="Changes\ChangeTypes.cs" />
     <Compile Include="Changes\IChange.cs" />
+    <Compile Include="Changes\IVsChange.cs" />
+    <Compile Include="Changes\VisualStudio\IVsAddDocument.cs" />
     <Compile Include="Documents\DocumentType.cs" />
     <Compile Include="Documents\IDocument.cs" />
+    <Compile Include="Documents\IVsDocument.cs" />
+    <Compile Include="Managers\IEnvUserChangeDocManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
+      <Project>{F5C9D871-9B9F-4007-B2D6-215598A83898}</Project>
+      <Name>Toci.Ptc.Environment.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
       <Project>{47A08B13-FC37-46F4-9CC2-871207AA9B2C}</Project>
       <Name>Toci.Ptc.Users.Interfaces</Name>
