@@ -6,7 +6,7 @@ namespace Toci.Ptc.Broadcast.Interfaces
 {
     public interface IBroadcast<in TEnvironment, in TDocument> 
         where TEnvironment : IEnvironment
-        where TDocument : IDocument
+        where TDocument : IDocument<TEnvironment>
     {
         bool BroadcastDocument(IUser user, TDocument doc, TEnvironment env);
     }

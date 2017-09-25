@@ -2,15 +2,15 @@
 
 namespace Toci.Ptc.Projects.Interfaces.Changes
 {
-    public interface IChange : ITextSnapshot // ???
+    public interface IChange<TEnvironment> //: ITextSnapshot // ???
     {
         ChangeTypes ChgType { get; set; }
 
-        int Line { get; set; } // ??
+        string Base64EncodedContent { get; set; }
 
         //caretInfo caretposition 
 
-         // string info = > dupa
+        // string info = > dupa
 
 
     }

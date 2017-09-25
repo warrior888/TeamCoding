@@ -40,15 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Communication\IFrame.cs" />
-    <Compile Include="Communication\IPropagator.cs" />
     <Compile Include="Communication\IServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Toci.Ptc.Broadcast.Interfaces\Toci.Ptc.Broadcast.Interfaces.csproj">
+      <Project>{3415c2dc-8091-4f46-975a-df8079c8128c}</Project>
+      <Name>Toci.Ptc.Broadcast.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
       <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
       <Name>Toci.Ptc.Environment.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects.Interfaces\Toci.Ptc.Projects.Interfaces.csproj">
+      <Project>{50bf82e9-8557-4b70-a746-61e45d269bcc}</Project>
+      <Name>Toci.Ptc.Projects.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
       <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
