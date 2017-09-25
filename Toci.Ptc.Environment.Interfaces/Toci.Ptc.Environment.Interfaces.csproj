@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D092D351-B3EA-4F1B-910F-9D8C65A8EEA2}</ProjectGuid>
+    <ProjectGuid>{F5C9D871-9B9F-4007-B2D6-215598A83898}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Toci.Ptc.Server.Interfaces</RootNamespace>
-    <AssemblyName>Toci.Ptc.Server.Interfaces</AssemblyName>
+    <RootNamespace>Toci.Ptc.Environment.Interfaces</RootNamespace>
+    <AssemblyName>Toci.Ptc.Environment.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,20 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Communication\IFrame.cs" />
-    <Compile Include="Communication\IPropagator.cs" />
-    <Compile Include="Communication\IServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
-      <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
-      <Name>Toci.Ptc.Environment.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
-      <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
-      <Name>Toci.Ptc.Users.Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

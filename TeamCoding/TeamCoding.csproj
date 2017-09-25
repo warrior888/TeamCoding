@@ -113,6 +113,9 @@
     <Compile Include="TeamCodingToolbarSCMConnectButton.cs" />
     <Compile Include="Toci\Implementations\BroadcastManager.cs" />
     <Compile Include="Toci\Implementations\EnvOpenedFilesManager.cs" />
+    <Compile Include="Toci\Implementations\Pentagram\CasualFileDocument.cs" />
+    <Compile Include="Toci\Implementations\Pentagram\ProjectDocumentBase.cs" />
+    <Compile Include="Toci\Implementations\Pentagram\VsProjectDocument.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />
     <Compile Include="Toci\Implementations\ProjectManager.cs" />
@@ -123,6 +126,7 @@
     <Compile Include="Toci\Implementations\VrPluginForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Toci\Interfaces\IDocumentOperations.cs" />
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
