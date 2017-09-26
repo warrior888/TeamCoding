@@ -5,8 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeamCoding.Logging;
+using Toci.Ptc.Broadcast;
+using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
+using Toci.Ptc.Server.Interfaces.Communication;
 
 //using TeamCoding.VisualStudio.Models;
 
@@ -113,6 +116,35 @@ namespace Toci.TeamCoding.Tests.GKTests
             
         }
     }
+
+    public class ExcelEnvironment : IEnvironment
+    {
+        public void Bj()
+        {
+            
+        }
+    }
+
+    public class TxtEnvironment : IEnvironment { }
+
+    public class ExcelChange : IChange<ExcelEnvironment> {
+
+        public ChangeTypes ChgType { get; set; }
+
+        public string Base64EncodedContent { get; set; }
+
+        public ExcelEnvironment Environment { get; set; }
+
+        public void test()
+        {
+            Environment.Bj();
+        }
+    }
+
+    //public class ExcelServer : IServer<>
+
+    //public class PowerPointBroadcast : BroadcastBase<IEnvironment, IDocument<IEnvironment, IChange<IEnvironment>, IUser>, >
+
     /*
     public class GhostRiderDocument : IDocument<EnviroenmentBase>
     {

@@ -1,9 +1,9 @@
 ﻿namespace Toci.Ptc.Server.Interfaces.Communication
 {
-    public interface IServer<TFrame, TEnvironment>
+    public interface IServer<TChange, TEnvironment>
     {
-        bool Send(TFrame frame);
+        bool Send(TChange frame);
 
-        TFrame Receive(); // ??
+        TChange Receive(); // ??
     }
 }

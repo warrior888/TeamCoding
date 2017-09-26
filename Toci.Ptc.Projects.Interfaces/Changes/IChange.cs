@@ -8,6 +8,8 @@ namespace Toci.Ptc.Projects.Interfaces.Changes
 
         string Base64EncodedContent { get; set; }
 
+        TEnvironment Environment { get; set; }
+
         //caretInfo caretposition 
 
         // string info = > dupa
