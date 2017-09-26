@@ -2,6 +2,8 @@
 {
     public interface IUser
     {
-        string Name { get; set; }
+        string Name { get; }
+
+        string GlobalIp { get; }
     }
 }
