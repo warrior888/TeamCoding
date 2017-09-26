@@ -73,7 +73,7 @@ namespace TeamCoding.Toci.Implementations
         {
             foreach (var item in collection)
             {
-                ScManager.BroadCastFile(item);
+                //ScManager.BroadCastFile(item);
             }
         }
 

@@ -52,7 +52,7 @@ namespace Toci.Piastcode.Social.Client
 
                     if (item.ItemModificationType == ModificationType.Add)
                     {
-                        AddFile(Map[ModificationType.Add], (IProjectItem)item);
+                        //AddFile(Map[ModificationType.Add], (IProjectItem)item);
                     }
 
                     if (item.ItemModificationType == ModificationType.Edit)
