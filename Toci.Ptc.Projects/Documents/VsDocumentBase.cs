@@ -8,6 +8,6 @@ namespace Toci.Ptc.Projects.Documents
 {
     public abstract class VsDocumentBase : DocumentBase<IVisualStudioEnvironment, IVsChange, IVsUser>, IVsDocument
     {
-        
+        public string Path { get; set; }
     }
 }

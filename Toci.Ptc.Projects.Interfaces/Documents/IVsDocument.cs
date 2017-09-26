@@ -6,6 +6,8 @@ namespace Toci.Ptc.Projects.Interfaces.Documents
 {
     public interface IVsDocument : IDocument<IVisualStudioEnvironment, IVsChange, IVsUser>
     {
-        
+        string Path { get; set; }
+
+     //   System.IO.DirectoryInfo
     }
 }

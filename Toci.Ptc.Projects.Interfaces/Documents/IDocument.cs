@@ -11,5 +11,7 @@ namespace Toci.Ptc.Projects.Interfaces.Documents
         Dictionary<TUser, Dictionary<string, TChange>> Changes { get; set; }
 
         bool CreateChange(ChangeTypes chngType, string base64EncodedChange, TEnvironment env);
+
+        string Base64EncodedEntireDocument { get; set; }
     }
 }

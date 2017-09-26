@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using net.r_eg.MvsSln;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using Toci.Ptc.Broadcast;
 using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
+using Toci.Ptc.Projects.Project;
 using Toci.Ptc.Server.Interfaces.Communication;
 
 //using TeamCoding.VisualStudio.Models;
@@ -18,6 +20,15 @@ namespace Toci.TeamCoding.Tests.GKTests
     [TestClass]
     public class GKLoggerTest
     {
+        [TestMethod]
+        public void LoadingSolutionToRamTest()
+        {
+            VisualStudioSolution sln = new VisualStudioSolution(@"C:\Users\bzapart\Documents\TeamCoding\TeamCoding.sln");
+
+            Sln files = sln.GetSln();
+            //files.Result.Env.Projects.First(). ProjectItems.First().
+        }
+
         [TestMethod]
         public void TestMyLogger()
         {
