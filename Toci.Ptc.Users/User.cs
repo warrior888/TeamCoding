@@ -8,7 +8,27 @@ namespace Toci.Ptc.Users
     public class User : IUser
     {
         protected string MyGlobalIp;
+        protected string MyLocalIp;
+        protected string ServerUserName;
+        protected string ClientUserIp;
         protected Socket Socket;
+
+        public string LocalIp
+        {
+            get
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (var ip in host.AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        MyLocalIp = ip.ToString();
+                    }
+                }
+
+                return MyLocalIp;
+            }
+        }
 
         public Socket UserSocket
         {
@@ -23,6 +43,11 @@ namespace Toci.Ptc.Users
             get
             {
                 return Environment.UserDomainName;
+            }
+
+            set
+            {
+                ServerUserName = value;
             }
         }
 
@@ -46,7 +71,8 @@ namespace Toci.Ptc.Users
 
         public virtual void SetUserConnectionData(IUserDataEntity udEnt)
         {
-            
+            ServerUserName = udEnt.Name;
+            ClientUserIp = udEnt.GlobalIp;
         }
     }
 }

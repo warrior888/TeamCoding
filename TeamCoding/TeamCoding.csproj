@@ -128,6 +128,10 @@
     </Compile>
     <Compile Include="Toci\Interfaces\IDocumentOperations.cs" />
     <Compile Include="Toci\Interfaces\IProjectFileManager.cs" />
+    <Compile Include="Toci\Pentagram\Implementations\TeamCodingUser.cs" />
+    <Compile Include="Toci\Pentagram\Implementations\VsFileTcManager.cs" />
+    <Compile Include="Toci\Pentagram\Interfaces\ITeamCodingUser.cs" />
+    <Compile Include="Toci\Pentagram\Interfaces\IVsFileTcManager.cs" />
     <Compile Include="VisualStudio\Controls\TextBlockToLetterMarginConverter.cs" />
     <Compile Include="VisualStudio\Controls\UserAvatar.xaml.cs">
       <DependentUpon>UserAvatar.xaml</DependentUpon>
@@ -552,6 +556,14 @@
       <IncludeOutputGroupsInVSIX>BuiltProjectOutputGroup%3bBuiltProjectOutputGroupDependencies%3bGetCopyToOutputDirectoryItems%3bSatelliteDllsProjectOutputGroup</IncludeOutputGroupsInVSIX>
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
+      <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
+      <Name>Toci.Ptc.Users.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Users\Toci.Ptc.Users.csproj">
+      <Project>{be667369-9af6-4d0f-bd59-f58e0d5ec6da}</Project>
+      <Name>Toci.Ptc.Users</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toci\Toci.Piascode.Instructions.Interfacces\Toci.Piascode.Instructions.Interfaces.csproj">
       <Project>{86782432-7656-499a-aa3f-d1bc8a90a81d}</Project>

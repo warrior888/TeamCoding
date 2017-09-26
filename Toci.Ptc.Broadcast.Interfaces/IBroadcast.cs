@@ -13,5 +13,7 @@ namespace Toci.Ptc.Broadcast.Interfaces
         bool BroadcastDocument(IUser user, TDocument doc);
 
         bool BroadcastChange(IUser user, TDocument doc, IChange<IEnvironment> change);
+
+        bool IntroduceOneself(IUser user);
     }
 }

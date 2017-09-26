@@ -4,9 +4,11 @@ namespace Toci.Ptc.Users.Interfaces.Skeleton
 {
     public interface IUser
     {
-        string Name { get; }
+        string Name { get; set; }
 
         string GlobalIp { get; }
+
+        string LocalIp { get; }
 
         Socket UserSocket { get; }
 

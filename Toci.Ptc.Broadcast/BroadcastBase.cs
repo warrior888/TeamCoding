@@ -2,16 +2,21 @@
 using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
+using Toci.Ptc.Server;
+using Toci.Ptc.Server.Interfaces.Communication;
 using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Broadcast
 {
     public abstract class BroadcastBase<TDocument, TServer> : IBroadcast<TDocument, TServer>
         where TDocument : IDocument<IEnvironment, IChange<IEnvironment>, IUser>
+        where TServer : IServer<IChange<IEnvironment>, IEnvironment>
     {
+        protected TServer Server;
+
         public TServer GetServer()
         {
-            throw new System.NotImplementedException();
+            return Server;
         }
 
         public bool BroadcastDocument(IUser user, TDocument doc)
@@ -23,5 +28,7 @@ namespace Toci.Ptc.Broadcast
         {
             throw new System.NotImplementedException();
         }
+
+        public abstract bool IntroduceOneself(IUser user);
     }
 }

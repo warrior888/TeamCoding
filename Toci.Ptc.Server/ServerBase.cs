@@ -20,7 +20,7 @@ namespace Toci.Ptc.Server
 
         private string ipAddress;
 
-        protected string IpAddress
+        protected virtual string IpAddress
         {
             get
             {
