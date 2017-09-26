@@ -63,7 +63,7 @@ namespace Toci.Ptc.Server
             byte[] formatted = socket.ReceiveFromSocket();
             MemoryStream ms = new MemoryStream(formatted);
 
-            var tuser = Serializer.Deserialize<IUserDataEntity>(ms);
+            IUserDataEntity tuser = Serializer.Deserialize<IUserDataEntity>(ms);
 
             IUser user = CreateUser(tuser);
 

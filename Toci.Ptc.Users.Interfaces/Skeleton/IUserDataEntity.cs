@@ -3,7 +3,7 @@
 namespace Toci.Ptc.Users.Interfaces.Skeleton
 {
     [ProtoContract]
-    public interface IUserDataEntity
+    public interface IUserDataEntity 
     {
         [ProtoMember(1)]
         string Name { get; }

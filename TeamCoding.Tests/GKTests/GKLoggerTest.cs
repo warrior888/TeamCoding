@@ -17,6 +17,21 @@ using Toci.Ptc.Server.Interfaces.Communication;
 
 namespace Toci.TeamCoding.Tests.GKTests
 {
+    public abstract class World
+    {
+        
+    }
+
+    public class Continent : World
+    {
+        
+    }
+
+    public abstract class Country : Continent
+    {
+        
+    }
+
     [TestClass]
     public class GKLoggerTest
     {
