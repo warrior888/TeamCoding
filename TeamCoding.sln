@@ -128,6 +128,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Ptc.Manager", "Toci.Pt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Common.Extensions", "Toci.Common.Extensions\Toci.Common.Extensions.csproj", "{CA75B16A-64DD-4D98-BCDB-6A036BD4C664}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toci.Ptc.Vs.Server.App", "Toci.Ptc.Vs.Server.App\Toci.Ptc.Vs.Server.App.csproj", "{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -408,6 +410,14 @@ Global
 		{CA75B16A-64DD-4D98-BCDB-6A036BD4C664}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA75B16A-64DD-4D98-BCDB-6A036BD4C664}.Release|x64.ActiveCfg = Release|Any CPU
 		{CA75B16A-64DD-4D98-BCDB-6A036BD4C664}.Release|x64.Build.0 = Release|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -448,5 +458,6 @@ Global
 		{09771277-001E-412E-9CBA-C9FE0B0C16C2} = {89679AD6-D96C-4AAF-AE32-0B514587A6E3}
 		{3C121C6A-4183-4061-A5D4-933A3B8E8A37} = {89679AD6-D96C-4AAF-AE32-0B514587A6E3}
 		{CA75B16A-64DD-4D98-BCDB-6A036BD4C664} = {E00027AE-06F3-478C-9454-E7DB25EC87AD}
+		{A5FD384A-FC1A-43C4-A2CB-0BA24ECE4F8A} = {7CBD804B-7005-4067-9F9D-5F7670B73A5C}
 	EndGlobalSection
 EndGlobal

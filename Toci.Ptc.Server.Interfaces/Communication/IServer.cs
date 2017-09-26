@@ -5,5 +5,7 @@
         bool Send(TChange frame);
 
         TChange Receive(); // ??
+
+        void CreateSocket();
     }
 }

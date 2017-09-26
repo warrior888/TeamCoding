@@ -8,6 +8,15 @@ namespace Toci.Ptc.Users
     public class User : IUser
     {
         protected string MyGlobalIp;
+        protected Socket Socket;
+
+        public Socket UserSocket
+        {
+            get
+            {
+                return Socket;
+            }
+        }
 
         public string Name
         {
@@ -28,6 +37,11 @@ namespace Toci.Ptc.Users
 
                 return MyGlobalIp; 
             }
+        }
+
+        public void SetConnectionSocket(Socket socket)
+        {
+            Socket = socket;
         }
     }
 }
