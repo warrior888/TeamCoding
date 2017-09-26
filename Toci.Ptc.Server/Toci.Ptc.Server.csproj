@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.2.1\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,9 +45,14 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="ServerBase.cs" />
     <Compile Include="VisualStudioServer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Toci.Common.Extensions\Toci.Common.Extensions.csproj">
+      <Project>{ca75b16a-64dd-4d98-bcdb-6a036bd4c664}</Project>
+      <Name>Toci.Common.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
       <Project>{f5c9d871-9b9f-4007-b2d6-215598a83898}</Project>
       <Name>Toci.Ptc.Environment.Interfaces</Name>
@@ -73,6 +81,9 @@
       <Project>{be667369-9af6-4d0f-bd59-f58e0d5ec6da}</Project>
       <Name>Toci.Ptc.Users</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

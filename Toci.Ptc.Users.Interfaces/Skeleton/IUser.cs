@@ -11,5 +11,7 @@ namespace Toci.Ptc.Users.Interfaces.Skeleton
         Socket UserSocket { get; }
 
         void SetConnectionSocket(Socket socket);
+
+        void SetUserConnectionData(IUserDataEntity udEnt);
     }
 }

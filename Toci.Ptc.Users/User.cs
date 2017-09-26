@@ -43,5 +43,10 @@ namespace Toci.Ptc.Users
         {
             Socket = socket;
         }
+
+        public virtual void SetUserConnectionData(IUserDataEntity udEnt)
+        {
+            
+        }
     }
 }

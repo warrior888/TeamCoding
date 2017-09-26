@@ -18,9 +18,7 @@ namespace Toci.Ptc.Vs.Server.App
             VisualStudioServer srv = new VisualStudioServer();
             srv.CreateSocket();
 
-            IUser vsUSer = new VsUser();
-            
-            Task task = new Task(() => srv.AcceptConnection(vsUSer));
+            Task task = new Task(() => srv.AcceptConnection());
             task.Start();
 
             task.Wait();
