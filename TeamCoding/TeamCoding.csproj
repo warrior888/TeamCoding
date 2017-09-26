@@ -557,6 +557,22 @@
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Broadcast\Toci.Ptc.Broadcast.csproj">
+      <Project>{1266DAD6-454D-4D24-98C0-E8793D7BA1AE}</Project>
+      <Name>Toci.Ptc.Broadcast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Environment.Interfaces\Toci.Ptc.Environment.Interfaces.csproj">
+      <Project>{F5C9D871-9B9F-4007-B2D6-215598A83898}</Project>
+      <Name>Toci.Ptc.Environment.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects.Interfaces\Toci.Ptc.Projects.Interfaces.csproj">
+      <Project>{50BF82E9-8557-4B70-A746-61E45D269BCC}</Project>
+      <Name>Toci.Ptc.Projects.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Server\Toci.Ptc.Server.csproj">
+      <Project>{53CDAE05-C965-47E2-B5A9-92668E49EC0D}</Project>
+      <Name>Toci.Ptc.Server</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
       <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
       <Name>Toci.Ptc.Users.Interfaces</Name>

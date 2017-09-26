@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using EnvDTE;
+using TeamCoding.Toci.Pentagram.Implementations;
+using TeamCoding.Toci.Pentagram.Interfaces;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
@@ -15,9 +17,12 @@ namespace TeamCoding.Toci.Implementations
         protected ProjectFileManager PfManager;
         protected DTE Dte;
         public static bool IsRunning;
+        IVsFileTcManager vsFileTcManager = new VsFileTcManager();
 
         public static void StartSCMClient()
         {
+            new VsFileTcManager().Connect(new TeamCodingUser {  });
+
             if (!IsRunning && ScManager != null)
             {
                 ScManager.StartClient();

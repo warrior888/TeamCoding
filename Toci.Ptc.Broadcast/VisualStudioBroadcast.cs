@@ -11,7 +11,7 @@ namespace Toci.Ptc.Broadcast
     {
         public override bool IntroduceOneself(IUser user)
         {
-            user.SetConnectionSocket(GetServer().CreateSocket(user.LocalIp));
+            user.SetConnectionSocket(GetServer().CreateSocket("54.36.98.229")); // TODO
 
             return true;
         }
