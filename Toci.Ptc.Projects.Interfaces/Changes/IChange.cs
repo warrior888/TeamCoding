@@ -10,6 +10,8 @@ namespace Toci.Ptc.Projects.Interfaces.Changes
 
         TEnvironment Environment { get; set; }
 
+        string GetChangeId();
+
         //caretInfo caretposition 
 
         // string info = > dupa

@@ -127,19 +127,6 @@ namespace Toci.TeamCoding.Tests.GKTests
 
     public class TxtEnvironment : IEnvironment { }
 
-    public class ExcelChange : IChange<ExcelEnvironment> {
-
-        public ChangeTypes ChgType { get; set; }
-
-        public string Base64EncodedContent { get; set; }
-
-        public ExcelEnvironment Environment { get; set; }
-
-        public void test()
-        {
-            Environment.Bj();
-        }
-    }
 
     //public class ExcelServer : IServer<>
 

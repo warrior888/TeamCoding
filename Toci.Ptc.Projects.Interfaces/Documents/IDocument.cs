@@ -8,7 +8,7 @@ namespace Toci.Ptc.Projects.Interfaces.Documents
     {
         DocumentType DocType { get; set; }
 
-        Dictionary<TUser, List<TChange>> Changes { get; set; }
+        Dictionary<TUser, Dictionary<string, TChange>> Changes { get; set; }
 
         bool CreateChange(ChangeTypes chngType, string base64EncodedChange, TEnvironment env);
     }
