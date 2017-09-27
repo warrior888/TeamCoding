@@ -1,16 +1,13 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using ProtoBuf;
 using Toci.Common.Extensions.Network;
-using Toci.Ptc.Environment.Interfaces;
-using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Server.Interfaces.Communication;
 using Toci.Ptc.Users;
 using Toci.Ptc.Users.Interfaces.Skeleton;
@@ -23,7 +20,13 @@ namespace Toci.Ptc.Server
 
         protected List<IUser> Clients = new List<IUser>();
 
-        protected static Socket UserSocket // fucking bullshit
+        protected Socket UserSocket // fucking bullshit
+        {
+            get;
+            set;
+        }
+
+        protected Socket ServerSocket
         {
             get;
             set;
@@ -49,17 +52,18 @@ namespace Toci.Ptc.Server
         protected ServerBase(int port)
         {
             Port = port;
+            ServerSocket = CreateSocket();
         }
 
         protected abstract IUser CreateUser(IUserDataEntity udEnt);
 
         public virtual void AcceptConnection()
         {
-            UserSocket.Listen(8);
+            ServerSocket.Listen(8);
 
             while (true)
             {
-                Socket accepted = UserSocket.Accept();
+                Socket accepted = ServerSocket.Accept();
 
                 IUser user = CreateUser(accepted);
 
@@ -80,8 +84,9 @@ namespace Toci.Ptc.Server
 
             IUser user = CreateUser(tuser);
 
+
             user.SetConnectionSocket(socket);
-            GetSocket(socket);
+            //GetSocket(socket);
             //UserSocket = socket;
 
             return user;
@@ -91,11 +96,13 @@ namespace Toci.Ptc.Server
 
         public abstract TChange Receive();
 
-        public virtual void CreateSocket()
+        public virtual Socket CreateSocket()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
-            UserSocket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            UserSocket.Bind(endPoint);
+            Socket newSocket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            newSocket.Bind(endPoint);
+
+            return newSocket;
         }
 
         public void GetSocket(Socket socket)

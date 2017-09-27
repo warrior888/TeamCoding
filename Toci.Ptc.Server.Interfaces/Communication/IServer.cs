@@ -8,7 +8,7 @@ namespace Toci.Ptc.Server.Interfaces.Communication
 
         TDocument Receive(); // ??
 
-        void CreateSocket();
+        Socket CreateSocket();
 
         void GetSocket(Socket socket);
 
