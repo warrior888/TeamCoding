@@ -9,9 +9,15 @@ namespace Toci.Ptc.Broadcast
 {
     public class VisualStudioBroadcast : BroadcastBase<IDocument<IEnvironment, IChange<IEnvironment>, IUser>, VisualStudioClient>
     {
+        public VisualStudioBroadcast()
+        {
+            Server = new VisualStudioClient();
+            ServerIp = "54.36.98.229"; // put this to config cnstruct  etc
+        } 
+
         public override bool IntroduceOneself(IUser user)
         {
-            user.SetConnectionSocket(GetServer().CreateSocket("54.36.98.229")); // TODO
+            user.SetConnectionSocket(GetServer().CreateSocket(ServerIp)); 
 
             return true;
         }

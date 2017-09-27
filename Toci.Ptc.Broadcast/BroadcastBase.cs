@@ -13,8 +13,9 @@ namespace Toci.Ptc.Broadcast
         where TServer : IServer<IChange<IEnvironment>, IEnvironment>
     {
         protected TServer Server;
+        protected string ServerIp;
 
-        public TServer GetServer()
+        public virtual TServer GetServer()
         {
             return Server;
         }
