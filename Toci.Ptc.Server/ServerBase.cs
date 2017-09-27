@@ -108,6 +108,9 @@ namespace Toci.Ptc.Server
                 {
                     byte[] formatted = client.UserSocket.ReceiveFromSocket();
 
+                    string temp = Encoding.ASCII.GetString(formatted);
+                    Debug.WriteLine(client.Name + " says: " + temp);
+
                     BroadcastData(formatted, client);
                 }
                 catch (Exception ex)
@@ -129,7 +132,7 @@ namespace Toci.Ptc.Server
                     {
                         continue;
                     }
-                    byte[] name = Encoding.ASCII.GetBytes(client.Name + ": ");
+                    //byte[] name = Encoding.ASCII.GetBytes(client.Name + ": ");
 
                     client.UserSocket.Send(data);
                 }
