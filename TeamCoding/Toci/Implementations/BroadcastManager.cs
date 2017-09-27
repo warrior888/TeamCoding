@@ -8,63 +8,47 @@ using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
+using Toci.Ptc.Broadcast;
 
 namespace TeamCoding.Toci.Implementations
 {
-    public class BroadcastManager
+    public class BroadcastManager : SocketClientManager
     {
-        private static SocketClientManager ScManager;
-        protected ProjectFileManager PfManager;
-        protected DTE Dte;
+        protected static ProjectFileManager PfManager = new ProjectFileManager();
+        protected static DTE Dte;
         public static bool IsRunning;
         IVsFileTcManager vsFileTcManager = new VsFileTcManager();
 
-        public static void StartSCMClient()
+        public void StartSCMClient()
         {
-            new VsFileTcManager().Connect(new TeamCodingUser {  });
-
-            if (!IsRunning && ScManager != null)
-            {
-                ScManager.StartClient();
-                IsRunning = true;
-            }
+            CreateSocket(ServerIp);
+            //new VsFileTcManager().Connect(new TeamCodingUser {  });
         }
 
         //TODO: need method to Stop ScManager
 
         public static void StopSCMClient()
         {
-            if (IsRunning && ScManager != null)
-            {
-                IsRunning = false;
-            }
+
         }
 
-        public BroadcastManager()
+        public BroadcastManager() : base(
+            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP, 
+            new Dictionary<ModificationType, Action<IItem>>
+            {
+                {ModificationType.Add, AddItem},
+                {ModificationType.Edit, EditItem},
+                {ModificationType.Overwrite, OverwriteItem}
+            })
         {
             //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort
 
             //"92.222.71.194" 25016
-            if (!string.IsNullOrEmpty(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP))
-            {
-                if (ScManager == null)
-                {
-                    ScManager = new SocketClientManager(
-                        TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP,
-                        TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerPort,
-                        new Dictionary<ModificationType, Action<IItem>>
-                        {
-                            {ModificationType.Add, AddItem},
-                            {ModificationType.Edit, EditItem},
-							{ModificationType.Overwrite, OverwriteItem}
-                        });
-                    //   ScManager.StartClient();
-                }
 
-                PfManager = new ProjectFileManager();
-            }
+                //"54.36.98.229"
+      
         }
 
 
@@ -82,7 +66,7 @@ namespace TeamCoding.Toci.Implementations
             }
         }
 
-        protected virtual void AddItem(IItem item)
+        protected static void AddItem(IItem item)
         {
             TcProjectItem prItem = item as TcProjectItem;
 
@@ -91,13 +75,13 @@ namespace TeamCoding.Toci.Implementations
             //Dte.ActiveDocument.Name
         }
 
-        protected virtual void EditItem(IItem item)
+        protected static void EditItem(IItem item)
         {
             TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
             PfManager.EditItem(editedProjectItem.FilePath, editedProjectItem);
         }
 
-		private void OverwriteItem(IItem item)
+		private static void OverwriteItem(IItem item)
 		{
 			TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
 			PfManager.OverwriteItem(editedProjectItem.FilePath, editedProjectItem);

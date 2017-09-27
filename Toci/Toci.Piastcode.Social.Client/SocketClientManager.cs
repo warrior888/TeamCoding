@@ -1,70 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using ProtoBuf;
+using Toci.Common.Extensions.Network;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Entities;
 using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets;
 using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
+using Toci.Ptc.Broadcast;
+using Toci.Ptc.Users;
+using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Piastcode.Social.Client
 {
-    public class SocketClientManager : SocketClientBase
+    public class SocketClientManager : VisualStudioBroadcast
     {
         protected Dictionary<ModificationType, Action<IItem>> Map;
 
-        public SocketClientManager(string ipAddress, int port, Dictionary<ModificationType, Action<IItem>> map) : base(ipAddress, port)
+        public SocketClientManager(string ipAddress, Dictionary<ModificationType, Action<IItem>> map) : base(ipAddress)
         {
             Map = map;
         }
 
         public void StartClient()
         {
-            Task.Factory.StartNew(ListenForString);
-        }
-
-
-        protected void ListenForString()
-        {
-            while(true)
-            { 
-                byte[] buffer = new byte[socket.SendBufferSize];
-                int bytesRead = socket.Receive(buffer);
-
-                byte[] formatted = new byte[bytesRead];
-
-                for (int i = 0; i < bytesRead; i++)
-                {
-                    formatted[i] = buffer[i];
-                }
-
-                IItem item;
-                using (MemoryStream ms = new MemoryStream(formatted))
-                {
-                    item = Serializer.Deserialize<TcEditedProjectItem>(ms);
-
-
-                    if (item.ItemModificationType == ModificationType.Add)
-                    {
-                        //AddFile(Map[ModificationType.Add], (IProjectItem)item);
-                    }
-
-                    if (item.ItemModificationType == ModificationType.Edit)
-                    {
-                        Map[ModificationType.Edit](item);
-                    }
-	                if (item.ItemModificationType == ModificationType.Overwrite)
-	                {
-		                Map[ModificationType.Overwrite](item);
-	                }
-                }
-            }
+            Task.Factory.StartNew(ListenForFrame);
         }
 
         public virtual void BroadCastFile(IItem projectItem)
@@ -72,56 +39,45 @@ namespace Toci.Piastcode.Social.Client
             using (MemoryStream ms = new MemoryStream())
             {
                 Serializer.Serialize(ms, projectItem);
-                socket.Send(ms.ToArray());
+                //CoreUser.UserSocket.Send(ms.ToArray());
             }
         }
 
         protected IFrame ListenForFrame()
         {
-            byte[] buffer = new byte[socket.SendBufferSize];
-            int bytesRead = socket.Receive(buffer);
+            byte[] formatted = CoreUser.UserSocket.ReceiveFromSocket();
 
-            byte[] formatted = new byte[bytesRead];
-
-            for (int i = 0; i < bytesRead; i++)
-            {
-                formatted[i] = buffer[i];
-            }
             IFrame frame = new Frame();
 
             frame = Serializer.Deserialize<IFrame>(new MemoryStream(formatted));
             return frame;
         }
 
-        public override void CreateSocket()
+        public override void CreateSocket(string serverIp)
         {
-            Random r = new Random();
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
-            socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp), GetServer().ConnectionPort);
+            Socket socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            socket.Connect(endPoint);
+
+            IntroduceOneself(socket);
+
+            return;
             try
             {
                 socket.Connect(endPoint);
-                string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                IUser user = new User
-                {
-                    Name = userName,
-                    UserID = r.Next(100000),
-                };
+                
                 using (MemoryStream ms = new MemoryStream())
                 {
-                    Serializer.Serialize(ms, user);
+                    Serializer.Serialize(ms, CoreUser);
                     socket.Send(ms.ToArray());
                 }
+
+                CoreUser.SetConnectionSocket(socket);
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Couldn't connect to the server, exception: " + ex);
+                Debug.WriteLine("Couldn't connect to the server, exception: " + ex.Message);
             }
-        }
-
-        public void AddFile(Action<IProjectItem> action, IProjectItem projectItem)
-        {
-            action(projectItem);
         }
     }
 }

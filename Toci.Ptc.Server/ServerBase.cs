@@ -79,6 +79,14 @@ namespace Toci.Ptc.Server
             Socket.Bind(endPoint);
         }
 
+        public int ConnectionPort
+        {
+            get
+            {
+                return Port;
+            }
+        }
+
         protected virtual void ListenForChanges(IUser client)
         {
             while (true)

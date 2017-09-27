@@ -72,7 +72,9 @@ namespace TeamCoding.Toci.Implementations
 
 		private void ConnectButton_Click(object sender, EventArgs e)
 		{
-			BroadcastManager.StartSCMClient();
+		    BroadcastManager bMn = new BroadcastManager();
+
+		    bMn.StartSCMClient();
 			this.Close();
 		}
 	}

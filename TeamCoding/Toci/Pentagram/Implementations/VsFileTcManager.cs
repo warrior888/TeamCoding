@@ -6,11 +6,12 @@ namespace TeamCoding.Toci.Pentagram.Implementations
 {
     public class VsFileTcManager : IVsFileTcManager
     {
-        protected VisualStudioBroadcast VsBroadcast = new VisualStudioBroadcast();
+        //protected VisualStudioBroadcast VsBroadcast = new VisualStudioBroadcast();
 
         public bool Connect(IVsUser user)
         {
-            return VsBroadcast.IntroduceOneself(user);
+            //return VsBroadcast.IntroduceOneself(user);
+            return true;
         }
     }
 }

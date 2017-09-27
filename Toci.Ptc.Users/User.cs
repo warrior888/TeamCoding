@@ -74,5 +74,14 @@ namespace Toci.Ptc.Users
             ServerUserName = udEnt.Name;
             ClientUserIp = udEnt.GlobalIp;
         }
+
+        public IUserDataEntity Convert()
+        {
+            return new UserDataEntity
+            {
+                GlobalIp = MyGlobalIp,
+                Name = ServerUserName
+            };
+        }
     }
 }
