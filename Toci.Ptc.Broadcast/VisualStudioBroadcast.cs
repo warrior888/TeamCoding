@@ -27,6 +27,7 @@ namespace Toci.Ptc.Broadcast
                 Name = userName,
             };
             CoreUser.SetConnectionSocket(socket);
+            Server.GetSocket(socket);
 
             using (MemoryStream ms = new MemoryStream())
             {

@@ -23,7 +23,11 @@ namespace Toci.Ptc.Server
 
         protected List<IUser> Clients = new List<IUser>();
 
-        protected Socket UserSocket { get; set; }
+        protected static Socket UserSocket // fucking bullshit
+        {
+            get;
+            set;
+        }
 
         private string ipAddress;
 
@@ -77,6 +81,8 @@ namespace Toci.Ptc.Server
             IUser user = CreateUser(tuser);
 
             user.SetConnectionSocket(socket);
+            GetSocket(socket);
+            //UserSocket = socket;
 
             return user;
         }
@@ -92,12 +98,22 @@ namespace Toci.Ptc.Server
             UserSocket.Bind(endPoint);
         }
 
+        public void GetSocket(Socket socket)
+        {
+            UserSocket = socket;
+        }
+
         public int ConnectionPort
         {
             get
             {
                 return Port;
             }
+        }
+
+        public void Connect(string serverIp)
+        {
+           
         }
 
         protected virtual void ListenForChanges(IUser client)

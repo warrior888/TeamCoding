@@ -19,22 +19,11 @@ namespace TeamCoding.Toci.Implementations
         protected EnvOpenedFilesManager EnvironmentOpenedFilesManager;
         protected VisualStudioClient VsClient;
 
-        protected BroadcastManager(string ipAddress) : base(ipAddress)
-        {
-            EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
-            VsClient = new VisualStudioClient();
-        }
-
         protected static ProjectFileManager PfManager = new ProjectFileManager();
         protected static DTE Dte;
         public static bool IsRunning;
 
-        public void StartSCMClient()
-        {
-            CreateSocket(ServerIp);
-        }
-
-        public BroadcastManager() : base(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP)
+        protected BroadcastManager() : base(TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP)
         {
             //todo: instead of ip address we should use for example: TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIPAddress
             //            TeamCodingPackage.Current.Settings.SharedSettings.ChangePropagationServerIP 
@@ -42,8 +31,11 @@ namespace TeamCoding.Toci.Implementations
 
             //"92.222.71.194" 25016
 
-                //"54.36.98.229"
-      
+            //"54.36.98.229"
+            EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
+            VsClient = new VisualStudioClient();
+
+            CreateSocket(ServerIp);
         }
 
 

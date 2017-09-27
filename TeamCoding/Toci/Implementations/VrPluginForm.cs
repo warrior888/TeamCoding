@@ -74,7 +74,6 @@ namespace TeamCoding.Toci.Implementations
 		{
 		    BroadcastManager bMn = new TeamCodingVisualStudioBroadcast();
 
-		    bMn.StartSCMClient();
 			this.Close();
 		}
 	}

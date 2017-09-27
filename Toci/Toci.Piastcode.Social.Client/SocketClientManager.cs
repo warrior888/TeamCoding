@@ -18,6 +18,8 @@ namespace Toci.Piastcode.Social.Client
 {
     public abstract class SocketClientManager : VisualStudioBroadcast
     {
+        protected Socket Socket;
+
         protected SocketClientManager(string ipAddress) : base(ipAddress)
         {
 
@@ -50,10 +52,10 @@ namespace Toci.Piastcode.Social.Client
         public override void CreateSocket(string serverIp)
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp), GetServer().ConnectionPort);
-            Socket socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect(endPoint);
+            Socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Socket.Connect(endPoint);
 
-            IntroduceOneself(socket);
+            IntroduceOneself(Socket);
         }
     }
 }
