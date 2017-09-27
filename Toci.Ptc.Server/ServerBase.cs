@@ -26,7 +26,7 @@ namespace Toci.Ptc.Server
             set;
         }
 
-        protected Socket ServerSocket
+        public Socket ServerSocket
         {
             get;
             set;
@@ -52,7 +52,6 @@ namespace Toci.Ptc.Server
         protected ServerBase(int port)
         {
             Port = port;
-            ServerSocket = CreateSocket();
         }
 
         protected abstract IUser CreateUser(IUserDataEntity udEnt);

@@ -16,7 +16,7 @@ namespace Toci.Ptc.Vs.Server.App
             Console.WriteLine($"[{DateTime.Now}] Server started.");
 
             VisualStudioServer srv = new VisualStudioServer();
-            //srv.CreateSocket();
+            srv.ServerSocket = srv.CreateSocket();
 
             Task task = new Task(() => srv.AcceptConnection());
             task.Start();
