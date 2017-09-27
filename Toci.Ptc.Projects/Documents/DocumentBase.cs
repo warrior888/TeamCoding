@@ -12,7 +12,7 @@ namespace Toci.Ptc.Projects.Documents
 
         public Dictionary<TUser, Dictionary<string, TChange>> Changes { get; set; }
 
-        public abstract bool CreateChange(ChangeTypes chngType, string base64EncodedChange, TEnvironment env);
+        public abstract bool CreateChange(ChangeTypes chngType, string base64EncodedChange);
 
         public string Base64EncodedEntireDocument { get; set; }
     }

@@ -2,13 +2,13 @@
 
 namespace Toci.Ptc.Projects.Interfaces.Changes
 {
-    public interface IChange<TEnvironment> //: ITextSnapshot // ???
+    public interface IChange<out TEnvironment> //: ITextSnapshot // ???
     {
         ChangeTypes ChgType { get; set; }
 
         string Base64EncodedContent { get; set; }
 
-        TEnvironment Environment { get; set; }
+        //TEnvironment Environment { get; set; }
 
         string GetChangeId();
 

@@ -70,6 +70,10 @@
       <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
       <Name>Toci.Ptc.Users.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
+      <Project>{FC6670A4-5F00-401D-9C90-544BA5F4A46D}</Project>
+      <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

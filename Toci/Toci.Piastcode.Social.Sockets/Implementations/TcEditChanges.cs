@@ -1,4 +1,5 @@
 ﻿using ProtoBuf;
+using Toci.Piastcode.Social.Entities.Interfaces;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 
 namespace Toci.Piastcode.Social.Sockets.Implementations

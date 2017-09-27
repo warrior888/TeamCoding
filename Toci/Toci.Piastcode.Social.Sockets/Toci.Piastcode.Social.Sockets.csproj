@@ -57,7 +57,6 @@
     <Compile Include="Implementations\TcEditedProjectItem.cs" />
     <Compile Include="Implementations\TcProjectItem.cs" />
     <Compile Include="Implementations\TcProjectItemsCollection.cs" />
-    <Compile Include="Interfaces\IEditChanges.cs" />
     <Compile Include="Interfaces\IEditedProjectItem.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IProjectItemsCollection.cs" />

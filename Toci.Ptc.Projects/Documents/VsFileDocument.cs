@@ -5,7 +5,7 @@ namespace Toci.Ptc.Projects.Documents
 {
     public class VsFileDocument : VsDocumentBase
     {
-        public override bool CreateChange(ChangeTypes chngType, string base64EncodedChange, IVisualStudioEnvironment env)
+        public override bool CreateChange(ChangeTypes chngType, string base64EncodedChange)
         {
             throw new System.NotImplementedException();
         }

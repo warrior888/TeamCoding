@@ -9,8 +9,7 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Broadcast
 {
-    public abstract class BroadcastBase<TDocument, TServer> : IBroadcast<TDocument, TServer>
-        where TDocument : IDocument<IEnvironment, IChange<IEnvironment>, IUser>
+    public abstract class BroadcastBase<TDocument, TServer> : IBroadcast<TDocument, TServer> 
         where TServer : IServer<IChange<IEnvironment>, IEnvironment>
     {
         protected TServer Server;
@@ -22,17 +21,12 @@ namespace Toci.Ptc.Broadcast
             return Server;
         }
 
-        public bool BroadcastDocument(IUser user, TDocument doc)
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract bool BroadcastDocument(IUser user, TDocument doc);
 
-        public bool BroadcastChange(IUser user, TDocument doc, IChange<IEnvironment> change)
-        {
-            throw new System.NotImplementedException();
-        }
+        public abstract bool BroadcastChange(IUser user, TDocument doc);
 
         public abstract bool IntroduceOneself(Socket socket);
+
         public abstract void CreateSocket(string serverIp);
     }
 }

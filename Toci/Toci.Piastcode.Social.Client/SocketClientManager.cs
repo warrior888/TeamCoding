@@ -11,22 +11,16 @@ using Toci.Common.Extensions.Network;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Entities;
 using Toci.Piastcode.Social.Entities.Interfaces;
-using Toci.Piastcode.Social.Sockets;
-using Toci.Piastcode.Social.Sockets.Implementations;
-using Toci.Piastcode.Social.Sockets.Interfaces;
 using Toci.Ptc.Broadcast;
-using Toci.Ptc.Users;
-using Toci.Ptc.Users.Interfaces.Skeleton;
+
 
 namespace Toci.Piastcode.Social.Client
 {
-    public class SocketClientManager : VisualStudioBroadcast
+    public abstract class SocketClientManager : VisualStudioBroadcast
     {
-        protected Dictionary<ModificationType, Action<IItem>> Map;
-
-        public SocketClientManager(string ipAddress, Dictionary<ModificationType, Action<IItem>> map) : base(ipAddress)
+        protected SocketClientManager(string ipAddress) : base(ipAddress)
         {
-            Map = map;
+
         }
 
         public void StartClient()
@@ -34,12 +28,12 @@ namespace Toci.Piastcode.Social.Client
             Task.Factory.StartNew(ListenForFrame);
         }
 
-        public virtual void BroadCastFile(IItem projectItem)
+        public virtual void BroadcastChange(IItem projectItem)
         {
             using (MemoryStream ms = new MemoryStream())
             {
                 Serializer.Serialize(ms, projectItem);
-                //CoreUser.UserSocket.Send(ms.ToArray());
+                CoreUser.UserSocket.Send(ms.ToArray()); 
             }
         }
 
@@ -60,24 +54,6 @@ namespace Toci.Piastcode.Social.Client
             socket.Connect(endPoint);
 
             IntroduceOneself(socket);
-
-            return;
-            try
-            {
-                socket.Connect(endPoint);
-                
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    Serializer.Serialize(ms, CoreUser);
-                    socket.Send(ms.ToArray());
-                }
-
-                CoreUser.SetConnectionSocket(socket);
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine("Couldn't connect to the server, exception: " + ex.Message);
-            }
         }
     }
 }

@@ -46,6 +46,10 @@
     <Reference Include="MvsSln, Version=1.0.1.43422, Culture=neutral, PublicKeyToken=87f0bd8fb7f0a2c4, processorArchitecture=MSIL">
       <HintPath>..\packages\MvsSln.1.0.1\lib\net40\MvsSln.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Toci\Toci.Piastcode.Social.Entities\bin\Debug\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\packages\stdole.7.0.3301\lib\net10\stdole.dll</HintPath>
@@ -64,7 +68,6 @@
     <Compile Include="Changes\ChangeTypes.cs" />
     <Compile Include="Changes\IChange.cs" />
     <Compile Include="Changes\IVsChange.cs" />
-    <Compile Include="Changes\VisualStudio\IVsChangeDocument.cs" />
     <Compile Include="Documents\DocumentType.cs" />
     <Compile Include="Documents\IDocument.cs" />
     <Compile Include="Documents\IProject.cs" />
@@ -85,10 +88,21 @@
       <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
       <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
+      <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>
+      <Name>Toci.Piastcode.Social.Sockets.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj">
+      <Project>{E18E9834-6F28-48B6-81C8-A7AA4CC365C1}</Project>
+      <Name>Toci.Piastcode.Social.Sockets</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Changes\VisualStudio\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

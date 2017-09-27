@@ -11,6 +11,7 @@ using System.Windows.Threading;
 using TeamCoding.Documents;
 using TeamCoding.Extensions;
 using TeamCoding.Toci.Implementations;
+using TeamCoding.Toci.Implementations.Pentagram;
 using TeamCoding.Toci.Interfaces;
 using TeamCoding.VisualStudio.Controls;
 using Toci.Piascode.Instructions.Interfacces.Entities;
@@ -56,7 +57,7 @@ namespace TeamCoding.VisualStudio
             WindowEvents.WindowCreated += WindowEvents_WindowCreated;
             TeamCodingPackage.Current.Settings.UserSettings.UserTabDisplayChanged += UserSettings_UserTabDisplayChanged;
 
-            bcManager = new BroadcastManager();
+            bcManager = new TeamCodingVisualStudioBroadcast();
             bcManager.SetDte(DTE);
 
             PfeManager = new ProjectFilesEventsManager();

@@ -16,6 +16,7 @@ using TeamCoding.Toci.Implementations;
 using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using System.Diagnostics;
+using TeamCoding.Toci.Implementations.Pentagram;
 using Process = System.Diagnostics.Process;
 
 namespace TeamCoding.VisualStudio.Models
@@ -101,7 +102,7 @@ namespace TeamCoding.VisualStudio.Models
             CaretPositionChangedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
             TextDocumentSavedInternal.PassthroughEvent += ModelChangedInternal.Invoke;
 
-            BCastManager = new BroadcastManager();
+            BCastManager = new TeamCodingVisualStudioBroadcast();
         }
         public async System.Threading.Tasks.Task OnCaretPositionChangedAsync(CaretPositionChangedEventArgs e)
         {

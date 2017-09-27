@@ -5,6 +5,7 @@ using System.Linq;
 using EnvDTE;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
+using TeamCoding.Toci.Implementations.Pentagram;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
@@ -24,7 +25,7 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
             Events = dte.Events.GetObject("CSharpProjectItemsEvents") as ProjectItemsEvents;
 
-            BCastManager = new BroadcastManager();
+            BCastManager = new TeamCodingVisualStudioBroadcast();
 
             Events.ItemAdded += Events_ItemAdded;
         }

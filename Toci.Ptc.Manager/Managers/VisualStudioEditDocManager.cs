@@ -1,8 +1,4 @@
-﻿using Toci.Ptc.Manager;
-using Toci.Ptc.Projects.Interfaces.Changes;
-using Toci.Ptc.Users.Interfaces.Skeleton;
-
-namespace Toci.Ptc.Projects.Documents.Changes.Managers
+﻿namespace Toci.Ptc.Manager.Managers
 {
     public class VisualStudioEditDocManager : VisualStudioChangeDocManager
     {

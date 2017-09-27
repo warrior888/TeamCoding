@@ -21,28 +21,10 @@ namespace Toci.Ptc.Manager
             ProjectName = projectName;
         }
 
-        protected virtual Dictionary<string, IChange<IEnvironment>> GetChangesForUser(IUser user, string documentName)
-        {
-            IDocument<IEnvironment, IChange<IEnvironment>, IUser> document = GetProject(ProjectName).GetDocument(documentName);
-
-            if (document.Changes.ContainsKey(user))
-            {
-                //IEnumerable<KeyValuePair<> > document.Changes.Where(m => m.Key == user); 
-            }
-
-            return null;
-        }
-
-        public TProject GetProject(string projectName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public TBroadcast GetBroadcast()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public abstract bool ChangeDocument(IChange<IEnvironment> change, IUser user);
+
+        public abstract TProject GetProject(string projectName);
+
+        public abstract TBroadcast GetBroadcast();
     }
 }

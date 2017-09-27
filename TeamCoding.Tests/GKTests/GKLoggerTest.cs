@@ -24,7 +24,22 @@ namespace Toci.TeamCoding.Tests.GKTests
 
     public class Continent : World
     {
-        
+        public void Test()
+        {
+            Continent c = new Continent();
+
+            Country co = c as Country;
+
+            Country con = (Country)c; // throw exception
+
+            int t = 0;
+
+            double tt = 1.1;
+
+            t = (int)tt;
+
+            co?.Test();
+        }
     }
 
     public abstract class Country : Continent

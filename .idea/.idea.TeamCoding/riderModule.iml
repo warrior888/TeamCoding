@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../appveyor.yml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../CONTRIBUTING.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../ISSUE_TEMPLATE.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../License.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/LibGit2Sharp.NativeBinaries.1.0.129/libgit2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.CodeAnalysis.Analyzers.1.1.0/analyzers/dotnet/cs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.CodeAnalysis.Analyzers.1.2.0-beta2/analyzers/dotnet/cs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/MSTest.TestAdapter.1.1.11/build/_common/Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/MSTest.TestAdapter.1.1.11/build/_common/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/MSTest.TestAdapter.1.1.11/build/_common/Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../readme.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Readme.tt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.Alm.Shared.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.TeamFoundation.CodeSense.Client.Common.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.Alm.Shared.CodeAnalysisClient.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.Alm.Shared.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.CodeSense.Client.Common.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.CodeSense.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.CodeSense.Roslyn.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v14/Microsoft.VisualStudio.Text.Internal.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.Alm.Shared.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.TeamFoundation.CodeSense.Client.Common.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.VisualStudio.Alm.Shared.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.VisualStudio.CodeSense.Client.Common.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.VisualStudio.CodeSense.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.VisualStudio.CodeSense.Roslyn.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../References/v15/Microsoft.VisualStudio.Text.Internal.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Settings.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding.Shared" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding.Tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding.v14" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding.v15" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../TeamCoding.WindowsService" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piascode.Instructions.Interfacces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Instructions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Common.Extensions" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users.Interfaces" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Vs.Server.App" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Toci.VoiceRecognition.Poc" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.Shared/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.Shared/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.Tests/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.Tests/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.WindowsService/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.WindowsService/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.v14/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.v14/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.v15/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding.v15/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../TeamCoding/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Common.Extensions/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Common.Extensions/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Broadcast/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Environment/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Manager/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Projects/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Server/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Users/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Vs.Server.App/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.Ptc.Vs.Server.App/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.VoiceRecognition.Poc/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci.VoiceRecognition.Poc/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piascode.Instructions.Interfacces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piascode.Instructions.Interfacces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Instructions/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Instructions/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Client/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Entities/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Server/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Sockets/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.Social.Tools/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition.Interfaces/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition.Interfaces/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Toci/Toci.Piastcode.SpeechRecognition/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

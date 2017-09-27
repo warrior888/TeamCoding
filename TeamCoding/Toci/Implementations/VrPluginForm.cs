@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using TeamCoding.Toci.Implementations.Pentagram;
 
 namespace TeamCoding.Toci.Implementations
 {
@@ -54,8 +55,7 @@ namespace TeamCoding.Toci.Implementations
 
 		private void DisconnectButton_Click(object sender, EventArgs e)
 		{
-			BroadcastManager.StopSCMClient();
-			this.Close();
+
 		}
 
 		private void CancelButton_Click(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace TeamCoding.Toci.Implementations
 
 		private void ConnectButton_Click(object sender, EventArgs e)
 		{
-		    BroadcastManager bMn = new BroadcastManager();
+		    BroadcastManager bMn = new TeamCodingVisualStudioBroadcast();
 
 		    bMn.StartSCMClient();
 			this.Close();

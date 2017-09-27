@@ -1,6 +1,6 @@
 ﻿using ProtoBuf;
 
-namespace Toci.Piastcode.Social.Sockets.Interfaces
+namespace Toci.Piastcode.Social.Entities.Interfaces
 {
     [ProtoContract]
     public interface IEditChanges

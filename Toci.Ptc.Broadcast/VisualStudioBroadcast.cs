@@ -10,8 +10,8 @@ using Toci.Ptc.Users;
 using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Broadcast
-{
-    public abstract class VisualStudioBroadcast : BroadcastBase<IDocument<IEnvironment, IChange<IEnvironment>, IUser>, VisualStudioClient>
+{ 
+    public abstract class VisualStudioBroadcast : BroadcastBase<IVsDocument, VisualStudioClient>
     {
         protected VisualStudioBroadcast(string srvIp)
         {

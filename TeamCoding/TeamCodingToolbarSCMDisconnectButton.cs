@@ -109,7 +109,7 @@ namespace TeamCoding
             // 7 = no
             // 2 = cancel
             if (!response.Equals(6)) return;
-            BroadcastManager.StopSCMClient();
+
 
         }
     }

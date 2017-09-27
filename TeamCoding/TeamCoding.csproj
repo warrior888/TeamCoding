@@ -115,6 +115,7 @@
     <Compile Include="Toci\Implementations\EnvOpenedFilesManager.cs" />
     <Compile Include="Toci\Implementations\Pentagram\CasualFileDocument.cs" />
     <Compile Include="Toci\Implementations\Pentagram\ProjectDocumentBase.cs" />
+    <Compile Include="Toci\Implementations\Pentagram\TeamCodingVisualStudioBroadcast.cs" />
     <Compile Include="Toci\Implementations\Pentagram\VsProjectDocument.cs" />
     <Compile Include="Toci\Implementations\ProjectFileManager.cs" />
     <Compile Include="Toci\Implementations\ProjectFilesEventsManager.cs" />

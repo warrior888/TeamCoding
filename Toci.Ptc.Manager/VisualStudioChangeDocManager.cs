@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Toci.Ptc.Broadcast.Interfaces;
 using Toci.Ptc.Environment.Interfaces;
-using Toci.Ptc.Projects.Documents.Changes.Managers;
+using Toci.Ptc.Manager.Managers;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Server.Interfaces.Communication;
@@ -37,6 +37,16 @@ namespace Toci.Ptc.Manager
             return false;
         }*/
         public override bool ChangeDocument(IChange<IEnvironment> change, IUser user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IProject<IDocument<IEnvironment, IChange<IEnvironment>, IUser>> GetProject(string projectName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IBroadcast<IDocument<IEnvironment, IChange<IEnvironment>, IUser>, IServer<IChange<IEnvironment>, IEnvironment>> GetBroadcast()
         {
             throw new NotImplementedException();
         }
