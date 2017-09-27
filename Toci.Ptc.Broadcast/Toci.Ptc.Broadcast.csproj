@@ -36,6 +36,10 @@
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.2.1.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Toci\Toci.Piastcode.Social.Entities\bin\Debug\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -74,6 +78,10 @@
     <ProjectReference Include="..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
       <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
       <Name>Toci.Ptc.Users.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Users\Toci.Ptc.Users.csproj">
+      <Project>{BE667369-9AF6-4D0F-BD59-F58E0D5EC6DA}</Project>
+      <Name>Toci.Ptc.Users</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

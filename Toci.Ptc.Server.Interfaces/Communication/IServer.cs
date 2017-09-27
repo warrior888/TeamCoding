@@ -7,5 +7,7 @@
         TChange Receive(); // ??
 
         void CreateSocket();
+
+        int ConnectionPort { get; }
     }
 }

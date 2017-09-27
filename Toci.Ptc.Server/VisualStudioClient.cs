@@ -8,9 +8,10 @@ namespace Toci.Ptc.Server
 {
     public class VisualStudioClient : VisualStudioServer, IClient
     {
-        public Socket CreateSocket(string serverIp)
+        public virtual Socket CreateSocket(string serverIp)
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp), Port);
+
             return new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
         }
     }

@@ -1,4 +1,5 @@
-﻿using Toci.Ptc.Environment.Interfaces;
+﻿using System.Net.Sockets;
+using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Users.Interfaces.Skeleton;
@@ -14,6 +15,6 @@ namespace Toci.Ptc.Broadcast.Interfaces
 
         bool BroadcastChange(IUser user, TDocument doc, IChange<IEnvironment> change);
 
-        bool IntroduceOneself(IUser user);
+        bool IntroduceOneself(Socket socket);
     }
 }

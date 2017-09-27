@@ -1,4 +1,5 @@
-﻿using Toci.Ptc.Broadcast.Interfaces;
+﻿using System.Net.Sockets;
+using Toci.Ptc.Broadcast.Interfaces;
 using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
@@ -14,6 +15,7 @@ namespace Toci.Ptc.Broadcast
     {
         protected TServer Server;
         protected string ServerIp;
+        protected IUser CoreUser;
 
         public virtual TServer GetServer()
         {
@@ -30,6 +32,7 @@ namespace Toci.Ptc.Broadcast
             throw new System.NotImplementedException();
         }
 
-        public abstract bool IntroduceOneself(IUser user);
+        public abstract bool IntroduceOneself(Socket socket);
+        public abstract void CreateSocket(string serverIp);
     }
 }
