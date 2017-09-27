@@ -65,6 +65,8 @@ namespace Toci.Ptc.Server
 
             IUserDataEntity tuser = Serializer.Deserialize<IUserDataEntity>(ms);
 
+            Console.WriteLine("Connected user: " + tuser.Name);
+
             IUser user = CreateUser(tuser);
 
             user.SetConnectionSocket(socket);
