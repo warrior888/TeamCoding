@@ -38,6 +38,8 @@ namespace Toci.Ptc.Users
             }
         }
 
+        public int Id { get; set; }
+
         public string Name
         {
             get
@@ -50,6 +52,8 @@ namespace Toci.Ptc.Users
                 ServerUserName = value;
             }
         }
+
+        public int UserId { get; set; }
 
         public string GlobalIp
         {
@@ -80,7 +84,8 @@ namespace Toci.Ptc.Users
             return new UserDataEntity
             {
                 GlobalIp = MyGlobalIp,
-                Name = ServerUserName
+                Name = ServerUserName,
+                
             };
         }
     }

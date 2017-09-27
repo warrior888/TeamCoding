@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 using ProtoBuf;
 using Toci.Common.Extensions.Network;
@@ -14,9 +17,13 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Server
 {
-    public abstract class ServerBase : IServer<IChange<IEnvironment>, IEnvironment>
+    public abstract class ServerBase<TChange, TEnvironment> : IServer<TChange, TEnvironment>
     {
-        protected Socket Socket { get; set; }
+        public static object LockObject = new object();
+
+        protected List<IUser> Clients = new List<IUser>();
+
+        protected Socket UserSocket { get; set; }
 
         private string ipAddress;
 
@@ -40,21 +47,21 @@ namespace Toci.Ptc.Server
             Port = port;
         }
 
-        public abstract bool Send(IChange<IEnvironment> frame);
-
-        public abstract IChange<IEnvironment> Receive();
-
         protected abstract IUser CreateUser(IUserDataEntity udEnt);
 
         public virtual void AcceptConnection()
         {
-            Socket.Listen(8);
+            UserSocket.Listen(8);
 
             while (true)
             {
-                Socket accepted = Socket.Accept();
+                Socket accepted = UserSocket.Accept();
 
-                Task.Factory.StartNew(() => ListenForChanges(CreateUser(accepted)));
+                IUser user = CreateUser(accepted);
+
+                Clients.Add(user);
+
+                Task.Factory.StartNew(() => ListenForChanges(user));
             }
         }
 
@@ -74,11 +81,15 @@ namespace Toci.Ptc.Server
             return user;
         }
 
+        public abstract bool Send(TChange frame);
+
+        public abstract TChange Receive();
+
         public virtual void CreateSocket()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IpAddress), Port);
-            Socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-            Socket.Bind(endPoint);
+            UserSocket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            UserSocket.Bind(endPoint);
         }
 
         public int ConnectionPort
@@ -97,26 +108,32 @@ namespace Toci.Ptc.Server
                 {
                     byte[] formatted = client.UserSocket.ReceiveFromSocket();
 
-                    //IItem item;
-
-                    using (MemoryStream ms = new MemoryStream(formatted))
-                    {
-                        //item = Serializer.Deserialize<TcEditedProjectItem>(ms);
-
-                        // Pseudo Logger 
-                        // Map[item.ItemModificationType](item, client);
-                    }
-
-                    //BroadcastData(formatted, client);
+                    BroadcastData(formatted, client);
                 }
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
-                    //Clients.Remove(client);
+                    Clients.Remove(client);
                     break;
                 }
             }
         }
 
+        protected virtual void BroadcastData(byte[] data, IUser filteredClient = null)
+        {
+            lock (LockObject)
+            {
+                foreach (var client in Clients)
+                {
+                    if (filteredClient != null && filteredClient.Name == client.Name)
+                    {
+                        continue;
+                    }
+                    byte[] name = Encoding.ASCII.GetBytes(client.Name + ": ");
+
+                    client.UserSocket.Send(data);
+                }
+            }
+        }
     }
 }

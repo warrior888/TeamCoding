@@ -10,7 +10,7 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 namespace Toci.Ptc.Broadcast
 {
     public abstract class BroadcastBase<TDocument, TServer> : IBroadcast<TDocument, TServer> 
-        where TServer : IServer<IChange<IEnvironment>, IEnvironment>
+        //where TServer : IServer<IChange<IEnvironment>, IEnvironment>
     {
         protected TServer Server;
         protected string ServerIp;

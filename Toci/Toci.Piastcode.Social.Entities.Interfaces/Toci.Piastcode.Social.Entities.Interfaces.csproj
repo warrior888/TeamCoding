@@ -57,7 +57,6 @@
     <Compile Include="IProject.cs" />
     <Compile Include="IFile.cs" />
     <Compile Include="IFrame.cs" />
-    <Compile Include="IUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

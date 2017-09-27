@@ -1,10 +1,10 @@
 ﻿namespace Toci.Ptc.Server.Interfaces.Communication
 {
-    public interface IServer<TChange, TEnvironment>
+    public interface IServer<TDocument, TEnvironment>
     {
-        bool Send(TChange frame);
+        bool Send(TDocument frame);
 
-        TChange Receive(); // ??
+        TDocument Receive(); // ??
 
         void CreateSocket();
 

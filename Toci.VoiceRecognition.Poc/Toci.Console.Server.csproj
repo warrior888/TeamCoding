@@ -69,10 +69,6 @@
       <Project>{dfd722d9-1500-422d-b95f-cc301ab35fe8}</Project>
       <Name>Toci.Piastcode.Social.Server.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Server\Toci.Piastcode.Social.Server.csproj">
-      <Project>{13bb3173-2bff-41e1-8b06-f73c4457b155}</Project>
-      <Name>Toci.Piastcode.Social.Server</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
       <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>
       <Name>Toci.Piastcode.Social.Sockets.Interfaces</Name>

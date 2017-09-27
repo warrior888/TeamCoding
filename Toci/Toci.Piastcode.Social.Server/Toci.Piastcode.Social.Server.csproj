@@ -53,6 +53,18 @@
     <Compile Include="SocketServerManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Toci.Common.Extensions\Toci.Common.Extensions.csproj">
+      <Project>{ca75b16a-64dd-4d98-bcdb-6a036bd4c664}</Project>
+      <Name>Toci.Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Toci.Ptc.Users.Interfaces\Toci.Ptc.Users.Interfaces.csproj">
+      <Project>{47a08b13-fc37-46f4-9cc2-871207aa9b2c}</Project>
+      <Name>Toci.Ptc.Users.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Toci.Ptc.Users\Toci.Ptc.Users.csproj">
+      <Project>{be667369-9af6-4d0f-bd59-f58e0d5ec6da}</Project>
+      <Name>Toci.Ptc.Users</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
       <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
       <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>

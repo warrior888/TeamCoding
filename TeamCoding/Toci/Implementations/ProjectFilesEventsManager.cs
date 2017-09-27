@@ -36,10 +36,11 @@ namespace TeamCoding.Toci.Implementations
         {
             //projectItem.FileNames
             //ScManager.BroadCastFile(new global::Toci.Piastcode.Social.Client.Implementations.ProjectItem { Content = projectItem.Document.});
-            BCastManager.Broadcast(GetItems(projectItem, ModificationType.Add));
+
+            //BCastManager.Broadcast(GetItems(projectItem, ModificationType.Add));
         }
 
-        protected virtual TcProjectItemsCollection GetItems(ProjectItem projectItem, ModificationType mdType)
+        /*protected virtual TcProjectItemsCollection GetItems(ProjectItem projectItem, ModificationType mdType)
         {
             string fullPath = projectItem.FileNames[0];
             string fileName = projectItem.FileNames[0].Replace(ProjectManager.SolutionDirectoryPath, string.Empty);
@@ -91,6 +92,6 @@ namespace TeamCoding.Toci.Implementations
 
             return collection;
         }
-
+*/
     }
 }

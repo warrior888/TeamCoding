@@ -6,10 +6,18 @@ namespace Toci.Ptc.Users.Interfaces.Skeleton
     public interface IUserDataEntity 
     {
         [ProtoMember(1)]
-        string Name { get; set; }
+        int Id { get; set; }
 
         [ProtoMember(2)]
+        string Name { get; set; }
+
+        [ProtoMember(3)]
+        int UserId { get; set; }
+
+        [ProtoMember(4)]
         string GlobalIp { get; set; }
 
+        [ProtoMember(5)]
+        string LocalIp { get; set; }
     }
 }

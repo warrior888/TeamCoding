@@ -50,13 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connection\SocketConnection.cs" />
-    <Compile Include="Connection\SocketFrameConnection.cs" />
-    <Compile Include="Connection\SocketProjectConnection.cs" />
-    <Compile Include="Connection\SocketUserConnection.cs" />
     <Compile Include="Implementations\TcEditChanges.cs" />
     <Compile Include="Implementations\TcEditedProjectItem.cs" />
     <Compile Include="Implementations\TcProjectItem.cs" />
-    <Compile Include="Implementations\TcProjectItemsCollection.cs" />
     <Compile Include="Interfaces\IEditedProjectItem.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Interfaces\IProjectItemsCollection.cs" />
@@ -70,10 +66,6 @@
     <ProjectReference Include="..\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
       <Project>{FC6670A4-5F00-401D-9C90-544BA5F4A46D}</Project>
       <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Toci.Piastcode.Social.Entities\Toci.Piastcode.Social.Entities.csproj">
-      <Project>{77e05e9f-d76d-4af0-997c-e1a98455243b}</Project>
-      <Name>Toci.Piastcode.Social.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
       <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>

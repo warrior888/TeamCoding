@@ -10,16 +10,19 @@ using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Ptc.Projects.Interfaces.Documents;
+using Toci.Ptc.Server;
 
 namespace TeamCoding.Toci.Implementations
 {
     public abstract class BroadcastManager : SocketClientManager
     {
         protected EnvOpenedFilesManager EnvironmentOpenedFilesManager;
+        protected VisualStudioClient VsClient;
 
         protected BroadcastManager(string ipAddress) : base(ipAddress)
         {
             EnvironmentOpenedFilesManager = TeamCodingPackage.Current.EnvironmentOpenedFilesManager;
+            VsClient = new VisualStudioClient();
         }
 
         protected static ProjectFileManager PfManager = new ProjectFileManager();
@@ -49,13 +52,9 @@ namespace TeamCoding.Toci.Implementations
             Dte = dte;
         }
 
-
-        public virtual void Broadcast(TcProjectItemsCollection collection)
+        public virtual void Broadcast(IVsDocument item)
         {
-            foreach (var item in collection)
-            {
-                //ScManager.BroadCastFile(item);
-            }
+            VsClient.Send(item);
         }
 
         protected static void AddItem(IItem item)

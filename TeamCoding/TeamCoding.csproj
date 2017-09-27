@@ -558,6 +558,14 @@
       <IncludeOutputGroupsInVSIXLocalOnly>DebugSymbolsProjectOutputGroup%3b</IncludeOutputGroupsInVSIXLocalOnly>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\Toci.Common.Extensions\Toci.Common.Extensions.csproj">
+      <Project>{ca75b16a-64dd-4d98-bcdb-6a036bd4c664}</Project>
+      <Name>Toci.Common.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Broadcast.Interfaces\Toci.Ptc.Broadcast.Interfaces.csproj">
+      <Project>{3415c2dc-8091-4f46-975a-df8079c8128c}</Project>
+      <Name>Toci.Ptc.Broadcast.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Broadcast\Toci.Ptc.Broadcast.csproj">
       <Project>{1266DAD6-454D-4D24-98C0-E8793D7BA1AE}</Project>
       <Name>Toci.Ptc.Broadcast</Name>
@@ -566,9 +574,29 @@
       <Project>{F5C9D871-9B9F-4007-B2D6-215598A83898}</Project>
       <Name>Toci.Ptc.Environment.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Environment\Toci.Ptc.Environment.csproj">
+      <Project>{89eaa26f-cc2f-45cf-9313-fb6d1619e824}</Project>
+      <Name>Toci.Ptc.Environment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Manager.Interfaces\Toci.Ptc.Manager.Interfaces.csproj">
+      <Project>{09771277-001e-412e-9cba-c9fe0b0c16c2}</Project>
+      <Name>Toci.Ptc.Manager.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Manager\Toci.Ptc.Manager.csproj">
+      <Project>{3c121c6a-4183-4061-a5d4-933a3b8e8a37}</Project>
+      <Name>Toci.Ptc.Manager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Projects.Interfaces\Toci.Ptc.Projects.Interfaces.csproj">
       <Project>{50BF82E9-8557-4B70-A746-61E45D269BCC}</Project>
       <Name>Toci.Ptc.Projects.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects\Toci.Ptc.Projects.csproj">
+      <Project>{490BE03C-BB02-4ABD-8ADC-EFD818835D08}</Project>
+      <Name>Toci.Ptc.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Server.Interfaces\Toci.Ptc.Server.Interfaces.csproj">
+      <Project>{d092d351-b3ea-4f1b-910f-9d8c65a8eea2}</Project>
+      <Name>Toci.Ptc.Server.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Server\Toci.Ptc.Server.csproj">
       <Project>{53CDAE05-C965-47E2-B5A9-92668E49EC0D}</Project>
@@ -601,10 +629,6 @@
     <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities.Interfaces\Toci.Piastcode.Social.Entities.Interfaces.csproj">
       <Project>{fc6670a4-5f00-401d-9c90-544ba5f4a46d}</Project>
       <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Entities\Toci.Piastcode.Social.Entities.csproj">
-      <Project>{77e05e9f-d76d-4af0-997c-e1a98455243b}</Project>
-      <Name>Toci.Piastcode.Social.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
       <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>

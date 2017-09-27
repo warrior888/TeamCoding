@@ -17,7 +17,9 @@ using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using System.Diagnostics;
 using TeamCoding.Toci.Implementations.Pentagram;
+using Toci.Ptc.Projects.Interfaces.Documents;
 using Process = System.Diagnostics.Process;
+using Toci.Ptc.Projects.Documents;
 
 namespace TeamCoding.VisualStudio.Models
 {
@@ -242,10 +244,9 @@ namespace TeamCoding.VisualStudio.Models
             item.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
             item.EditChanges = editChanges;
 
-            TcProjectItemsCollection coll = new TcProjectItemsCollection();
-            coll.Add(item);
+            IVsDocument document = new VsFileDocument { TcEditedProjectItem = item };
 
-            BCastManager.Broadcast(coll);
+            BCastManager.Broadcast(document);
         }
 
         private void BroadcastOverwrite(string filePath)
@@ -266,10 +267,7 @@ namespace TeamCoding.VisualStudio.Models
             item.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
             item.EditChanges = editChanges;
 
-            TcProjectItemsCollection coll = new TcProjectItemsCollection();
-            coll.Add(item);
-
-            BCastManager.Broadcast(coll);
+       
         }
 
     }

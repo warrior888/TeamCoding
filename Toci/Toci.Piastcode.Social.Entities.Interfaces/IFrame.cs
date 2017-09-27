@@ -2,7 +2,6 @@
 {
     public interface IFrame : IData
     {
-        IUser User { get; set; }
 
         IFile File { get; set; }
 

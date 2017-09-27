@@ -74,6 +74,14 @@
       <Project>{FC6670A4-5F00-401D-9C90-544BA5F4A46D}</Project>
       <Name>Toci.Piastcode.Social.Entities.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets.Interfaces\Toci.Piastcode.Social.Sockets.Interfaces.csproj">
+      <Project>{92306387-89e7-47e5-8253-e6f3b4f3e428}</Project>
+      <Name>Toci.Piastcode.Social.Sockets.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Toci\Toci.Piastcode.Social.Sockets\Toci.Piastcode.Social.Sockets.csproj">
+      <Project>{e18e9834-6f28-48b6-81c8-a7aa4cc365c1}</Project>
+      <Name>Toci.Piastcode.Social.Sockets</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

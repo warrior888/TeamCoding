@@ -41,10 +41,10 @@ namespace Toci.Piastcode.Social.Client
         {
             byte[] formatted = CoreUser.UserSocket.ReceiveFromSocket();
 
-            IFrame frame = new Frame();
+            //IFrame frame = new Frame();
 
-            frame = Serializer.Deserialize<IFrame>(new MemoryStream(formatted));
-            return frame;
+            //frame = Serializer.Deserialize<IFrame>(new MemoryStream(formatted));
+            return null;
         }
 
         public override void CreateSocket(string serverIp)

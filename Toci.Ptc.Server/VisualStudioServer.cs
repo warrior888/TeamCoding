@@ -1,18 +1,27 @@
-﻿using Toci.Ptc.Environment.Interfaces;
+﻿using System.IO;
+using ProtoBuf;
+using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
+using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Users;
 using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Server
 {
-    public class VisualStudioServer : Server
+    public class VisualStudioServer : Server<IVsDocument, IVisualStudioEnvironment>
     {
-        public override bool Send(IChange<IEnvironment> frame)
+        public override bool Send(IVsDocument frame)
         {
-            throw new System.NotImplementedException();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Serializer.Serialize(ms, frame);
+                UserSocket.Send(ms.ToArray());
+            }
+
+            return true;
         }
 
-        public override IChange<IEnvironment> Receive()
+        public override IVsDocument Receive()
         {
             throw new System.NotImplementedException();
         }
