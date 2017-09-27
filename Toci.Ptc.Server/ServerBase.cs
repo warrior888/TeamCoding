@@ -20,7 +20,7 @@ namespace Toci.Ptc.Server
 
         protected List<IUser> Clients = new List<IUser>();
 
-        protected Socket UserSocket // fucking bullshit
+        protected static Socket UserSocket // fucking bullshit
         {
             get;
             set;
