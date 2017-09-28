@@ -132,7 +132,7 @@ namespace Toci.Ptc.Server
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
+                    Debug.WriteLine("Exception on broadcast: " + ex.Message);
                     Clients.Remove(client);
                     break;
                 }
