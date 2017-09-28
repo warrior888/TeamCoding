@@ -15,6 +15,7 @@ namespace Toci.Ptc.Server
         {
             using (MemoryStream ms = new MemoryStream())
             {
+                ms.Position = 0;
                 Serializer.Serialize(ms, frame);
                 UserSocket.Send(ms.ToArray());
             }
@@ -26,6 +27,7 @@ namespace Toci.Ptc.Server
         {
             using (MemoryStream ms = new MemoryStream())
             {
+                ms.Position = 0;
                 VsFileDocument frame = Serializer.Deserialize<VsFileDocument>(ms);
                 return frame;
             }
