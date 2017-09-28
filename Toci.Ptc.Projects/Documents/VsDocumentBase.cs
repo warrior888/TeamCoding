@@ -16,8 +16,5 @@ namespace Toci.Ptc.Projects.Documents
         public string FilePath { get; set; }
 
         public string Content { get; set; }
-
-        [ProtoMember(1)]
-        public List<IVsChange> Changes { get; set; }
     }
 }

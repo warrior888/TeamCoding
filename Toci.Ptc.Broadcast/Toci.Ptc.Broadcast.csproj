@@ -66,6 +66,10 @@
       <Project>{50bf82e9-8557-4b70-a746-61e45d269bcc}</Project>
       <Name>Toci.Ptc.Projects.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Toci.Ptc.Projects\Toci.Ptc.Projects.csproj">
+      <Project>{490BE03C-BB02-4ABD-8ADC-EFD818835D08}</Project>
+      <Name>Toci.Ptc.Projects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Toci.Ptc.Server.Interfaces\Toci.Ptc.Server.Interfaces.csproj">
       <Project>{d092d351-b3ea-4f1b-910f-9d8c65a8eea2}</Project>
       <Name>Toci.Ptc.Server.Interfaces</Name>

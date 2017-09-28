@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Net.Sockets;
 using Toci.Ptc.Environment.Interfaces;
+using Toci.Ptc.Projects.Documents;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Server;
@@ -11,7 +12,7 @@ using Toci.Ptc.Users.Interfaces.Skeleton;
 
 namespace Toci.Ptc.Broadcast
 { 
-    public abstract class VisualStudioBroadcast : BroadcastBase<IVsDocument, VisualStudioClient>
+    public abstract class VisualStudioBroadcast : BroadcastBase<VsFileDocument, VisualStudioClient>
     {
         protected VisualStudioBroadcast(string srvIp)
         {

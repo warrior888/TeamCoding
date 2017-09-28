@@ -10,6 +10,7 @@ using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using Toci.Ptc.Environment.Interfaces;
+using Toci.Ptc.Projects.Documents;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Users.Interfaces.Skeleton;
@@ -18,12 +19,12 @@ namespace TeamCoding.Toci.Implementations.Pentagram
 {
     public class TeamCodingVisualStudioBroadcast : BroadcastManager 
     {
-        public override bool BroadcastDocument(IUser user, IVsDocument doc)
+        public override bool BroadcastDocument(IUser user, VsFileDocument doc)
         {
             throw new NotImplementedException();
         }
 
-        public override bool BroadcastChange(IUser user, IVsDocument doc)  // edit
+        public override bool BroadcastChange(IUser user, VsFileDocument doc)  // edit
         {
             if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(doc.FilePath))
             {
@@ -39,13 +40,13 @@ namespace TeamCoding.Toci.Implementations.Pentagram
                     StringBuilder sb = new StringBuilder(stR.ReadToEnd());
                     stR.Close();
 
-                    foreach (var editChange in doc.Changes)
+                    /*foreach (var editChange in doc.Changes)
                     {
                         if (editChange.Text.Length < editChange.OldPositionEnd - editChange.PositionStart) //deletion
                             sb.Remove(editChange.PositionStart, editChange.OldPositionEnd - editChange.PositionStart);
                         sb.Insert(editChange.PositionStart, editChange.Text);
 
-                    }
+                    }*/
 
                     StreamWriter swR = new StreamWriter(ProjectManager.MakeAbsoluteFilePath(doc.FilePath));
 

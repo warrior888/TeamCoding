@@ -12,6 +12,7 @@ using Toci.Common.Extensions.Network;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
+using Toci.Ptc.Projects.Documents;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Server;
 
@@ -46,7 +47,7 @@ namespace TeamCoding.Toci.Implementations
 
         protected virtual void ReceiveBroadcastedDocument(byte[] data)
         {
-            IVsDocument document = GetServer().Receive(data);
+            VsFileDocument document = (VsFileDocument)GetServer().Receive(data);
 
             EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => UpdateDocumentChange(document)), null);
             //UpdateDocumentChange(document);
@@ -83,7 +84,7 @@ namespace TeamCoding.Toci.Implementations
 			PfManager.OverwriteItem(editedProjectItem.FilePath, editedProjectItem);
 		}
 
-        protected virtual bool UpdateDocumentChange(IVsDocument document)
+        protected virtual bool UpdateDocumentChange(VsFileDocument document)
         {
             foreach (var editChange in document.Changes)
             {

@@ -11,7 +11,6 @@ namespace Toci.Ptc.Projects.Interfaces.Documents
     [ProtoContract]
     public interface IVsDocument : IDocument<IVisualStudioEnvironment, IVsChange, IVsUser>, IProjectItem
     {
-        [ProtoMember(1)]
-        List<IVsChange> Changes { get; set; }
+
     }
 }

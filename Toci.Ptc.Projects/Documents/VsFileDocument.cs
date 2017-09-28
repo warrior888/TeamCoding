@@ -13,6 +13,9 @@ namespace Toci.Ptc.Projects.Documents
         [ProtoMember(1)]
         public List<VsChange> Changes { get; set; }
 
+        [ProtoMember(2)]
+        public string Content { get; set; }
+
         public override bool CreateChange(ChangeTypes chngType, string base64EncodedChange)
         {
             throw new System.NotImplementedException();
