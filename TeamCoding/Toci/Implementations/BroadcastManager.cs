@@ -57,7 +57,7 @@ namespace TeamCoding.Toci.Implementations
 
         public virtual void Broadcast(IVsDocument item)
         {
-            VsClient.Send(item);
+            VsClient.Send(item); // send my change to the central server
         }
 
         protected static void AddItem(IItem item)

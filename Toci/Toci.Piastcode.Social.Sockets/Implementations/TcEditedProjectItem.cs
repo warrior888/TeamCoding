@@ -8,7 +8,7 @@ namespace Toci.Piastcode.Social.Sockets.Implementations
     [ProtoContract]
     public class TcEditedProjectItem : TcProjectItem, IEditedProjectItem, IItem
     {
-        [ProtoMember(5)]
+        [ProtoMember(1)]
         public List<TcEditChanges> EditChanges { get; set; }
     }
 }
