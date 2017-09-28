@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Changes\VsChange.cs" />
     <Compile Include="Documents\DocumentBase.cs" />
     <Compile Include="Documents\VsDocumentBase.cs" />
     <Compile Include="Documents\VsFileDocument.cs" />

@@ -17,9 +17,7 @@ namespace Toci.Ptc.Projects.Documents
 
         public string Content { get; set; }
 
-        public List<IVsChange> Changes { get; set; }
-
         [ProtoMember(1)]
-        public TcEditedProjectItem TcEditedProjectItem { get; set; }
+        public List<IVsChange> Changes { get; set; }
     }
 }

@@ -85,7 +85,7 @@ namespace TeamCoding.Toci.Implementations
 
         protected virtual bool UpdateDocumentChange(IVsDocument document)
         {
-            foreach (var editChange in document.TcEditedProjectItem.EditChanges)
+            foreach (var editChange in document.Changes)
             {
                 TeamCodingTextViewConnectionListener.IsEditPending = true;
                 //EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.PositionStart, editChange.Text);

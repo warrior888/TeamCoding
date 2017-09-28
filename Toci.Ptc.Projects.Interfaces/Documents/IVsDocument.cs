@@ -13,8 +13,5 @@ namespace Toci.Ptc.Projects.Interfaces.Documents
     {
         [ProtoMember(1)]
         List<IVsChange> Changes { get; set; }
-
-        [ProtoMember(2)]
-        TcEditedProjectItem TcEditedProjectItem { get; set; }
     }
 }

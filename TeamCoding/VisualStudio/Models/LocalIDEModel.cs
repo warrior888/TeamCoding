@@ -17,9 +17,11 @@ using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Piastcode.Social.Sockets.Interfaces;
 using System.Diagnostics;
 using TeamCoding.Toci.Implementations.Pentagram;
+using Toci.Ptc.Projects.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Process = System.Diagnostics.Process;
 using Toci.Ptc.Projects.Documents;
+using Toci.Ptc.Projects.Interfaces.Changes;
 
 namespace TeamCoding.VisualStudio.Models
 {
@@ -225,25 +227,23 @@ namespace TeamCoding.VisualStudio.Models
             //ProcessStartInfo startInfo = new ProcessStartInfo("devenv.exe", @"/Diff Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile1.txt Z:\Projects\TeamCodingWarrior\TeamCoding.Tests\file\TextFile2.txt");
             //process.StartInfo = startInfo;
             //process.Start();
-            TcEditedProjectItem item = new TcEditedProjectItem();
-            item.ItemModificationType = ModificationType.Edit;
-            List<TcEditChanges> editChanges = new List<TcEditChanges>();
+
+            //item. = ModificationType.Edit;
+            List<IVsChange> editChanges = new List<IVsChange>();
 
             foreach (var textChangeItem in textChangeCollection)
             {
-                TcEditChanges change = new TcEditChanges();
+                IVsChange change = new VsChange();
 
                 change.Text = textChangeItem.NewText;
                 change.PositionStart = textChangeItem.NewPosition;
                 change.OldPositionEnd = textChangeItem.NewPosition + textChangeItem.OldSpan.Length;
+                change.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
 
                 editChanges.Add(change);
             }
 
-            item.FilePath = ProjectManager.MakeRelativeFilePath(filePath);
-            item.EditChanges = editChanges;
-
-            IVsDocument document = new VsFileDocument { TcEditedProjectItem = item };
+            IVsDocument document = new VsFileDocument { Changes = editChanges };
 
             BCastManager.Broadcast(document);
         }

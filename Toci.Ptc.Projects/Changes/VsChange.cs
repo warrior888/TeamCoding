@@ -1,21 +1,27 @@
 ﻿using ProtoBuf;
-using Toci.Piastcode.Social.Entities.Interfaces;
-using Toci.Piastcode.Social.Sockets.Interfaces;
+using Toci.Ptc.Projects.Interfaces.Changes;
 
-namespace Toci.Piastcode.Social.Sockets.Implementations
+namespace Toci.Ptc.Projects.Changes
 {
     [ProtoContract]
-    public class TcEditChanges : IEditChanges
+    public class VsChange : IVsChange
     {
         [ProtoMember(1)]
         public int PositionStart { get; set; }
+
         [ProtoMember(2)]
         public int OldPositionEnd { get; set; }
+
         [ProtoMember(3)]
         public string Text { get; set; }
 
+        [ProtoMember(4)]
         public string ProjectPath { get; set; }
+
+        [ProtoMember(5)]
         public string FilePath { get; set; }
+
+        [ProtoMember(6)]
         public string Content { get; set; }
     }
 }
