@@ -6,14 +6,12 @@ namespace Toci.Ptc.Server.Interfaces.Communication
     {
         bool Send(TDocument frame);
 
-        TDocument Receive(); // ??
+        TDocument Receive(byte[] data);
 
         Socket CreateSocket();
 
         void GetSocket(Socket socket);
 
         int ConnectionPort { get; }
-
-        void Connect(string serverIp);
     }
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using EnvDTE;
 using Microsoft.VisualStudio.Text;
 using TeamCoding.Toci.Pentagram.Implementations;
 using TeamCoding.Toci.Pentagram.Interfaces;
 using TeamCoding.VisualStudio;
+using Toci.Common.Extensions.Network;
 using Toci.Piastcode.Social.Client;
 using Toci.Piastcode.Social.Client.Interfaces;
 using Toci.Piastcode.Social.Sockets.Implementations;
@@ -36,8 +38,17 @@ namespace TeamCoding.Toci.Implementations
             VsClient = new VisualStudioClient();
 
             CreateSocket(ServerIp);
+
+
+            Task.Factory.StartNew(() => ReceiveBroadcastedDocument(CoreUser.UserSocket.ReceiveFromSocket()));
         }
 
+        protected virtual void ReceiveBroadcastedDocument(byte[] data)
+        {
+            IVsDocument document = GetServer().Receive(data);
+
+            
+        }
 
 	    public virtual void SetDte(DTE dte)
         {
@@ -58,7 +69,7 @@ namespace TeamCoding.Toci.Implementations
             //Dte.ActiveDocument.Name
         }
 
-        protected static void EditItem(IItem item)
+        protected void EditItem(IItem item)
         {
             TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
             PfManager.EditItem(editedProjectItem.FilePath, editedProjectItem);

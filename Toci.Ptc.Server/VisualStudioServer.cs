@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using ProtoBuf;
 using Toci.Ptc.Environment.Interfaces;
+using Toci.Ptc.Projects.Documents;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
 using Toci.Ptc.Users;
@@ -21,9 +22,13 @@ namespace Toci.Ptc.Server
             return true;
         }
 
-        public override IVsDocument Receive()
+        public override IVsDocument Receive(byte[] data)
         {
-            throw new System.NotImplementedException();
+            using (MemoryStream ms = new MemoryStream())
+            {
+                VsFileDocument frame = Serializer.Deserialize<VsFileDocument>(ms);
+                return frame;
+            }
         }
 
         protected override IUser CreateUser(IUserDataEntity udEnt)

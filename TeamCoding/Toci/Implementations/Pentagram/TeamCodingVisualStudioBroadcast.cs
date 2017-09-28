@@ -23,7 +23,7 @@ namespace TeamCoding.Toci.Implementations.Pentagram
             throw new NotImplementedException();
         }
 
-        public override bool BroadcastChange(IUser user, IVsDocument doc)
+        public override bool BroadcastChange(IUser user, IVsDocument doc)  // edit
         {
             if (EnvironmentOpenedFilesManager.IsFileOpenedInEnv(doc.FilePath))
             {

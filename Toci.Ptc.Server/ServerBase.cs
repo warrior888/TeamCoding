@@ -93,7 +93,7 @@ namespace Toci.Ptc.Server
 
         public abstract bool Send(TChange frame);
 
-        public abstract TChange Receive();
+        public abstract TChange Receive(byte[] data);
 
         public virtual Socket CreateSocket()
         {
@@ -115,11 +115,6 @@ namespace Toci.Ptc.Server
             {
                 return Port;
             }
-        }
-
-        public void Connect(string serverIp)
-        {
-           
         }
 
         protected virtual void ListenForChanges(IUser client)
