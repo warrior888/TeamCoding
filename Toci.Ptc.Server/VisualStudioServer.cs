@@ -35,7 +35,9 @@ namespace Toci.Ptc.Server
         {
             return new VsUser
             {
-                
+                Name = udEnt.Name,
+                UserId = udEnt.UserId,
+                Id = udEnt.Id
             };
         }
 

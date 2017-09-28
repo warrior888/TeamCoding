@@ -150,7 +150,7 @@ namespace Toci.Ptc.Server
                         continue;
                     }
                     //byte[] name = Encoding.ASCII.GetBytes(client.Name + ": ");
-                    Debug.WriteLine(client.Name + ": " + Encoding.ASCII.GetString(data));
+                    Debug.WriteLine(client.Name + " broadcasts: " + Encoding.ASCII.GetString(data));
 
                     client.UserSocket.Send(data);
                 }

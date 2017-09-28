@@ -44,7 +44,7 @@ namespace Toci.Ptc.Users
         {
             get
             {
-                return Environment.UserDomainName;
+                return ServerUserName;
             }
 
             set
