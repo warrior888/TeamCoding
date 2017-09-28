@@ -65,6 +65,8 @@ namespace TeamCoding.VisualStudio
 
             vrCommandsManager = new VrCommandsManager();
             vrCommandsManager.Register();
+
+            //CachedDocumentTabPanel.CommandBindings;
         }
 
         private void UserSettings_UserTabDisplayChanged(object sender, EventArgs e)
