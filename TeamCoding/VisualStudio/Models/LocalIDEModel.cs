@@ -229,11 +229,11 @@ namespace TeamCoding.VisualStudio.Models
             //process.Start();
 
             //item. = ModificationType.Edit;
-            List<IVsChange> editChanges = new List<IVsChange>();
+            List<VsChange> editChanges = new List<VsChange>();
 
             foreach (var textChangeItem in textChangeCollection)
             {
-                IVsChange change = new VsChange();
+                VsChange change = new VsChange();
 
                 change.Text = textChangeItem.NewText;
                 change.PositionStart = textChangeItem.NewPosition;
