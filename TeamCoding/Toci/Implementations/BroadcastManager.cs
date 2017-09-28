@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using EnvDTE;
 using Microsoft.VisualStudio.Text;
@@ -47,7 +48,8 @@ namespace TeamCoding.Toci.Implementations
         {
             IVsDocument document = GetServer().Receive(data);
 
-            
+            EnvOpenedFilesManager.SynContext.Post(new SendOrPostCallback(o => UpdateDocumentChange(document)), null);
+            //UpdateDocumentChange(document);
         }
 
 	    public virtual void SetDte(DTE dte)
@@ -83,7 +85,7 @@ namespace TeamCoding.Toci.Implementations
 
         protected virtual bool UpdateDocumentChange(IVsDocument document)
         {
-            foreach (var editChange in document.Changes)
+            foreach (var editChange in document.TcEditedProjectItem.EditChanges)
             {
                 TeamCodingTextViewConnectionListener.IsEditPending = true;
                 //EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.PositionStart, editChange.Text);

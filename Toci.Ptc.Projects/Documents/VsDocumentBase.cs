@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Toci.Piastcode.Social.Sockets.Implementations;
 using Toci.Ptc.Environment.Interfaces;
 using Toci.Ptc.Projects.Interfaces.Changes;
 using Toci.Ptc.Projects.Interfaces.Documents;
@@ -15,5 +16,7 @@ namespace Toci.Ptc.Projects.Documents
         public string Content { get; set; }
 
         public List<IVsChange> Changes { get; set; }
+
+        public TcEditedProjectItem TcEditedProjectItem { get; set; }
     }
 }
