@@ -14,7 +14,10 @@ namespace Toci.Ptc.Projects.Documents
         public List<VsChange> Changes { get; set; }
 
         [ProtoMember(2)]
-        public string Content { get; set; }
+        public new string Content { get; set; }
+
+        [ProtoMember(3)]
+        public string Kurwa { get; set; }
 
         public override bool CreateChange(ChangeTypes chngType, string base64EncodedChange)
         {

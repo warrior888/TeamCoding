@@ -21,9 +21,12 @@ namespace Toci.TeamCoding.Tests.GhostRider.Serialiation.Protobuf
 
                 frame.Changes = new List<VsChange>();
                 frame.Content = "2 kurwa fnm iewhfuoheuwog wg wehg wig igo";
+                frame.Kurwa = "fdsgsgfds";
                 frame.Changes.Add(new VsChange { Text = "KURWA"});
 
                 Serializer.Serialize(ms, frame);
+
+                ms.Position = 0;
 
                 VsFileDocument tusdocumenter = Serializer.Deserialize<VsFileDocument>(ms);
             }
