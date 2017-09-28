@@ -42,7 +42,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TeamCoding</RootNamespace>
     <AssemblyName>TeamCoding</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <StartAction>Program</StartAction>
     <StartProgram>$(DevEnvDir)\devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>

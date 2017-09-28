@@ -51,6 +51,12 @@ namespace Toci.Piastcode.Social.Client
 
         public override void CreateSocket(string serverIp)
         {
+            // TODOD rem,ove dirty if once fixed architecture
+            if (string.IsNullOrEmpty(serverIp))
+            {
+                serverIp = "54.36.98.229";
+            }
+
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp), GetServer().ConnectionPort);
             Socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             Socket.Connect(endPoint);
