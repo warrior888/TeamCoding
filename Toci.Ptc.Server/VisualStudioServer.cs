@@ -25,7 +25,7 @@ namespace Toci.Ptc.Server
 
         public override IVsDocument Receive(byte[] data)
         {
-            using (MemoryStream ms = new MemoryStream())
+            using (MemoryStream ms = new MemoryStream(data))
             {
                 ms.Position = 0;
                 VsFileDocument frame = Serializer.Deserialize<VsFileDocument>(ms);
