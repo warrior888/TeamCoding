@@ -72,12 +72,6 @@ namespace TeamCoding.Toci.Implementations
             //Dte.ActiveDocument.Name
         }
 
-        protected void EditItem(IItem item)
-        {
-            TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
-            PfManager.EditItem(editedProjectItem.FilePath, editedProjectItem);
-        }
-
 		private static void OverwriteItem(IItem item)
 		{
 			TcEditedProjectItem editedProjectItem = item as TcEditedProjectItem;
@@ -90,7 +84,7 @@ namespace TeamCoding.Toci.Implementations
             {
                 TeamCodingTextViewConnectionListener.IsEditPending = true;
                 //EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.PositionStart, editChange.Text);
-                EnvironmentOpenedFilesManager.GetEnvOpenedFile(document.FilePath)
+                EnvironmentOpenedFilesManager.GetEnvOpenedFile(editChange.FilePath)
                     .Replace(new Span(editChange.PositionStart, editChange.OldPositionEnd - editChange.PositionStart), editChange.Text);
                 TeamCodingTextViewConnectionListener.IsEditPending = false;
                 //Dispatcher.CurrentDispatcher.Invoke(() => EnvironmentOpenedFilesManager.GetEnvOpenedFile(filePath).Insert(editChange.Position, editChange.Text));
