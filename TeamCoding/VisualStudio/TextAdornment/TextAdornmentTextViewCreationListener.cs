@@ -46,7 +46,7 @@ namespace TeamCoding.VisualStudio.TextAdornment
         {
             try
             {
-                if (TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(textView.GetTextDocumentFilePath()) == null) return;
+                if (TeamCodingPackage.Current.SourceControlRepo?.GetRepoDocInfo(textView.GetTextDocumentFilePath()) == null) return;
 
                 new TextAdornment(textView);
             }

@@ -47,7 +47,7 @@ namespace TeamCoding.VisualStudio
                         return;
                     }
 
-                    if (TeamCodingPackage.Current.SourceControlRepo.GetRepoDocInfo(filePath) == null) return;
+                    if (TeamCodingPackage.Current.SourceControlRepo?.GetRepoDocInfo(filePath) == null) return;
 
                     TeamCodingPackage.Current.EnvironmentOpenedFilesManager.AddOpenedFile(filePath, textView.TextBuffer);
 

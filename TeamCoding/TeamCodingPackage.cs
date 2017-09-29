@@ -137,7 +137,7 @@ namespace TeamCoding
                                                                           new SqlServerLocalModelPersister(ConnectionWrapper, LocalIdeModel),
                                                                           new WinServiceLocalModelPersister(WindowsServiceClient, LocalIdeModel));
                 RemoteModelChangeManager.RemoteModelReceived += RemoteModelChangeManager_RemoteModelReceived;
-
+                
                 new RedisSessionSharerHost(); // TODO: Dispose of the session sharers correctly
                 new RedisSessionSharerClient(); // TODO: Abstract away the session sharers and handle not having one set up
 

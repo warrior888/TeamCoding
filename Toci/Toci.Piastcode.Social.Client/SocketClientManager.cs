@@ -57,7 +57,7 @@ namespace Toci.Piastcode.Social.Client
                 serverIp = "54.36.98.229";
             }
 
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp), GetServer().ConnectionPort);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(serverIp.Trim()), GetServer().ConnectionPort);
             Socket = new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             Socket.Connect(endPoint);
 
