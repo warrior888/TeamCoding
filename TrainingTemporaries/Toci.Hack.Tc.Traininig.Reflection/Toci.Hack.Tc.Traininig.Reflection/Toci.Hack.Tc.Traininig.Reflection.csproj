@@ -40,8 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiExample.cs" />
+    <Compile Include="MakeGenericMethodExample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReflectionExample.cs" />
+    <Compile Include="ReflectionSubjects\Bj.cs" />
+    <Compile Include="ReflectionSubjects\Chess\Figure.cs" />
+    <Compile Include="ReflectionSubjects\Chess\IFigure.cs" />
+    <Compile Include="ReflectionSubjects\Chess\Rook.cs" />
+    <Compile Include="ReflectionSubjects\IBj.cs" />
+    <Compile Include="ReflectionSubjects\UnexpectedBj.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Toci.Ptc.Server.Interfaces\Toci.Ptc.Server.Interfaces.csproj">
+      <Project>{d092d351-b3ea-4f1b-910f-9d8c65a8eea2}</Project>
+      <Name>Toci.Ptc.Server.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Toci.Ptc.Server\Toci.Ptc.Server.csproj">
+      <Project>{53cdae05-c965-47e2-b5a9-92668e49ec0d}</Project>
+      <Name>Toci.Ptc.Server</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
